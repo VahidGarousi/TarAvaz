@@ -1,7 +1,5 @@
 package garousi.dev.taravaz
 
-import androidx.compose.foundation.background
-import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.ExperimentalLayoutApi
 import androidx.compose.foundation.layout.Row
@@ -21,13 +19,13 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.ExperimentalComposeUiApi
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.semantics.semantics
 import androidx.compose.ui.semantics.testTagsAsResourceId
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
-import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
+import garousi.dev.home.presentation.navigation.homeGraph
+import garousi.dev.home.presentation.navigation.homeGraphRoute
 
 @OptIn(ExperimentalComposeUiApi::class, ExperimentalLayoutApi::class, ExperimentalMaterial3Api::class)
 @Composable
@@ -72,19 +70,14 @@ fun TarAvazApp(
 fun TarAvazNavHost(
     navController: NavHostController,
     modifier: Modifier = Modifier,
-    startDestination: String = "main_screen"
+    startDestination: String = homeGraphRoute
 ) {
     NavHost(
         navController = navController,
         startDestination = startDestination,
         modifier = modifier
     ) {
-        composable("main_screen") {
-            Box(
-                modifier = Modifier
-                .fillMaxSize()
-                .background(Color(0XFF00022E)))
-        }
+        homeGraph(navController = navController)
     }
 }
 
