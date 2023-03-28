@@ -60,7 +60,8 @@ dependencies {
     implementation("androidx.compose.ui:ui-tooling-preview")
     // Jetpack Compose Integration
     implementation("androidx.navigation:navigation-compose:2.5.3")
-
+    implementation("androidx.compose.material3:material3:1.0.1")
+    implementation("androidx.compose.material3:material3-window-size-class:1.0.1")
 
     kapt("com.google.dagger:hilt-compiler:2.45")
     // For instrumentation tests
