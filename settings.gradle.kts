@@ -13,4 +13,4 @@ dependencyResolutionManagement {
     }
 }
 rootProject.name = "TarAvaz"
-include ':app'
+include(":app")
