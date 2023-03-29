@@ -1,36 +1,27 @@
 plugins {
-    id("com.android.application")
+    id("com.android.library")
     id("org.jetbrains.kotlin.android")
     id("com.google.dagger.hilt.android")
     kotlin("kapt")
 }
 
 android {
-    namespace = "garousi.dev.taravaz"
+    namespace = "garousi.dev.home"
     compileSdk = 33
 
     defaultConfig {
-        applicationId = "garousi.dev.taravaz"
         minSdk = 21
         targetSdk = 33
-        versionCode = 1
-        versionName = "1.0"
-
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
-        vectorDrawables {
-            useSupportLibrary = true
-        }
+    }
+
+    buildFeatures {
+        compose = true
     }
 
     buildTypes {
         release {
-            isMinifyEnabled = true
-            isShrinkResources = true
-            proguardFiles(getDefaultProguardFile("proguard-android-optimize.txt"), "proguard-rules.pro")
-            // To publish on the Play store a private signing key is required, but to allow anyone
-            // who clones the code to sign and run the release variant, use the debug signing key.
-            // TODO: Abstract the signing configuration to a separate file to avoid hardcoding this.
-            signingConfig = signingConfigs.getByName("debug")
+            isMinifyEnabled = false
         }
     }
     compileOptions {
@@ -41,21 +32,12 @@ android {
         jvmTarget = "1.8"
         freeCompilerArgs = freeCompilerArgs + buildComposeMetricsParameters()
     }
-    buildFeatures {
-        compose = true
-    }
     composeOptions {
         kotlinCompilerExtensionVersion = "1.4.4"
-    }
-    packagingOptions {
-        resources {
-            excludes.add("/META-INF/{AL2.0,LGPL2.1}")
-        }
     }
 }
 
 dependencies {
-
     implementation("androidx.core:core-ktx:1.9.0")
     implementation("androidx.lifecycle:lifecycle-runtime-ktx:2.6.1")
     implementation("androidx.activity:activity-compose:1.7.0")
@@ -95,15 +77,12 @@ dependencies {
 
 
     implementation("androidx.core:core-splashscreen:1.0.0")
-
-
-    implementation(projects.feature.home)
+    implementation("org.jetbrains.kotlinx:kotlinx-collections-immutable:0.3.5")
 }
 
 kapt {
     correctErrorTypes = true
 }
-
 
 fun Project.buildComposeMetricsParameters(): List<String> {
     val metricParameters = mutableListOf<String>()
