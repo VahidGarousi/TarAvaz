@@ -8,6 +8,7 @@ import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.hilt.navigation.compose.hiltViewModel
+import garousi.dev.design_system.theme.TarAvazTheme
 
 @Composable
 fun Home(
@@ -32,5 +33,7 @@ fun HomeContent(
 @Composable
 @Preview
 fun HomePreview() {
-    HomeContent(LatestTrackState.Loading)
+    TarAvazTheme {
+        HomeContent(LatestTrackState.Loading)
+    }
 }

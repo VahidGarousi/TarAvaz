@@ -1,4 +1,4 @@
-package garousi.dev.taravaz.ui.theme
+package garousi.dev.design_system.theme
 
 import android.app.Activity
 import android.os.Build

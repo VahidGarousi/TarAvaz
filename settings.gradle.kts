@@ -16,3 +16,4 @@ enableFeaturePreview("TYPESAFE_PROJECT_ACCESSORS")
 rootProject.name = "TarAvaz"
 include(":app")
 include(":feature:home")
+include(":core:design-system")
