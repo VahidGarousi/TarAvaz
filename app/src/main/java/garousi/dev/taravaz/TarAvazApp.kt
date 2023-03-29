@@ -19,11 +19,14 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.ExperimentalComposeUiApi
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.semantics.semantics
 import androidx.compose.ui.semantics.testTagsAsResourceId
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.rememberNavController
+import garousi.dev.design_system.component.TarAvazBackground
+import garousi.dev.design_system.component.TarAvazGradientBackground
 import garousi.dev.home.presentation.navigation.homeGraph
 import garousi.dev.home.presentation.navigation.homeGraphRoute
 
@@ -37,30 +40,35 @@ fun TarAvazApp(
         windowSizeClass = windowSizeClass
     )
 ) {
-    Scaffold(
-        modifier = Modifier.semantics {
-            testTagsAsResourceId = true
-        },
-        contentColor = MaterialTheme.colorScheme.onBackground,
-        bottomBar = {
-            if (appState.shouldShowBottomBar) {
-                TarAvazBottomBar()
-            }
-        }
-    ) { padding ->
-        Row(
-            Modifier
-                .fillMaxSize()
-                .padding(padding)
-                .consumeWindowInsets(padding)
-                .windowInsetsPadding(
-                    WindowInsets.safeDrawing.only(
-                        WindowInsetsSides.Horizontal,
-                    ),
-                ),
-        ) {
-            Column(Modifier.fillMaxSize()) {
-                TarAvazNavHost(appState.navController)
+    TarAvazBackground {
+        TarAvazGradientBackground {
+            Scaffold(
+                modifier = Modifier.semantics {
+                    testTagsAsResourceId = true
+                },
+                contentColor = MaterialTheme.colorScheme.onBackground,
+                bottomBar = {
+                    if (appState.shouldShowBottomBar) {
+                        TarAvazBottomBar()
+                    }
+                },
+                containerColor = Color.Transparent
+            ) { padding ->
+                Row(
+                    Modifier
+                        .fillMaxSize()
+                        .padding(padding)
+                        .consumeWindowInsets(padding)
+                        .windowInsetsPadding(
+                            WindowInsets.safeDrawing.only(
+                                WindowInsetsSides.Horizontal,
+                            ),
+                        ),
+                ) {
+                    Column(Modifier.fillMaxSize()) {
+                        TarAvazNavHost(appState.navController)
+                    }
+                }
             }
         }
     }
