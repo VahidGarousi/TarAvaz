@@ -51,6 +51,7 @@ dependencies {
     api("androidx.compose.material3:material3-window-size-class:1.0.1")
     api("androidx.core:core-splashscreen:1.0.0")
     api("org.jetbrains.kotlinx:kotlinx-collections-immutable:0.3.5")
+    api("io.coil-kt:coil-compose:2.3.0")
 
     debugApi("androidx.compose.ui:ui-tooling")
     debugApi("androidx.compose.ui:ui-test-manifest")
