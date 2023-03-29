@@ -6,7 +6,7 @@ import androidx.activity.compose.setContent
 import androidx.compose.material3.windowsizeclass.ExperimentalMaterial3WindowSizeClassApi
 import androidx.compose.material3.windowsizeclass.calculateWindowSizeClass
 import dagger.hilt.android.AndroidEntryPoint
-import garousi.dev.taravaz.ui.theme.TarAvazTheme
+import garousi.dev.design_system.theme.TarAvazTheme
 
 @AndroidEntryPoint
 class MainActivity : ComponentActivity() {
