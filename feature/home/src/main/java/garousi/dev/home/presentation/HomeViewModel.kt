@@ -16,7 +16,7 @@ class HomeViewModel @Inject constructor(
     private val getLatestTracksUseCase: GetLatestTracksUseCase
 ) : ViewModel() {
 
-    private val _latestTracks : MutableStateFlow<LatestTrackState> = MutableStateFlow(LatestTrackState.Loading)
+    private val _latestTracks: MutableStateFlow<LatestTrackState> = MutableStateFlow(LatestTrackState.Loading)
     val latestTracks = _latestTracks.asStateFlow()
 
     private fun getLatestTracks() {

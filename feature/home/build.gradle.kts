@@ -30,6 +30,7 @@ android {
     }
     kotlinOptions {
         jvmTarget = "1.8"
+        freeCompilerArgs = freeCompilerArgs + buildComposeMetricsParameters()
     }
     composeOptions {
         kotlinCompilerExtensionVersion = "1.4.4"
@@ -76,8 +77,28 @@ dependencies {
 
 
     implementation("androidx.core:core-splashscreen:1.0.0")
+    implementation("org.jetbrains.kotlinx:kotlinx-collections-immutable:0.3.5")
 }
 
 kapt {
     correctErrorTypes = true
+}
+
+fun Project.buildComposeMetricsParameters(): List<String> {
+    val metricParameters = mutableListOf<String>()
+    val enableProvider = project.providers.gradleProperty("enableComposeCompiler")
+    val enable = (enableProvider.orNull == "true")
+    if (enable) {
+        val metricsFolder = File(project.buildDir, "compose-metrics")
+        metricParameters.add("-P")
+        metricParameters.add(
+            "plugin:androidx.compose.compiler.plugins.kotlin:metricsDestination=" + metricsFolder.absolutePath
+        )
+        val reportsFolder = File(project.buildDir, "compose-reports")
+        metricParameters.add("-P")
+        metricParameters.add(
+            "plugin:androidx.compose.compiler.plugins.kotlin:reportsDestination=" + reportsFolder.absolutePath
+        )
+    }
+    return metricParameters.toList()
 }
