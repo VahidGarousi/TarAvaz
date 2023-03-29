@@ -20,12 +20,11 @@ fun Home(
 
 @Composable
 fun HomeContent(
-    latestTracks: LatestTrackState
+    latestTracks: LatestTrackUiState
 ) {
     Column(modifier = Modifier.fillMaxWidth()) {
         LatestTracks(
-            state = latestTracks,
-            modifier = Modifier.fillMaxWidth()
+            state = latestTracks
         )
     }
 }
@@ -34,6 +33,6 @@ fun HomeContent(
 @Preview
 fun HomePreview() {
     TarAvazTheme {
-        HomeContent(LatestTrackState.Loading)
+        HomeContent(LatestTrackUiState.Loading)
     }
 }

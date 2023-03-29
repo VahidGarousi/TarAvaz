@@ -16,18 +16,17 @@ class HomeViewModel @Inject constructor(
     private val getLatestTracksUseCase: GetLatestTracksUseCase
 ) : ViewModel() {
 
-    private val _latestTracks: MutableStateFlow<LatestTrackState> = MutableStateFlow(LatestTrackState.Loading)
+    private val _latestTracks: MutableStateFlow<LatestTrackUiState> = MutableStateFlow(LatestTrackUiState.Loading)
     val latestTracks = _latestTracks.asStateFlow()
 
     private fun getLatestTracks() {
         viewModelScope.launch {
-            delay(2500)
             when (val result = getLatestTracksUseCase()) {
                 is GetLatestTractsResult.Success -> {
-                    _latestTracks.emit(LatestTrackState.Success(result.list))
+                    _latestTracks.emit(LatestTrackUiState.Success(result.list))
                 }
                 is GetLatestTractsResult.Failure.Unknown -> {
-                    _latestTracks.emit(LatestTrackState.Failure.Unknown(result.message))
+                    _latestTracks.emit(LatestTrackUiState.Failure.Unknown(result.message))
                 }
             }
         }
