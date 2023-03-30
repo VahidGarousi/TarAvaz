@@ -6,7 +6,6 @@ import dagger.hilt.android.lifecycle.HiltViewModel
 import garousi.dev.home.domain.use_case.GetLatestTracksUseCase
 import garousi.dev.home.domain.use_case.GetLatestTractsResult
 import javax.inject.Inject
-import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.launch
@@ -21,9 +20,10 @@ class HomeViewModel @Inject constructor(
 
     private fun getLatestTracks() {
         viewModelScope.launch {
+            _latestTracks.emit(LatestTrackUiState.Loading)
             when (val result = getLatestTracksUseCase()) {
                 is GetLatestTractsResult.Success -> {
-                    _latestTracks.emit(LatestTrackUiState.Success(result.list))
+                    _latestTracks.emit(LatestTrackUiState.Success(result.data))
                 }
                 is GetLatestTractsResult.Failure.Unknown -> {
                     _latestTracks.emit(LatestTrackUiState.Failure.Unknown(result.message))

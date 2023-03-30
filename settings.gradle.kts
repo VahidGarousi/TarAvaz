@@ -1,4 +1,5 @@
 pluginManagement {
+    includeBuild("build-logic")
     repositories {
         google()
         mavenCentral()
@@ -17,3 +18,5 @@ rootProject.name = "TarAvaz"
 include(":app")
 include(":feature:home")
 include(":core:design-system")
+include(":ui-test-hilt-manifest")
+include(":core:testing")
