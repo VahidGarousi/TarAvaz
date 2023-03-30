@@ -1,14 +1,12 @@
 plugins {
-    id("com.android.application")
-    id("org.jetbrains.kotlin.android")
-    id("com.google.dagger.hilt.android")
-    kotlin("kapt")
+    id("taravaz.android.application")
+    id("taravaz.android.application.compose")
+    id("taravaz.android.application.flavors")
+    id("taravaz.android.hilt")
 }
 
 android {
     namespace = "garousi.dev.taravaz"
-    compileSdk = 33
-
     defaultConfig {
         applicationId = "garousi.dev.taravaz"
         minSdk = 21
@@ -16,14 +14,13 @@ android {
         versionCode = 1
         versionName = "1.0"
 
-        testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
+        testInstrumentationRunner = "garousi.dev.taravaz.core.testing.TarAvazTestRunner"
         vectorDrawables {
             useSupportLibrary = true
         }
     }
-
     buildTypes {
-        release {
+        val release by getting {
             isMinifyEnabled = true
             isShrinkResources = true
             proguardFiles(getDefaultProguardFile("proguard-android-optimize.txt"), "proguard-rules.pro")
@@ -33,20 +30,6 @@ android {
             signingConfig = signingConfigs.getByName("debug")
         }
     }
-    compileOptions {
-        sourceCompatibility = JavaVersion.VERSION_1_8
-        targetCompatibility = JavaVersion.VERSION_1_8
-    }
-    kotlinOptions {
-        jvmTarget = "1.8"
-        freeCompilerArgs = freeCompilerArgs + buildComposeMetricsParameters()
-    }
-    buildFeatures {
-        compose = true
-    }
-    composeOptions {
-        kotlinCompilerExtensionVersion = "1.4.4"
-    }
     packagingOptions {
         resources {
             excludes.add("/META-INF/{AL2.0,LGPL2.1}")
@@ -55,39 +38,35 @@ android {
 }
 
 dependencies {
-    implementation(projects.core.designSystem)
     implementation(projects.feature.home)
-    implementation("com.google.dagger:hilt-android:2.45")
-    kapt("com.google.dagger:hilt-compiler:2.45")
-    // For instrumentation tests
-    kaptAndroidTest("com.google.dagger:hilt-compiler:2.45")
-    // For local unit tests
-    kaptTest("com.google.dagger:hilt-compiler:2.45")
-    testImplementation("com.google.dagger:hilt-android-testing:2.45")
-    androidTestImplementation("androidx.compose.ui:ui-test-junit4")
-    androidTestImplementation("com.google.dagger:hilt-android-testing:2.45")
+
+    implementation(projects.core.designSystem)
+
+    androidTestImplementation(projects.core.testing)
+    androidTestImplementation(libs.androidx.navigation.testing)
+    androidTestImplementation(libs.accompanist.testharness)
+    androidTestImplementation(kotlin("test"))
+    debugImplementation(libs.androidx.compose.ui.testManifest)
+    debugImplementation(projects.uiTestHiltManifest)
+
+    implementation(libs.accompanist.systemuicontroller)
+    implementation(libs.androidx.activity.compose)
+    implementation(libs.androidx.appcompat)
+    implementation(libs.androidx.core.ktx)
+    implementation(libs.androidx.core.splashscreen)
+    implementation(libs.androidx.compose.runtime)
+    implementation(libs.androidx.lifecycle.runtimeCompose)
+    implementation(libs.androidx.compose.runtime.tracing)
+    implementation(libs.androidx.compose.material3.windowSizeClass)
+    implementation(libs.androidx.hilt.navigation.compose)
+    implementation(libs.androidx.navigation.compose)
 }
 
-kapt {
-    correctErrorTypes = true
-}
-
-
-fun Project.buildComposeMetricsParameters(): List<String> {
-    val metricParameters = mutableListOf<String>()
-    val enableProvider = project.providers.gradleProperty("enableComposeCompiler")
-    val enable = (enableProvider.orNull == "true")
-    if (enable) {
-        val metricsFolder = File(project.buildDir, "compose-metrics")
-        metricParameters.add("-P")
-        metricParameters.add(
-            "plugin:androidx.compose.compiler.plugins.kotlin:metricsDestination=" + metricsFolder.absolutePath
-        )
-        val reportsFolder = File(project.buildDir, "compose-reports")
-        metricParameters.add("-P")
-        metricParameters.add(
-            "plugin:androidx.compose.compiler.plugins.kotlin:reportsDestination=" + reportsFolder.absolutePath
-        )
+// androidx.test is forcing JUnit, 4.12. This forces it to use 4.13
+configurations.configureEach {
+    resolutionStrategy {
+        force(libs.junit4)
+        // Temporary workaround for https://issuetracker.google.com/174733673
+        force("org.objenesis:objenesis:2.6")
     }
-    return metricParameters.toList()
 }
