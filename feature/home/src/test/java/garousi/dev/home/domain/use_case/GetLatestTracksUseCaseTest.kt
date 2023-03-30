@@ -8,7 +8,6 @@ import kotlinx.coroutines.runBlocking
 import org.junit.Before
 import org.junit.Test
 
-
 class GetLatestTracksUseCaseTest {
 
     private lateinit var getLatestTracks: GetLatestTracksUseCase
