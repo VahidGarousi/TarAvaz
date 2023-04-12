@@ -8,6 +8,7 @@ import garousi.dev.taravaz.home.domain.use_case.GetBannersUseCase
 import garousi.dev.taravaz.home.domain.use_case.GetLatestTracksUseCase
 import garousi.dev.taravaz.home.domain.use_case.GetLatestTractsResult
 import garousi.dev.taravaz.home.presentation.banner_slider.BannerSliderUiState
+import garousi.dev.taravaz.home.presentation.latest_tracks.LatestTrackUiState
 import javax.inject.Inject
 import kotlin.time.Duration.Companion.seconds
 import kotlinx.coroutines.delay

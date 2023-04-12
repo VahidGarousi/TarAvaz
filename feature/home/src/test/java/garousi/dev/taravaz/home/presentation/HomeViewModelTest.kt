@@ -5,8 +5,7 @@ import com.google.common.truth.Truth
 import garousi.dev.taravaz.home.domain.use_case.GetBannersUseCase
 import garousi.dev.taravaz.home.domain.use_case.GetLatestTracksUseCase
 import garousi.dev.taravaz.home.domain.use_case.GetLatestTractsResult
-import garousi.dev.taravaz.home.presentation.HomeViewModel
-import garousi.dev.taravaz.home.presentation.LatestTrackUiState
+import garousi.dev.taravaz.home.presentation.latest_tracks.LatestTrackUiState
 import io.mockk.MockKAnnotations
 import io.mockk.coEvery
 import io.mockk.mockk

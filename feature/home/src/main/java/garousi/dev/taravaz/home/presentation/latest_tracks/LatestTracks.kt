@@ -1,4 +1,4 @@
-package garousi.dev.taravaz.home.presentation
+package garousi.dev.taravaz.home.presentation.latest_tracks
 
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
@@ -29,6 +29,7 @@ import garousi.dev.design_system.component.TarAvazGradientBackground
 import garousi.dev.design_system.theme.TarAvazTheme
 import garousi.dev.home.R
 import garousi.dev.taravaz.home.domain.model.Track
+import garousi.dev.taravaz.home.presentation.Track
 
 @Composable
 fun LatestTracks(

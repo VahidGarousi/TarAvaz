@@ -1,4 +1,4 @@
-package garousi.dev.taravaz.home.presentation
+package garousi.dev.taravaz.home.presentation.latest_tracks
 
 import androidx.compose.ui.tooling.preview.PreviewParameterProvider
 import garousi.dev.taravaz.home.domain.model.Artist
