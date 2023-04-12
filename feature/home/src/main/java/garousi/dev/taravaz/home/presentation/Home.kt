@@ -9,15 +9,13 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import garousi.dev.design_system.preview.TarAvazPreview
+import garousi.dev.taravaz.core.ui.components.horizontal_tracks.HorizontalTracksUiState
 import garousi.dev.taravaz.home.presentation.banner_slider.BannerSlider
 import garousi.dev.taravaz.home.presentation.banner_slider.BannerSliderUiState
 import garousi.dev.taravaz.home.presentation.banner_slider.BannerSliderUiStateProvider
-import garousi.dev.taravaz.home.presentation.latest_tracks.LatestTrackUiState
 import garousi.dev.taravaz.home.presentation.latest_tracks.LatestTracks
-import garousi.dev.taravaz.home.presentation.latest_tracks.LatestTracksStateProvider
-import garousi.dev.taravaz.home.presentation.popular_tracks.PopularTrackUiState
+import garousi.dev.taravaz.core.ui.components.horizontal_tracks.HorizontalTracksUiStateProvider
 import garousi.dev.taravaz.home.presentation.popular_tracks.PopularTracks
-import garousi.dev.taravaz.home.presentation.popular_tracks.PopularTracksStateProvider
 import garousi.dev.taravaz.home.presentation.toolbar.HomeToolbar
 
 @Composable
@@ -36,8 +34,8 @@ fun Home(
 
 @Composable
 fun HomeContent(
-    latestTracks: LatestTrackUiState,
-    popularTracks: PopularTrackUiState,
+    latestTracks: HorizontalTracksUiState,
+    popularTracks: HorizontalTracksUiState,
     bannerSliderState: BannerSliderUiState
 ) {
     Column(modifier = Modifier.fillMaxWidth()) {
@@ -51,14 +49,13 @@ fun HomeContent(
 @Composable
 @Preview
 fun HomePreview() {
-    val latestTracks = LatestTracksStateProvider().values
+    val tracks = HorizontalTracksUiStateProvider().values
     val banners = BannerSliderUiStateProvider().values
-    val popularTracks = PopularTracksStateProvider().values
     TarAvazPreview {
         HomeContent(
-            latestTracks = latestTracks.elementAt(1),
+            latestTracks = tracks.elementAt(1),
             bannerSliderState = banners.elementAt(1),
-            popularTracks = popularTracks.elementAt(1)
+            popularTracks = tracks.elementAt(1)
         )
     }
 }

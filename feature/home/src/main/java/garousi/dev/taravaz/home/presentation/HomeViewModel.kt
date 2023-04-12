@@ -3,13 +3,12 @@ package garousi.dev.taravaz.home.presentation
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import dagger.hilt.android.lifecycle.HiltViewModel
+import garousi.dev.taravaz.core.ui.components.horizontal_tracks.HorizontalTracksUiState
 import garousi.dev.taravaz.home.domain.use_case.GetBannersResult
 import garousi.dev.taravaz.home.domain.use_case.GetBannersUseCase
 import garousi.dev.taravaz.home.domain.use_case.GetLatestTracksUseCase
 import garousi.dev.taravaz.home.domain.use_case.GetLatestTractsResult
 import garousi.dev.taravaz.home.presentation.banner_slider.BannerSliderUiState
-import garousi.dev.taravaz.home.presentation.latest_tracks.LatestTrackUiState
-import garousi.dev.taravaz.home.presentation.popular_tracks.PopularTrackUiState
 import javax.inject.Inject
 import kotlin.time.Duration.Companion.seconds
 import kotlinx.coroutines.delay
@@ -23,10 +22,10 @@ class HomeViewModel @Inject constructor(
     private val getBannersUseCase: GetBannersUseCase
 ) : ViewModel() {
 
-    private val _latestTracks: MutableStateFlow<LatestTrackUiState> = MutableStateFlow(LatestTrackUiState.Loading)
+    private val _latestTracks: MutableStateFlow<HorizontalTracksUiState> = MutableStateFlow(HorizontalTracksUiState.Loading)
     val latestTracks = _latestTracks.asStateFlow()
 
-    private val _popularTracks: MutableStateFlow<PopularTrackUiState> = MutableStateFlow(PopularTrackUiState.Loading)
+    private val _popularTracks: MutableStateFlow<HorizontalTracksUiState> = MutableStateFlow(HorizontalTracksUiState.Loading)
     val popularTracks = _popularTracks.asStateFlow()
 
     private val _bannerSlider: MutableStateFlow<BannerSliderUiState> = MutableStateFlow(BannerSliderUiState.Loading)
@@ -35,17 +34,17 @@ class HomeViewModel @Inject constructor(
 
     private fun getLatestTracks() {
         viewModelScope.launch {
-            _latestTracks.emit(LatestTrackUiState.Loading)
-            _popularTracks.emit(PopularTrackUiState.Loading)
+            _latestTracks.emit(HorizontalTracksUiState.Loading)
+            _popularTracks.emit(HorizontalTracksUiState.Loading)
             delay(2.seconds)
             when (val result = getLatestTracksUseCase()) {
                 is GetLatestTractsResult.Success -> {
-                    _latestTracks.emit(LatestTrackUiState.Success(result.data))
-                    _popularTracks.emit(PopularTrackUiState.Success(result.data))
+                    _latestTracks.emit(HorizontalTracksUiState.Success(result.data))
+                    _popularTracks.emit(HorizontalTracksUiState.Success(result.data))
                 }
                 is GetLatestTractsResult.Failure.Unknown -> {
-                    _latestTracks.emit(LatestTrackUiState.Failure.Unknown(result.message))
-                    _popularTracks.emit(PopularTrackUiState.Failure.Unknown(result.message))
+                    _latestTracks.emit(HorizontalTracksUiState.Failure.Unknown(result.message))
+                    _popularTracks.emit(HorizontalTracksUiState.Failure.Unknown(result.message))
                 }
             }
         }

@@ -1,7 +1,7 @@
 package garousi.dev.taravaz.home.data.repository
 
-import garousi.dev.taravaz.home.domain.model.Artist
-import garousi.dev.taravaz.home.domain.model.Track
+import garousi.dev.taravaz.core.model.Track
+import garousi.dev.taravaz.core.model.Artist
 
 object MockTrackGenerator {
     val rezaBahram = Artist(

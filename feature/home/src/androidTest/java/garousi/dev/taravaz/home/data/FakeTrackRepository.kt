@@ -1,7 +1,7 @@
 package garousi.dev.taravaz.home.data
 
+import garousi.dev.taravaz.core.model.Track
 import garousi.dev.taravaz.home.data.repository.MockTrackGenerator
-import garousi.dev.taravaz.home.domain.model.Track
 import garousi.dev.taravaz.home.domain.repository.TrackRepository
 
 class FakeTrackRepository  : TrackRepository {
