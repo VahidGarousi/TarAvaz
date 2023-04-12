@@ -9,7 +9,7 @@ import androidx.compose.runtime.CompositionLocalProvider
 import androidx.compose.ui.platform.LocalLayoutDirection
 import androidx.compose.ui.unit.LayoutDirection
 import dagger.hilt.android.AndroidEntryPoint
-import garousi.dev.design_system.theme.TarAvazTheme
+import garousi.dev.taravaz.core.design_system.theme.TarAvazTheme
 
 @AndroidEntryPoint
 class MainActivity : ComponentActivity() {

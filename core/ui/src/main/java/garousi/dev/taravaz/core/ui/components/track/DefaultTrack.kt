@@ -19,8 +19,8 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.LayoutDirection
 import androidx.compose.ui.unit.dp
 import coil.compose.AsyncImage
-import garousi.dev.design_system.debugPlaceholder
-import garousi.dev.design_system.preview.TarAvazPreview
+import garousi.dev.taravaz.core.design_system.debugPlaceholder
+import garousi.dev.taravaz.core.design_system.preview.TarAvazPreview
 import garousi.dev.taravaz.core.model.Artist
 import garousi.dev.taravaz.core.model.Track
 import garousi.dev.taravaz.core.ui.R

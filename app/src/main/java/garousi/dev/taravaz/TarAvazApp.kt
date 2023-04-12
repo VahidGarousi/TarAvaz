@@ -25,8 +25,8 @@ import androidx.compose.ui.semantics.testTagsAsResourceId
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.rememberNavController
-import garousi.dev.design_system.component.TarAvazBackground
-import garousi.dev.design_system.component.TarAvazGradientBackground
+import garousi.dev.taravaz.core.design_system.component.TarAvazBackground
+import garousi.dev.taravaz.core.design_system.component.TarAvazGradientBackground
 import garousi.dev.taravaz.home.presentation.navigation.homeGraph
 import garousi.dev.taravaz.home.presentation.navigation.homeGraphRoute
 
