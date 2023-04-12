@@ -27,8 +27,8 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.rememberNavController
 import garousi.dev.design_system.component.TarAvazBackground
 import garousi.dev.design_system.component.TarAvazGradientBackground
-import garousi.dev.home.presentation.navigation.homeGraph
-import garousi.dev.home.presentation.navigation.homeGraphRoute
+import garousi.dev.taravaz.home.presentation.navigation.homeGraph
+import garousi.dev.taravaz.home.presentation.navigation.homeGraphRoute
 
 @OptIn(ExperimentalComposeUiApi::class, ExperimentalLayoutApi::class, ExperimentalMaterial3Api::class)
 @Composable
