@@ -2,4 +2,5 @@
 <resources>
     <string name="latest_tracks_title">جدیدترین ترانه‌ها</string>
     <string name="all">همه</string>
+    <string name="home">صفحه اصلی</string>
 </resources>
