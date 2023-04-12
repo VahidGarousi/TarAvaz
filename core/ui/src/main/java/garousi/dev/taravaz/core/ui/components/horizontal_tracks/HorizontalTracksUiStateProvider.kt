@@ -1,11 +1,11 @@
-package garousi.dev.taravaz.home.presentation.latest_tracks
+package garousi.dev.taravaz.core.ui.components.horizontal_tracks
 
 import androidx.compose.ui.tooling.preview.PreviewParameterProvider
-import garousi.dev.taravaz.home.domain.model.Artist
-import garousi.dev.taravaz.home.domain.model.Track
+import garousi.dev.taravaz.core.model.Artist
+import garousi.dev.taravaz.core.model.Track
 import java.util.UUID
 
-internal class LatestTracksStateProvider : PreviewParameterProvider<LatestTrackUiState> {
+class HorizontalTracksUiStateProvider : PreviewParameterProvider<HorizontalTracksUiState> {
     private val rezaBahram = Artist(
         id = UUID.randomUUID().toString(),
         name = "رضا بهرام"
@@ -36,9 +36,9 @@ internal class LatestTracksStateProvider : PreviewParameterProvider<LatestTrackU
             )
         )
     }
-    override val values: Sequence<LatestTrackUiState> = sequenceOf(
-        LatestTrackUiState.Loading,
-        LatestTrackUiState.Success(data = tracks),
-        LatestTrackUiState.Failure.Unknown("خطا در دریافت اطلاعات")
+    override val values: Sequence<HorizontalTracksUiState> = sequenceOf(
+        HorizontalTracksUiState.Loading,
+        HorizontalTracksUiState.Success(data = tracks),
+        HorizontalTracksUiState.Failure.Unknown("خطا در دریافت اطلاعات")
     )
 }

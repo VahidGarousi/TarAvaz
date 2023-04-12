@@ -2,10 +2,10 @@ package garousi.dev.taravaz.home.presentation
 
 import app.cash.turbine.test
 import com.google.common.truth.Truth
+import garousi.dev.taravaz.core.ui.components.horizontal_tracks.HorizontalTracksUiState
 import garousi.dev.taravaz.home.domain.use_case.GetBannersUseCase
 import garousi.dev.taravaz.home.domain.use_case.GetLatestTracksUseCase
 import garousi.dev.taravaz.home.domain.use_case.GetLatestTractsResult
-import garousi.dev.taravaz.home.presentation.latest_tracks.LatestTrackUiState
 import io.mockk.MockKAnnotations
 import io.mockk.coEvery
 import io.mockk.mockk
@@ -41,7 +41,7 @@ class HomeViewModelTest {
         coEvery { getLatestTracksUseCase() } returns GetLatestTractsResult.Success(listOf())
         viewModel.latestTracks.test {
             val state = awaitItem()
-            Truth.assertThat(state).isEqualTo(LatestTrackUiState.Loading)
+            Truth.assertThat(state).isEqualTo(HorizontalTracksUiState.Loading)
             cancelAndIgnoreRemainingEvents()
         }
     }

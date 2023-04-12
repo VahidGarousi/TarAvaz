@@ -1,4 +1,4 @@
-package garousi.dev.taravaz.home.presentation
+package garousi.dev.taravaz.core.ui.components.track
 
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.height
@@ -20,15 +20,16 @@ import androidx.compose.ui.unit.LayoutDirection
 import androidx.compose.ui.unit.dp
 import coil.compose.AsyncImage
 import garousi.dev.design_system.debugPlaceholder
-import garousi.dev.design_system.theme.TarAvazTheme
-import garousi.dev.home.R
-import garousi.dev.taravaz.home.domain.model.Artist
-import garousi.dev.taravaz.home.domain.model.Track
+import garousi.dev.design_system.preview.TarAvazPreview
+import garousi.dev.taravaz.core.model.Artist
+import garousi.dev.taravaz.core.model.Track
+import garousi.dev.taravaz.core.ui.R
 import java.util.UUID
+
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun Track(
+fun DefaultTrack(
     track: Track,
     onClick: (Track) -> Unit
 ) {
@@ -68,7 +69,7 @@ fun Track(
 
 @Composable
 @Preview
-fun TrackPreview() {
+fun DefaultTrackPreview() {
     val rezaBahram = Artist(
         id = UUID.randomUUID().toString(),
         name = "رضا بهرام"
@@ -81,9 +82,12 @@ fun TrackPreview() {
         artist = rezaBahram,
         cover = "http://tabamusic.com/wp-content/uploads/2020/11/Reza-Bahram-Gole-Maryam.jpg"
     )
-    TarAvazTheme {
+    TarAvazPreview {
         CompositionLocalProvider(LocalLayoutDirection provides LayoutDirection.Rtl) {
-            Track(track = track, onClick = {})
+            DefaultTrack(
+                track = track,
+                onClick = {}
+            )
         }
     }
 }
