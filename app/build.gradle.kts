@@ -39,6 +39,7 @@ android {
 
 dependencies {
     implementation(projects.feature.home)
+    implementation(projects.feature.track)
 
     implementation(projects.core.designSystem)
 
