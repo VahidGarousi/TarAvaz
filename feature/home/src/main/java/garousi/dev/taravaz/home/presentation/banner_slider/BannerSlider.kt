@@ -14,9 +14,9 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.tooling.preview.PreviewParameter
 import androidx.compose.ui.unit.dp
-import garousi.dev.design_system.component.TarAvazBackground
-import garousi.dev.design_system.component.TarAvazGradientBackground
-import garousi.dev.design_system.theme.TarAvazTheme
+import garousi.dev.taravaz.core.design_system.component.TarAvazBackground
+import garousi.dev.taravaz.core.design_system.component.TarAvazGradientBackground
+import garousi.dev.taravaz.core.design_system.theme.TarAvazTheme
 import garousi.dev.taravaz.home.domain.model.Banner
 
 @Composable

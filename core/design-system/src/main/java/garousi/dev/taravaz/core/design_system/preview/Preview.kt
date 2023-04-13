@@ -1,4 +1,4 @@
-package garousi.dev.design_system.preview
+package garousi.dev.taravaz.core.design_system.preview
 
 import android.content.res.Configuration
 import androidx.compose.ui.tooling.preview.Preview

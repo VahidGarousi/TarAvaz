@@ -1,4 +1,4 @@
-package garousi.dev.design_system.theme
+package garousi.dev.taravaz.core.design_system.theme
 
 import androidx.compose.runtime.Immutable
 import androidx.compose.runtime.staticCompositionLocalOf

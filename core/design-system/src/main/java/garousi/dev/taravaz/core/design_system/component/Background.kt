@@ -1,4 +1,4 @@
-package garousi.dev.design_system.component
+package garousi.dev.taravaz.core.design_system.component
 
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxSize
@@ -17,10 +17,10 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
-import garousi.dev.design_system.theme.GradientColors
-import garousi.dev.design_system.theme.LocalGradientColors
-import garousi.dev.design_system.theme.LocalBackgroundTheme
-import garousi.dev.design_system.theme.TarAvazTheme
+import garousi.dev.taravaz.core.design_system.theme.GradientColors
+import garousi.dev.taravaz.core.design_system.theme.LocalGradientColors
+import garousi.dev.taravaz.core.design_system.theme.LocalBackgroundTheme
+import garousi.dev.taravaz.core.design_system.theme.TarAvazTheme
 import kotlin.math.tan
 
 /**

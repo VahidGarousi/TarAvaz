@@ -1,3 +1,8 @@
 <resources>
     <string name="app_name">TarAvaz</string>
+    <string name="profile">پروفایل</string>
+    <string name="tracks">ترانه‌ها</string>
+    <string name="home">صفحه اصلی</string>
+    <string name="discovery">جستجو</string>
+    <string name="playlist">لیست پخش</string>
 </resources>

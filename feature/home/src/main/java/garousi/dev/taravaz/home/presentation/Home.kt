@@ -8,7 +8,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
-import garousi.dev.design_system.preview.TarAvazPreview
+import garousi.dev.taravaz.core.design_system.preview.TarAvazPreview
 import garousi.dev.taravaz.core.ui.components.horizontal_tracks.HorizontalTracksUiState
 import garousi.dev.taravaz.home.presentation.banner_slider.BannerSlider
 import garousi.dev.taravaz.home.presentation.banner_slider.BannerSliderUiState

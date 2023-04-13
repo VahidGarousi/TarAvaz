@@ -17,7 +17,7 @@ import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.util.lerp
 import coil.compose.AsyncImage
-import garousi.dev.design_system.debugPlaceholder
+import garousi.dev.taravaz.core.design_system.debugPlaceholder
 import garousi.dev.home.R
 import garousi.dev.taravaz.home.domain.model.Banner
 import kotlin.math.absoluteValue

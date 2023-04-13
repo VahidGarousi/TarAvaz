@@ -1,4 +1,4 @@
-package garousi.dev.design_system
+package garousi.dev.taravaz.core.design_system
 
 import androidx.annotation.DrawableRes
 import androidx.compose.runtime.Composable
