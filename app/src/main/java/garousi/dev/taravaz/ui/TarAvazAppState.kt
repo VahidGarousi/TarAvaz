@@ -11,7 +11,7 @@ import androidx.navigation.NavHostController
 import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
 import androidx.navigation.navOptions
-import garousi.dev.taravaz.home.presentation.navigation.homeGraphRoute
+import garousi.dev.taravaz.home.presentation.navigation.homeRoute
 import garousi.dev.taravaz.home.presentation.navigation.navigateToHome
 import garousi.dev.taravaz.navigation.TopLevelDestination
 import kotlinx.coroutines.CoroutineScope
@@ -28,7 +28,7 @@ class TarAvazAppState(
 
     val currentTopLevelDestination: TopLevelDestination?
         @Composable get() = when (currentDestination?.route) {
-            homeGraphRoute -> TopLevelDestination.HOME
+            homeRoute -> TopLevelDestination.HOME
             else -> null
         }
 

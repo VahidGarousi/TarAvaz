@@ -63,7 +63,7 @@ val LightAndroidBackgroundTheme = BackgroundTheme(color = Color(0XFFF0F0F0))
 /**
  * Dark Android background theme
  */
-val DarkAndroidBackgroundTheme = BackgroundTheme(color = Color.Black)
+val DarkAndroidBackgroundTheme = BackgroundTheme(color = Color(0XFF00022E))
 
 
 @Composable

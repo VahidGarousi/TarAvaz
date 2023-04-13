@@ -15,23 +15,30 @@ fun NavController.navigateToHome(navOptions: NavOptions? = null) {
 }
 
 fun NavGraphBuilder.homeGraph(
-    navController: NavController
+    navController: NavController,
+    navigateToTrack: (String) -> Unit,
 ) {
     navigation(
         startDestination = homeRoute,
         route = homeGraphRoute
     ) {
-        addHome(navController = navController)
+        homeScreen(
+            navController = navController,
+            navigateToTrack = navigateToTrack
+        )
     }
 }
 
 
-private fun NavGraphBuilder.addHome(
-    navController: NavController
+private fun NavGraphBuilder.homeScreen(
+    navController: NavController,
+    navigateToTrack: (String) -> Unit
 ) {
     composable(
         route = homeRoute
     ) {
-        Home()
+        Home(
+            navigateToTrack = navigateToTrack
+        )
     }
 }

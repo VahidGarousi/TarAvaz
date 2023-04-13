@@ -1,11 +1,15 @@
 package garousi.dev.taravaz.core.design_system.theme
 
 import androidx.annotation.DrawableRes
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.rounded.ArrowBack
+import androidx.compose.material.icons.rounded.ArrowForward
 import androidx.compose.ui.graphics.vector.ImageVector
 import garousi.dev.taravaz.core.design_system.R
 
 object TarAvazIcons {
     val Category = R.drawable.ic_category
+    val ArrowBack = Icons.Rounded.ArrowForward
 }
 
 /**

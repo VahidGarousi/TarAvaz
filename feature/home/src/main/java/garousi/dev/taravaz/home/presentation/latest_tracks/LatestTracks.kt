@@ -15,6 +15,7 @@ import garousi.dev.taravaz.core.ui.components.horizontal_tracks.HorizontalTracks
 @Composable
 fun LatestTracks(
     state: HorizontalTracksUiState,
+    onTrackClicked: (String) -> Unit,
     modifier: Modifier = Modifier
 ) {
     HorizontalTracks(
@@ -23,9 +24,7 @@ fun LatestTracks(
         actionTitle = R.string.all,
         retryButtonText = CoreUiR.string.retry,
         state = state,
-        onClick = { track ->
-
-        }
+        onClick = { track -> onTrackClicked(track.id) }
     )
 }
 
@@ -39,6 +38,7 @@ fun LatestTracksPreview(
     TarAvazPreview {
         LatestTracks(
             state = state,
+            onTrackClicked = {},
             modifier = Modifier.fillMaxWidth()
         )
     }

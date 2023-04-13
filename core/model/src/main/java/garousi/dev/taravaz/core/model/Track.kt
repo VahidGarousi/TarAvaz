@@ -1,5 +1,4 @@
 package garousi.dev.taravaz.core.model
-
 data class Track(
     val id: String,
     val name: String,

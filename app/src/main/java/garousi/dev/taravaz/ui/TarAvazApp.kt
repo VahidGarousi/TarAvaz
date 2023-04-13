@@ -38,7 +38,9 @@ import garousi.dev.taravaz.core.design_system.TarAvazNavigationBar
 import garousi.dev.taravaz.core.design_system.TarAvazNavigationDefaults
 import garousi.dev.taravaz.core.design_system.component.TarAvazBackground
 import garousi.dev.taravaz.core.design_system.component.TarAvazGradientBackground
+import garousi.dev.taravaz.core.design_system.theme.GradientColors
 import garousi.dev.taravaz.core.design_system.theme.Icon
+import garousi.dev.taravaz.core.design_system.theme.LocalGradientColors
 import garousi.dev.taravaz.navigation.TopLevelDestination
 
 @OptIn(
@@ -51,8 +53,15 @@ fun TarAvazApp(
     appState: TarAvazAppState = rememberTarAvazAppState()
 ) {
     val snackbarHostState = remember { SnackbarHostState() }
+    val shouldShowGradientBackground = appState.currentTopLevelDestination == TopLevelDestination.HOME
     TarAvazBackground {
-        TarAvazGradientBackground {
+        TarAvazGradientBackground(
+            gradientColors = if (shouldShowGradientBackground) {
+                LocalGradientColors.current
+            } else {
+                GradientColors()
+            }
+        ) {
             Scaffold(
                 modifier = Modifier.semantics {
                     testTagsAsResourceId = true

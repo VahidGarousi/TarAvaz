@@ -20,7 +20,8 @@ import garousi.dev.taravaz.home.presentation.toolbar.HomeToolbar
 
 @Composable
 fun Home(
-    viewModel: HomeViewModel = hiltViewModel()
+    viewModel: HomeViewModel = hiltViewModel(),
+    navigateToTrack: (String) -> Unit
 ) {
     val latestTracksState by viewModel.latestTracks.collectAsStateWithLifecycle()
     val popularTracksState by viewModel.popularTracks.collectAsStateWithLifecycle()
@@ -28,7 +29,8 @@ fun Home(
     HomeContent(
         latestTracks = latestTracksState,
         bannerSliderState = bannerSliderState,
-        popularTracks = popularTracksState
+        popularTracks = popularTracksState,
+        onTrackClicked = navigateToTrack
     )
 }
 
@@ -36,13 +38,14 @@ fun Home(
 fun HomeContent(
     latestTracks: HorizontalTracksUiState,
     popularTracks: HorizontalTracksUiState,
-    bannerSliderState: BannerSliderUiState
+    bannerSliderState: BannerSliderUiState,
+    onTrackClicked: (String) -> Unit
 ) {
     Column(modifier = Modifier.fillMaxWidth()) {
         HomeToolbar(modifier = Modifier.fillMaxWidth())
         BannerSlider(state = bannerSliderState, onClick = {})
-        LatestTracks(state = latestTracks, modifier = Modifier.fillMaxWidth())
-        PopularTracks(state = popularTracks, modifier = Modifier.fillMaxWidth())
+        LatestTracks(state = latestTracks, modifier = Modifier.fillMaxWidth(), onTrackClicked = onTrackClicked)
+        PopularTracks(state = popularTracks, modifier = Modifier.fillMaxWidth(), onTrackClicked = onTrackClicked)
     }
 }
 
@@ -55,7 +58,8 @@ fun HomePreview() {
         HomeContent(
             latestTracks = tracks.elementAt(1),
             bannerSliderState = banners.elementAt(1),
-            popularTracks = tracks.elementAt(1)
+            popularTracks = tracks.elementAt(1),
+            onTrackClicked = {}
         )
     }
 }

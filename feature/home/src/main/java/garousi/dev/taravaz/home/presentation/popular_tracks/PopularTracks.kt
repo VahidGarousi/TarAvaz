@@ -15,6 +15,7 @@ import garousi.dev.taravaz.core.ui.R as CoreUiR
 @Composable
 fun PopularTracks(
     state: HorizontalTracksUiState,
+    onTrackClicked : (String) -> Unit,
     modifier: Modifier = Modifier
 ) {
     HorizontalTracks(
@@ -23,9 +24,7 @@ fun PopularTracks(
         actionTitle = R.string.all,
         retryButtonText = CoreUiR.string.retry,
         state = state,
-        onClick = { track ->
-
-        }
+        onClick = { track -> onTrackClicked(track.id) }
     )
 }
 
@@ -38,7 +37,8 @@ fun PopularTracksPreview(
     TarAvazPreview {
         PopularTracks(
             state = state,
-            modifier = Modifier.fillMaxWidth()
+            modifier = Modifier.fillMaxWidth(),
+            onTrackClicked = {}
         )
     }
 }
