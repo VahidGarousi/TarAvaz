@@ -1,5 +1,5 @@
-import ir.vahid.framework.configureKotlinJvm
-import ir.vahid.framework.libs
+import ir.taravaz.configureKotlinJvm
+import ir.taravaz.libs
 import org.gradle.api.Plugin
 import org.gradle.api.Project
 import org.gradle.kotlin.dsl.dependencies

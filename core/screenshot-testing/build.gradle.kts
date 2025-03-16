@@ -1,7 +1,6 @@
 plugins {
-    alias(libs.plugins.framework.android.library)
-    alias(libs.plugins.framework.android.library.compose)
-//    alias(libs.plugins.framework.hilt)
+    alias(libs.plugins.taravaz.android.library)
+    alias(libs.plugins.taravaz.android.library.compose)
 }
 
 android {

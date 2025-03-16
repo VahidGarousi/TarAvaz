@@ -1,4 +1,4 @@
-package ir.vahid.framework
+package ir.taravaz
 
 import android.os.Bundle
 import androidx.activity.ComponentActivity
@@ -11,14 +11,14 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
-import ir.vahid.core.designsystem.theme.FrameworkTheme
+import ir.vahid.core.designsystem.theme.TarAvazTheme
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
         setContent {
-            FrameworkTheme {
+            TarAvazTheme {
                 Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
                     Greeting(
                         name = "Android",
@@ -44,7 +44,7 @@ fun Greeting(
 @Preview(showBackground = true)
 @Composable
 fun GreetingPreview() {
-    FrameworkTheme {
+    TarAvazTheme {
         Greeting("Android")
     }
 }

@@ -1,3 +1,3 @@
 plugins {
-    alias(libs.plugins.framework.jvm.library)
+    alias(libs.plugins.taravaz.jvm.library)
 }
