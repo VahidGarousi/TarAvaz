@@ -1,5 +1,5 @@
 plugins {
-    alias(libs.plugins.framework.android.library)
+    alias(libs.plugins.taravaz.android.library)
 }
 
 android {

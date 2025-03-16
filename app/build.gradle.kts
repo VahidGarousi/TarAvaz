@@ -1,15 +1,15 @@
-import ir.vahid.framework.FrameworkBuildType
+import ir.taravaz.TarAvazBuildType
 
 plugins {
-    alias(libs.plugins.framework.android.application)
-    alias(libs.plugins.framework.android.application.compose)
-    alias(libs.plugins.framework.android.application.flavors)
-    alias(libs.plugins.framework.android.application.jacoco)
-    alias(libs.plugins.framework.kotest)
+    alias(libs.plugins.taravaz.android.application)
+    alias(libs.plugins.taravaz.android.application.compose)
+    alias(libs.plugins.taravaz.android.application.flavors)
+    alias(libs.plugins.taravaz.android.application.jacoco)
+    alias(libs.plugins.taravaz.kotest)
 }
 
 android {
-    namespace = "ir.vahid.framework"
+    namespace = "ir.taravaz"
     compileSdk = 35
 
     defaultConfig {
@@ -25,7 +25,7 @@ android {
         debug {
             isMinifyEnabled = false
             isShrinkResources = false
-            versionNameSuffix = FrameworkBuildType.DEBUG.versionNameSuffix
+            versionNameSuffix = TarAvazBuildType.DEBUG.versionNameSuffix
         }
         release {
             isMinifyEnabled = true

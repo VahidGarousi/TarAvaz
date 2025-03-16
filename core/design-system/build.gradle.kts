@@ -1,12 +1,12 @@
 plugins {
-    alias(libs.plugins.framework.android.library)
-    alias(libs.plugins.framework.android.library.compose)
-    alias(libs.plugins.framework.android.library.jacoco)
+    alias(libs.plugins.taravaz.android.library)
+    alias(libs.plugins.taravaz.android.library.compose)
+    alias(libs.plugins.taravaz.android.library.jacoco)
     alias(libs.plugins.roborazzi)
 }
 
 android {
-    namespace = "ir.vahid.core.design_system"
+    namespace = "ir.taravaz.core.design_system"
 }
 
 dependencies {

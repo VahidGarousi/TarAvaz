@@ -1,4 +1,4 @@
-package ir.vahid.framework
+package ir.taravaz
 
 import com.android.build.api.variant.LibraryAndroidComponentsExtension
 import org.gradle.api.Project

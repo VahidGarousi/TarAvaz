@@ -179,20 +179,20 @@ roborazzi = { id = "io.github.takahirom.roborazzi", version.ref = "roborazzi" }
 
 
 # Plugins defined by this project
-framework-android-application = { id = "framework.android.application" }
-framework-android-application-flavors = { id = "framework.android.application.flavors" }
-framework-android-application-compose = { id = "framework.android.application.compose" }
-framework-android-application-jacoco = { id = "framework.android.application.jacoco" }
-framework-android-test = { id = "framework.android.test" }
-framework-jvm-library = { id = "framework.jvm.library" }
-framework-android-library = { id = "framework.android.library" }
-framework-android-library-compose = { id = "framework.android.library.compose" }
-framework-android-library-jacoco = { id = "framework.android.library.jacoco" }
-framework-jvm-publisher = { id = "framework.jvm.publisher" }
-framework-android-publisher = { id = "framework.android.publisher" }
-framework-android-ktlint = { id = "framework.android.ktlint" }
-framework-android-detekt = { id = "framework.android.detekt" }
-framework-kotest = { id = "framework.android.detekt" }
+taravaz-android-application = { id = "taravaz.android.application" }
+taravaz-android-application-flavors = { id = "taravaz.android.application.flavors" }
+taravaz-android-application-compose = { id = "taravaz.android.application.compose" }
+taravaz-android-application-jacoco = { id = "taravaz.android.application.jacoco" }
+taravaz-android-test = { id = "taravaz.android.test" }
+taravaz-jvm-library = { id = "taravaz.jvm.library" }
+taravaz-android-library = { id = "taravaz.android.library" }
+taravaz-android-library-compose = { id = "taravaz.android.library.compose" }
+taravaz-android-library-jacoco = { id = "taravaz.android.library.jacoco" }
+taravaz-jvm-publisher = { id = "taravaz.jvm.publisher" }
+taravaz-android-publisher = { id = "taravaz.android.publisher" }
+taravaz-android-ktlint = { id = "taravaz.android.ktlint" }
+taravaz-android-detekt = { id = "taravaz.android.detekt" }
+taravaz-kotest = { id = "taravaz.android.detekt" }
 
 
 

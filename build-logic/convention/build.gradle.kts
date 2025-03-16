@@ -4,7 +4,7 @@ plugins {
     `kotlin-dsl`
 }
 
-group = "ir.vahid.framework.buildlogic"
+group = "ir.taravaz.buildlogic"
 
 
 // Configure the build-logic plugins to target JDK 17
@@ -40,59 +40,59 @@ tasks {
 gradlePlugin {
     plugins {
         register("androidApplicationCompose") {
-            id = libs.plugins.framework.android.application.compose.get().pluginId
+            id = libs.plugins.taravaz.android.application.compose.get().pluginId
             implementationClass = "AndroidApplicationComposeConventionPlugin"
         }
         register("androidApplication") {
-            id = libs.plugins.framework.android.application.asProvider().get().pluginId
+            id = libs.plugins.taravaz.android.application.asProvider().get().pluginId
             implementationClass = "AndroidApplicationConventionPlugin"
         }
         register("androidLibraryCompose") {
-            id = libs.plugins.framework.android.library.compose.get().pluginId
+            id = libs.plugins.taravaz.android.library.compose.get().pluginId
             implementationClass = "AndroidLibraryComposeConventionPlugin"
         }
         register("androidLibrary") {
-            id = libs.plugins.framework.android.library.asProvider().get().pluginId
+            id = libs.plugins.taravaz.android.library.asProvider().get().pluginId
             implementationClass = "AndroidLibraryConventionPlugin"
         }
         register("androidTest") {
-            id = libs.plugins.framework.android.test.get().pluginId
+            id = libs.plugins.taravaz.android.test.get().pluginId
             implementationClass = "AndroidTestConventionPlugin"
         }
         register("androidFlavors") {
-            id = libs.plugins.framework.android.application.flavors.get().pluginId
+            id = libs.plugins.taravaz.android.application.flavors.get().pluginId
             implementationClass = "AndroidApplicationFlavorsConventionPlugin"
         }
         register("jvmLibrary") {
-            id = libs.plugins.framework.jvm.library.get().pluginId
+            id = libs.plugins.taravaz.jvm.library.get().pluginId
             implementationClass = "JvmLibraryConventionPlugin"
         }
-        register("frameworkAndroidPublisher") {
-            id = libs.plugins.framework.android.publisher.get().pluginId
+        register("taravazAndroidPublisher") {
+            id = libs.plugins.taravaz.android.publisher.get().pluginId
             implementationClass = "AndroidLibraryPublisherConventionPlugin"
         }
-        register("frameworkJvmPublisher") {
-            id = libs.plugins.framework.jvm.publisher.get().pluginId
+        register("taravazJvmPublisher") {
+            id = libs.plugins.taravaz.jvm.publisher.get().pluginId
             implementationClass = "JvmLibraryPublisherConventionPlugin"
         }
-        register("frameworkAndroidKtlint") {
-            id = libs.plugins.framework.android.ktlint.get().pluginId
+        register("taravazAndroidKtlint") {
+            id = libs.plugins.taravaz.android.ktlint.get().pluginId
             implementationClass = "KotlinterConventionPlugin"
         }
         register("androidApplicationJacoco") {
-            id = libs.plugins.framework.android.application.jacoco.get().pluginId
+            id = libs.plugins.taravaz.android.application.jacoco.get().pluginId
             implementationClass = "AndroidApplicationJacocoConventionPlugin"
         }
         register("androidLibraryJacoco") {
-            id = libs.plugins.framework.android.library.jacoco.get().pluginId
+            id = libs.plugins.taravaz.android.library.jacoco.get().pluginId
             implementationClass = "AndroidLibraryJacocoConventionPlugin"
         }
         register("androidDetekt") {
-            id = libs.plugins.framework.android.detekt.get().pluginId
+            id = libs.plugins.taravaz.android.detekt.get().pluginId
             implementationClass = "AndroidDetektConventionPlugin"
         }
         register("kotest") {
-            id = libs.plugins.framework.kotest.get().pluginId
+            id = libs.plugins.taravaz.kotest.get().pluginId
             implementationClass = "KotestConventionPlugin"
         }
     }

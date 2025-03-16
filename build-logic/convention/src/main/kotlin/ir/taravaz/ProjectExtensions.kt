@@ -1,4 +1,4 @@
-package ir.vahid.framework
+package ir.taravaz
 
 import io.gitlab.arturbosch.detekt.extensions.DetektExtension
 import org.gradle.api.Project

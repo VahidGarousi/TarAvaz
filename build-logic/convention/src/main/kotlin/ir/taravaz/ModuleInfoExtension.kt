@@ -1,4 +1,4 @@
-package ir.vahid.framework
+package ir.taravaz
 
 open class ModuleInfoExtension {
     var groupId: String = ""
