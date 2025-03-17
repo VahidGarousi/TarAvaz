@@ -1,8 +1,12 @@
+import ir.taravaz.libs
 import org.gradle.api.Plugin
 import org.gradle.api.Project
+import org.gradle.kotlin.dsl.dependencies
 
 class AndroidDataLayerConventionPlugin : Plugin<Project> {
-    override fun apply(project: Project) {
-
+    override fun apply(project: Project) = project.run {
+        dependencies {
+            "testImplementation"(libs.findLibrary("mockk").get())
+        }
     }
 }

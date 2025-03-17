@@ -24,6 +24,7 @@ class AndroidPresentationLayerConventionPlugin : Plugin<Project> {
             "implementation"(libs.findLibrary("kotlinx.serialization.json").get())
 
             "testImplementation"(libs.findLibrary("androidx.navigation.testing").get())
+            "testImplementation"(libs.findLibrary("mockk").get())
             "androidTestImplementation"(
                 libs.findLibrary("androidx.lifecycle.runtimeTesting").get(),
             )
