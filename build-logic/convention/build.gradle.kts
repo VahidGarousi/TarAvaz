@@ -95,5 +95,17 @@ gradlePlugin {
             id = libs.plugins.taravaz.kotest.get().pluginId
             implementationClass = "KotestConventionPlugin"
         }
+        register("androidPresentationLayer") {
+            id = libs.plugins.taravaz.android.feature.presentation.get().pluginId
+            implementationClass = "AndroidPresentationLayerConventionPlugin"
+        }
+        register("androidDataLayer") {
+            id = libs.plugins.taravaz.android.feature.data.get().pluginId
+            implementationClass = "AndroidDataLayerConventionPlugin"
+        }
+        register("androidDomainLayer") {
+            id = libs.plugins.taravaz.android.feature.domain.get().pluginId
+            implementationClass = "AndroidDomainLayerConventionPlugin"
+        }
     }
 }

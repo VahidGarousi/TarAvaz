@@ -30,6 +30,7 @@ androidxWindowManager = "1.3.0"
 androidxWork = "2.10.0"
 coil = "2.7.0"
 dependencyGuard = "0.5.0"
+media3 = "1.6.0-rc01"
 sortDependencies = "0.14"
 firebaseBom = "33.10.0"
 firebaseCrashlyticsPlugin = "3.0.2"
@@ -97,6 +98,11 @@ androidx-lifecycle-runtimeCompose = { group = "androidx.lifecycle", name = "life
 androidx-lifecycle-runtimeTesting = { group = "androidx.lifecycle", name = "lifecycle-runtime-testing", version.ref = "androidxLifecycle" }
 androidx-lifecycle-viewModelCompose = { group = "androidx.lifecycle", name = "lifecycle-viewmodel-compose", version.ref = "androidxLifecycle" }
 androidx-lint-gradle = { group = "androidx.lint", name = "lint-gradle", version.ref = "androidxLintGradle" }
+androidx-media3-common = { module = "androidx.media3:media3-common", version.ref = "media3" }
+androidx-media3-exoplayer = { module = "androidx.media3:media3-exoplayer", version.ref = "media3" }
+androidx-media3-exoplayer-dash = { module = "androidx.media3:media3-exoplayer-dash", version.ref = "media3" }
+androidx-media3-session = { module = "androidx.media3:media3-session", version.ref = "media3" }
+androidx-media3-ui = { module = "androidx.media3:media3-ui", version.ref = "media3" }
 androidx-metrics = { group = "androidx.metrics", name = "metrics-performance", version.ref = "androidxMetrics" }
 androidx-navigation-compose = { group = "androidx.navigation", name = "navigation-compose", version.ref = "androidxNavigation" }
 androidx-navigation-testing = { group = "androidx.navigation", name = "navigation-testing", version.ref = "androidxNavigation" }
@@ -169,12 +175,14 @@ detekt-formatting = { group = "io.gitlab.arturbosch.detekt", name = "detekt-form
 [plugins]
 android-application = { id = "com.android.application", version.ref = "androidGradlePlugin" }
 kotlin-android = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
+kotlin-jvm = { id = "org.jetbrains.kotlin.jvm", version.ref = "kotlin" }
 kotlin-compose = { id = "org.jetbrains.kotlin.plugin.compose", version.ref = "kotlin" }
 kotliner = { id = "org.jmailen.kotlinter", version.ref = "kotlinter" }
 dependencyGuard = { id = "com.dropbox.dependency-guard", version.ref = "dependencyGuard" }
 square-sort-dependencies = { id = "com.squareup.sort-dependencies", version.ref = "sortDependencies" }
 detekt = { id = "io.gitlab.arturbosch.detekt", version.ref = "detekt" }
 roborazzi = { id = "io.github.takahirom.roborazzi", version.ref = "roborazzi" }
+kotlin-serialization = { id = "org.jetbrains.kotlin.plugin.serialization", version.ref = "kotlin" }
 
 
 
@@ -194,7 +202,9 @@ taravaz-android-ktlint = { id = "taravaz.android.ktlint" }
 taravaz-android-detekt = { id = "taravaz.android.detekt" }
 taravaz-kotest = { id = "taravaz.android.detekt" }
 
-
+taravaz-android-feature-presentation = { id = "taravaz.android.feature.presentation" }
+taravaz-android-feature-data = { id = "taravaz.android.feature.data" }
+taravaz-android-feature-domain = { id = "taravaz.android.feature.domain" }
 
 [bundles]
 androidx-compose-ui-test = ["androidx-compose-ui-test", "androidx-compose-ui-testManifest"]
