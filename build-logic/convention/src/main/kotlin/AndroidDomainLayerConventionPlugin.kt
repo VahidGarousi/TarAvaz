@@ -7,9 +7,6 @@ class AndroidDomainLayerConventionPlugin : Plugin<Project> {
     override fun apply(project: Project) = project.run {
         dependencies {
             add("implementation", project(":core:domain"))
-            "implementation"(libs.findLibrary("kotlinx-coroutines-core").get())
-            "testImplementation"(libs.findLibrary("mockk").get())
-            "testImplementation"(libs.findLibrary("kotlinx-coroutines-test").get())
         }
     }
 }

@@ -41,8 +41,10 @@ class AndroidLibraryConventionPlugin : Plugin<Project> {
                 "androidTestImplementation"(libs.findLibrary("kotlin.test").get())
                 "testImplementation"(libs.findLibrary("kotlin.test").get())
                 "testImplementation"(libs.findLibrary("kotlinx-coroutines-test").get())
-
                 "implementation"(libs.findLibrary("kotlinx-coroutines-core").get())
+                "testImplementation"(libs.findLibrary("mockk").get())
+                "testImplementation"(libs.findLibrary("truth").get())
+                "testImplementation"(libs.findLibrary("turbine").get())
                 "implementation"(libs.findLibrary("androidx.tracing.ktx").get())
             }
         }
