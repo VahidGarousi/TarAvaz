@@ -29,6 +29,7 @@ include(":app")
 include(":core:domain")
 include(":core:screenshot-testing")
 include(":core:design-system")
+include(":feature:player:data", ":feature:player:presentation", ":feature:player:domain")
 
 check(JavaVersion.current().isCompatibleWith(JavaVersion.VERSION_17)) {
     """

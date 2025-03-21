@@ -3,10 +3,12 @@ import com.android.build.api.variant.ApplicationAndroidComponentsExtension
 import com.android.build.gradle.BaseExtension
 import ir.taravaz.configureBadgingTasks
 import ir.taravaz.configureKotlinAndroid
+import ir.taravaz.libs
 import org.gradle.api.Plugin
 import org.gradle.api.Project
 import org.gradle.kotlin.dsl.configure
 import org.gradle.kotlin.dsl.getByType
+import org.gradle.kotlin.dsl.dependencies
 
 
 class AndroidApplicationConventionPlugin : Plugin<Project> {
@@ -24,13 +26,16 @@ class AndroidApplicationConventionPlugin : Plugin<Project> {
             extensions.configure<ApplicationExtension> {
                 configureKotlinAndroid(this)
                 defaultConfig.targetSdk = TARGET_SDK_VERSION
-                @Suppress("UnstableApiUsage")
                 testOptions.animationsDisabled = true
 //                configureGradleManagedDevices(this)
             }
             extensions.configure<ApplicationAndroidComponentsExtension> {
 //                configurePrintApksTask(this)
                 configureBadgingTasks(extensions.getByType<BaseExtension>(), this)
+            }
+            dependencies {
+                "implementation"(libs.findLibrary("kotlinx-coroutines-guava").get())
+                "implementation"(libs.findLibrary("kotlinx-coroutines-test").get())
             }
         }
     }
