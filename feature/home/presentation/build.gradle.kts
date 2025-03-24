@@ -5,9 +5,5 @@ plugins {
 }
 
 android {
-    namespace = "ir.taravaz.player.presentation"
-}
-
-dependencies {
-    implementation(projects.feature.player.domain)
+    namespace = "ir.taravaz.home.presentation"
 }
