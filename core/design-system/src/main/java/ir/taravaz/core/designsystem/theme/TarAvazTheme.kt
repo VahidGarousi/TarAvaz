@@ -25,7 +25,6 @@ private val LightColorScheme = lightColorScheme(
     tertiary = Pink40,
 )
 
-
 @Composable
 fun TarAvazTheme(
     darkTheme: Boolean = isSystemInDarkTheme(),
@@ -48,7 +47,6 @@ fun TarAvazTheme(
     )
 }
 
-
 @Composable
 private fun TarAvazTheme(
     materialColorScheme: ColorScheme = MaterialTheme.colorScheme,
@@ -66,8 +64,8 @@ private fun TarAvazTheme(
     }
 }
 
-
 object TarAvazTheme {
     val colors: TaravazColors
-        @Composable @ReadOnlyComposable get() = LocalTarAvazColors.current
+        @Composable @ReadOnlyComposable
+        get() = LocalTarAvazColors.current
 }
