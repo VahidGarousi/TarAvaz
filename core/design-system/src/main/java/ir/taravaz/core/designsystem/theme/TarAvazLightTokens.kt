@@ -1,3 +1,5 @@
+@file:Suppress("MagicNumber")
+
 package ir.taravaz.core.designsystem.theme
 
 import androidx.compose.ui.graphics.Color

@@ -1,3 +1,5 @@
+@file:Suppress("LongParameterList")
+
 package ir.taravaz.core.designsystem.theme
 
 import androidx.compose.runtime.Immutable
