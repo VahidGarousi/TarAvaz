@@ -4,6 +4,7 @@ package ir.taravaz.core.designsystem.theme
 
 import androidx.compose.runtime.Immutable
 import androidx.compose.runtime.staticCompositionLocalOf
+import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
 
 @Immutable
@@ -15,6 +16,8 @@ class TaravazColors(
     val playableTitleColor: Color,
     val playableSubtitleColor: Color,
     val navigationIconColor: Color,
+    val backgroundColor: Color,
+    val actionBarGradient: Brush,
 ) {
     fun copy(
         actionBarTitleColor: Color,
@@ -24,6 +27,7 @@ class TaravazColors(
         playableTitleColor: Color,
         playableSubtitleColor: Color,
         navigationIconColor: Color,
+        backgroundColor: Color,
     ) = TaravazColors(
         actionBarTitleColor = this.actionBarTitleColor,
         actionBarIconColor = this.actionBarIconColor,
@@ -32,6 +36,8 @@ class TaravazColors(
         playableTitleColor = this.playableTitleColor,
         playableSubtitleColor = this.playableSubtitleColor,
         navigationIconColor = this.navigationIconColor,
+        backgroundColor = this.backgroundColor,
+        actionBarGradient = this.actionBarGradient,
     )
 }
 
@@ -43,6 +49,8 @@ fun tarAvazLightColors(
     playableTitleColor: Color = TarAvazLightTokens.PlayableTitleColor,
     playableSubtitleColor: Color = TarAvazLightTokens.PlayableSubtitleColor,
     navigationIconColor: Color = TarAvazLightTokens.NavigationIconColor,
+    backgroundColor: Color = TarAvazLightTokens.BackgroundColor,
+    actionBarGradient: Brush = TarAvazLightTokens.ActionBarGradient,
 ): TaravazColors =
     TaravazColors(
         actionBarTitleColor = actionBarTitleColor,
@@ -52,6 +60,8 @@ fun tarAvazLightColors(
         playableTitleColor = playableTitleColor,
         playableSubtitleColor = playableSubtitleColor,
         navigationIconColor = navigationIconColor,
+        backgroundColor = backgroundColor,
+        actionBarGradient = actionBarGradient,
     )
 
 fun tarAvazDarkColors(
@@ -62,6 +72,8 @@ fun tarAvazDarkColors(
     playableTitleColor: Color = TarAvazDarkTokens.PlayableTitleColor,
     playableSubtitleColor: Color = TarAvazDarkTokens.PlayableSubtitleColor,
     navigationIconColor: Color = TarAvazDarkTokens.NavigationIconColor,
+    backgroundColor: Color = TarAvazDarkTokens.BackgroundColor,
+    actionBarGradient: Brush = TarAvazDarkTokens.ActionBarGradient,
 ): TaravazColors =
     TaravazColors(
         actionBarTitleColor = actionBarTitleColor,
@@ -71,6 +83,8 @@ fun tarAvazDarkColors(
         playableTitleColor = playableTitleColor,
         playableSubtitleColor = playableSubtitleColor,
         navigationIconColor = navigationIconColor,
+        backgroundColor = backgroundColor,
+        actionBarGradient = actionBarGradient,
     )
 
 internal val LocalTarAvazColors = staticCompositionLocalOf { tarAvazDarkColors() }

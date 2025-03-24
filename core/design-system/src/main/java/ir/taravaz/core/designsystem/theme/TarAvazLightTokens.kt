@@ -2,6 +2,7 @@
 
 package ir.taravaz.core.designsystem.theme
 
+import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
 
 internal object TarAvazLightTokens {
@@ -12,4 +13,6 @@ internal object TarAvazLightTokens {
     val PlayableTitleColor: Color = Color(0xFF00022E)
     val PlayableSubtitleColor: Color = Color(0xFF0D0F44)
     val NavigationIconColor: Color = Color(0xFF9E9FB4)
+    val BackgroundColor: Color = Color(0xFF00022E)
+    val ActionBarGradient: Brush = Brush.linearGradient()
 }
