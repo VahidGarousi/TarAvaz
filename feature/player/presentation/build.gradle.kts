@@ -5,7 +5,7 @@ plugins {
 }
 
 android {
-    namespace = "ir.taravaz.presentation"
+    namespace = "ir.taravaz.player.presentation"
 }
 
 dependencies {
