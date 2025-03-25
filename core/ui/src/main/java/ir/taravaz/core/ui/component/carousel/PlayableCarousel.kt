@@ -1,3 +1,5 @@
+@file:Suppress("MagicNumber")
+
 package ir.taravaz.core.ui.component.carousel
 
 import androidx.compose.foundation.layout.PaddingValues
@@ -63,7 +65,9 @@ fun PlayableCarousel(
                 ) {
                     PlayableBanner(
                         playableBannerUi = playableBannerUi[page],
-                        modifier = Modifier.fillMaxWidth().height(140.dp),
+                        modifier = Modifier
+                            .fillMaxWidth()
+                            .height(140.dp),
                     )
                 }
             },

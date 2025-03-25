@@ -14,7 +14,9 @@ internal class PlayableBannerPreviewParameter : PreviewParameterProvider<Loadabl
             ),
         ),
         LoadableData.Error(
-            throwable = Throwable(),
+            throwable = Throwable(
+                message = "error",
+            ),
         ),
     )
 }

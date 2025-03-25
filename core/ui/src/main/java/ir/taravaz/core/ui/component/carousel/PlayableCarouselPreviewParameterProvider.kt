@@ -1,3 +1,5 @@
+@file:Suppress("MaxLineLength")
+
 package ir.taravaz.core.ui.component.carousel
 
 import androidx.compose.ui.tooling.preview.PreviewParameterProvider
