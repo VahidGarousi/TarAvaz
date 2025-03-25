@@ -19,6 +19,9 @@ class TaravazColors(
     val backgroundColor: Color,
     val actionBarGradient: Brush,
     val skeletonColor: Color,
+    val navigationContentColor: Color,
+    val navigationSelectedItemColor: Color,
+    val navigationIndicatorColor: Color,
 ) {
     fun copy(
         actionBarTitleColor: Color,
@@ -30,6 +33,9 @@ class TaravazColors(
         navigationIconColor: Color,
         backgroundColor: Color,
         skeletonColor: Color,
+        navigationContentColor: Color,
+        navigationSelectedItemColor: Color,
+        navigationIndicatorColor: Color,
     ) = TaravazColors(
         actionBarTitleColor = this.actionBarTitleColor,
         actionBarIconColor = this.actionBarIconColor,
@@ -41,6 +47,9 @@ class TaravazColors(
         backgroundColor = this.backgroundColor,
         actionBarGradient = this.actionBarGradient,
         skeletonColor = this.skeletonColor,
+        navigationContentColor = this.navigationContentColor,
+        navigationSelectedItemColor = this.navigationSelectedItemColor,
+        navigationIndicatorColor = this.navigationIndicatorColor,
     )
 }
 
@@ -55,6 +64,9 @@ fun tarAvazLightColors(
     backgroundColor: Color = TarAvazLightTokens.BackgroundColor,
     actionBarGradient: Brush = TarAvazLightTokens.ActionBarGradient,
     skeletonColor: Color = TarAvazLightTokens.SkeletonColor,
+    navigationContentColor: Color = TarAvazLightTokens.NavigationContentColor,
+    navigationSelectedItemColor: Color = TarAvazLightTokens.NavigationSelectedItemColor,
+    navigationIndicatorColor: Color = TarAvazLightTokens.NavigationIndicatorColor,
 ): TaravazColors =
     TaravazColors(
         actionBarTitleColor = actionBarTitleColor,
@@ -67,6 +79,9 @@ fun tarAvazLightColors(
         backgroundColor = backgroundColor,
         actionBarGradient = actionBarGradient,
         skeletonColor = skeletonColor,
+        navigationContentColor = navigationContentColor,
+        navigationSelectedItemColor = navigationSelectedItemColor,
+        navigationIndicatorColor = navigationIndicatorColor,
     )
 
 fun tarAvazDarkColors(
@@ -80,6 +95,9 @@ fun tarAvazDarkColors(
     backgroundColor: Color = TarAvazDarkTokens.BackgroundColor,
     actionBarGradient: Brush = TarAvazDarkTokens.ActionBarGradient,
     skeletonColor: Color = TarAvazDarkTokens.SkeletonColor,
+    navigationContentColor: Color = TarAvazDarkTokens.NavigationContentColor,
+    navigationSelectedItemColor: Color = TarAvazDarkTokens.NavigationSelectedItemColor,
+    navigationIndicatorColor: Color = TarAvazDarkTokens.NavigationIndicatorColor,
 ): TaravazColors =
     TaravazColors(
         actionBarTitleColor = actionBarTitleColor,
@@ -92,6 +110,9 @@ fun tarAvazDarkColors(
         backgroundColor = backgroundColor,
         actionBarGradient = actionBarGradient,
         skeletonColor = skeletonColor,
+        navigationContentColor = navigationContentColor,
+        navigationSelectedItemColor = navigationSelectedItemColor,
+        navigationIndicatorColor = navigationIndicatorColor,
     )
 
 internal val LocalTarAvazColors = staticCompositionLocalOf { tarAvazDarkColors() }

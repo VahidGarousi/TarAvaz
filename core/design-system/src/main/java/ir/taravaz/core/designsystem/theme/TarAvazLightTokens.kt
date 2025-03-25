@@ -13,7 +13,10 @@ internal object TarAvazLightTokens {
     val PlayableTitleColor: Color = Color(0xFF00022E)
     val PlayableSubtitleColor: Color = Color(0xFF0D0F44)
     val NavigationIconColor: Color = Color(0xFF9E9FB4)
-    val BackgroundColor: Color = Color(0xFF00022E)
+    val BackgroundColor: Color = Color(0xFFF0F0F0)
     val ActionBarGradient: Brush = Brush.linearGradient()
     val SkeletonColor: Color = Color(0xFF51586A)
+    val NavigationContentColor: Color = Color(0xFF9E9FB4)
+    val NavigationSelectedItemColor: Color = Color(0xFFFFFFFF)
+    val NavigationIndicatorColor: Color = Color(0xFF9E9FB4)
 }

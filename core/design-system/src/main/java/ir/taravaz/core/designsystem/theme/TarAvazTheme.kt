@@ -2,7 +2,6 @@ package ir.taravaz.core.designsystem.theme
 
 import android.os.Build
 import androidx.compose.foundation.isSystemInDarkTheme
-import androidx.compose.material3.ColorScheme
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.darkColorScheme
 import androidx.compose.material3.dynamicDarkColorScheme
@@ -25,10 +24,20 @@ private val LightColorScheme = lightColorScheme(
     tertiary = Pink40,
 )
 
+/**
+ * Light Android background theme
+ */
+val LightBackgroundTheme = BackgroundTheme(color = TarAvazLightTokens.BackgroundColor)
+
+/**
+ * Dark Android background theme
+ */
+val DarkBackgroundTheme = BackgroundTheme(color = TarAvazDarkTokens.BackgroundColor)
+
 @Composable
 fun TarAvazTheme(
     darkTheme: Boolean = isSystemInDarkTheme(),
-    dynamicColor: Boolean = true,
+    dynamicColor: Boolean = false,
     content: @Composable () -> Unit,
 ) {
     val materialColorScheme = when {
@@ -36,25 +45,15 @@ fun TarAvazTheme(
             val context = LocalContext.current
             if (darkTheme) dynamicDarkColorScheme(context) else dynamicLightColorScheme(context)
         }
+
         darkTheme -> DarkColorScheme
         else -> LightColorScheme
     }
+    val backgroundTheme = if (darkTheme) DarkBackgroundTheme else LightBackgroundTheme
     val taravazColors = if (darkTheme) tarAvazDarkColors() else tarAvazLightColors()
-    TarAvazTheme(
-        materialColorScheme = materialColorScheme,
-        taravazColors = taravazColors,
-        content = content,
-    )
-}
-
-@Composable
-private fun TarAvazTheme(
-    materialColorScheme: ColorScheme = MaterialTheme.colorScheme,
-    taravazColors: TaravazColors = TarAvazTheme.colors,
-    content: @Composable () -> Unit,
-) {
     CompositionLocalProvider(
         LocalTarAvazColors provides taravazColors,
+        LocalBackgroundTheme provides backgroundTheme,
     ) {
         MaterialTheme(
             colorScheme = materialColorScheme,
