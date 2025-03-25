@@ -17,4 +17,5 @@ internal object TarAvazDarkTokens {
     val ActionBarGradient: Brush = Brush.linearGradient(
         colors = listOf(Color(0XFF2B2F80), Color(0x0000022E)),
     )
+    val SkeletonColor: Color = Color(0xFF1E2537)
 }

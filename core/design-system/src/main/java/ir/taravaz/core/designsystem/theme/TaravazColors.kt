@@ -18,6 +18,7 @@ class TaravazColors(
     val navigationIconColor: Color,
     val backgroundColor: Color,
     val actionBarGradient: Brush,
+    val skeletonColor: Color,
 ) {
     fun copy(
         actionBarTitleColor: Color,
@@ -28,6 +29,7 @@ class TaravazColors(
         playableSubtitleColor: Color,
         navigationIconColor: Color,
         backgroundColor: Color,
+        skeletonColor: Color,
     ) = TaravazColors(
         actionBarTitleColor = this.actionBarTitleColor,
         actionBarIconColor = this.actionBarIconColor,
@@ -38,6 +40,7 @@ class TaravazColors(
         navigationIconColor = this.navigationIconColor,
         backgroundColor = this.backgroundColor,
         actionBarGradient = this.actionBarGradient,
+        skeletonColor = this.skeletonColor,
     )
 }
 
@@ -51,6 +54,7 @@ fun tarAvazLightColors(
     navigationIconColor: Color = TarAvazLightTokens.NavigationIconColor,
     backgroundColor: Color = TarAvazLightTokens.BackgroundColor,
     actionBarGradient: Brush = TarAvazLightTokens.ActionBarGradient,
+    skeletonColor: Color = TarAvazLightTokens.SkeletonColor,
 ): TaravazColors =
     TaravazColors(
         actionBarTitleColor = actionBarTitleColor,
@@ -62,6 +66,7 @@ fun tarAvazLightColors(
         navigationIconColor = navigationIconColor,
         backgroundColor = backgroundColor,
         actionBarGradient = actionBarGradient,
+        skeletonColor = skeletonColor,
     )
 
 fun tarAvazDarkColors(
@@ -74,6 +79,7 @@ fun tarAvazDarkColors(
     navigationIconColor: Color = TarAvazDarkTokens.NavigationIconColor,
     backgroundColor: Color = TarAvazDarkTokens.BackgroundColor,
     actionBarGradient: Brush = TarAvazDarkTokens.ActionBarGradient,
+    skeletonColor: Color = TarAvazDarkTokens.SkeletonColor,
 ): TaravazColors =
     TaravazColors(
         actionBarTitleColor = actionBarTitleColor,
@@ -85,6 +91,7 @@ fun tarAvazDarkColors(
         navigationIconColor = navigationIconColor,
         backgroundColor = backgroundColor,
         actionBarGradient = actionBarGradient,
+        skeletonColor = skeletonColor,
     )
 
 internal val LocalTarAvazColors = staticCompositionLocalOf { tarAvazDarkColors() }
