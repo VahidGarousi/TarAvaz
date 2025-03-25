@@ -1,0 +1,23 @@
+package ir.taravaz.core.ui.preview
+
+import android.content.res.Configuration
+import androidx.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.tooling.preview.PreviewParameter
+
+/**
+ * A custom annotation for creating previews on a medium-sized phone in both light and dark themes.
+ *
+ * This annotation simplifies the creation of previews that specifically target a medium-sized
+ * phone (e.g., 411dp x 891dp) and allow testing in both light and dark themes. Using a single
+ * annotation instead of duplicating `@Preview` parameters improves code readability and reduces
+ * the chance of inconsistencies between light and dark theme previews.
+ */
+@Preview(
+    group = "Medium Phone",
+    device = "spec:width=411dp,height=891dp",
+    name = "Medium Phone",
+)
+annotation class MediumPhonePreviews(
+    @PreviewParameter(UiModeParameterProvider::class)
+    val uiMode: Int = Configuration.UI_MODE_NIGHT_NO,
+)
