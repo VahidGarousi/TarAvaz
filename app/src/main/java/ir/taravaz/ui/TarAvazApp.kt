@@ -1,3 +1,5 @@
+@file:Suppress("LongMethod")
+
 package ir.taravaz.ui
 
 import androidx.compose.foundation.layout.Box

@@ -1,3 +1,5 @@
+@file:Suppress("MagicNumber")
+
 package ir.taravaz
 
 import android.os.Bundle

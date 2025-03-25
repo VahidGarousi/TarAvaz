@@ -1,5 +1,6 @@
 package ir.taravaz.home.presentation.navigation
 
+import androidx.compose.foundation.layout.Box
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.navigation.NavController
@@ -29,4 +30,5 @@ fun NavGraphBuilder.homeNavigation() {
 
 @Composable
 fun HomeScreen(modifier: Modifier = Modifier) {
+    Box(modifier = modifier)
 }

@@ -1,3 +1,5 @@
+@file:Suppress("LongParameterList")
+
 package ir.taravaz.core.designsystem.component
 
 import androidx.compose.material3.NavigationBarItemDefaults
