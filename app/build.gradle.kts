@@ -81,6 +81,7 @@ dependencies {
     implementation(projects.core.designSystem)
     implementation(projects.core.domain)
     implementation(projects.core.ui)
+    implementation(projects.feature.home.presentation)
     implementation(projects.feature.player.data)
 
     testImplementation(libs.androidx.test.rules)
