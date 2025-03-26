@@ -5,8 +5,10 @@ import androidx.compose.ui.graphics.vector.ImageVector
 import ir.taravaz.core.designsystem.icon.TarAvazIcon
 import ir.taravaz.home.presentation.navigation.HomeBaseRoute
 import ir.taravaz.home.presentation.navigation.HomeRoute
+import ir.taravaz.playlist.presentation.navigation.PlaylistRoute
 import kotlin.reflect.KClass
 import ir.taravaz.home.presentation.R as homeR
+import ir.taravaz.playlist.presentation.R as playlistR
 
 enum class TopLevelDestination(
     val selectedIcon: ImageVector,
@@ -23,5 +25,12 @@ enum class TopLevelDestination(
         titleTextId = homeR.string.feature_home_presentation_title,
         route = HomeRoute::class,
         baseRoute = HomeBaseRoute::class,
+    ),
+    PLAYLIST(
+        selectedIcon = TarAvazIcon.Playlist,
+        unselectedIcon = TarAvazIcon.Playlist,
+        iconTextId = playlistR.string.feature_playlist_presentation_title,
+        titleTextId = playlistR.string.feature_playlist_presentation_title,
+        route = PlaylistRoute::class,
     ),
 }

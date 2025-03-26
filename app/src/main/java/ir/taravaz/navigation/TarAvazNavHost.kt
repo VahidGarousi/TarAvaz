@@ -5,6 +5,7 @@ import androidx.compose.ui.Modifier
 import androidx.navigation.compose.NavHost
 import ir.taravaz.home.presentation.navigation.HomeBaseRoute
 import ir.taravaz.home.presentation.navigation.homeNavigation
+import ir.taravaz.playlist.presentation.navigation.playlistNavigation
 import ir.taravaz.ui.TarAvazAppState
 
 @Composable
@@ -19,5 +20,6 @@ fun TarAvazNavHost(
         modifier = modifier,
     ) {
         homeNavigation()
+        playlistNavigation()
     }
 }

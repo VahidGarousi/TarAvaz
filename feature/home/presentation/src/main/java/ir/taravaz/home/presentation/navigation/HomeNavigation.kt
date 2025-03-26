@@ -5,7 +5,7 @@ import androidx.navigation.NavGraphBuilder
 import androidx.navigation.NavOptions
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.navigation
-import ir.taravaz.home.presentation.HomeScreen
+import ir.taravaz.home.presentation.HomeRoot
 import kotlinx.serialization.Serializable
 
 @Serializable
@@ -21,7 +21,7 @@ fun NavGraphBuilder.homeNavigation() {
         startDestination = HomeRoute,
     ) {
         composable<HomeRoute> {
-            HomeScreen()
+            HomeRoot()
         }
     }
 }

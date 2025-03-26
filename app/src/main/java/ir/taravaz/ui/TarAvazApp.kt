@@ -106,7 +106,7 @@ fun TarAvazApp(
             contentWindowInsets = WindowInsets(0, 0, 0, 0),
             snackbarHost = {
                 SnackbarHost(
-                    snackbarHostState,
+                    hostState = snackbarHostState,
                     modifier = Modifier.windowInsetsPadding(WindowInsets.safeDrawing),
                 )
             },
