@@ -12,8 +12,10 @@ import androidx.navigation.NavHostController
 import androidx.navigation.compose.rememberNavController
 import androidx.navigation.navOptions
 import androidx.tracing.trace
+import ir.taravaz.explore.presentation.navigation.navigateToExplore
 import ir.taravaz.home.presentation.navigation.navigateToHome
 import ir.taravaz.navigation.TopLevelDestination
+import ir.taravaz.navigation.TopLevelDestination.EXPLORE
 import ir.taravaz.navigation.TopLevelDestination.HOME
 import ir.taravaz.navigation.TopLevelDestination.PLAYLIST
 import ir.taravaz.playlist.presentation.navigation.navigateToPlaylist
@@ -85,6 +87,7 @@ class TarAvazAppState(
             when (topLevelDestination) {
                 HOME -> navController.navigateToHome(navOptions = topLevelNavOptions)
                 PLAYLIST -> navController.navigateToPlaylist(navOptions = topLevelNavOptions)
+                EXPLORE -> navController.navigateToExplore(navOptions = topLevelNavOptions)
             }
         }
     }
