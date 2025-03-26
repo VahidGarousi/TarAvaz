@@ -32,9 +32,6 @@ jobs:
       - name: Check build-logic
         run: ./gradlew :build-logic:convention:check
 
-      - name: Lint Checks
-        run: ./gradlew detektAll lintKotlin
-
       - name: Check Dependency Guard
         id: dependencyguard_verify
         continue-on-error: true
@@ -127,7 +124,7 @@ jobs:
       #          path: '**/build/outputs/roborazzi/*_compare.png'
 
       - name: Check lint
-        run: ./gradlew lintKotlin lint
+        run: ./gradlew lintKotlin lint detektAll
 
       - name: Upload lint reports (HTML)
         if: ${{ !cancelled() }}
