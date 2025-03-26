@@ -1,7 +1,8 @@
 pluginManagement {
     repositories {
-        gradlePluginPortal()
         google()
+        gradlePluginPortal()
+        maven("https://maven.myket.ir")
     }
 }
 
@@ -16,6 +17,7 @@ dependencyResolutionManagement {
             }
         }
         mavenCentral()
+        maven("https://maven.myket.ir")
     }
     versionCatalogs {
         create("libs") {
