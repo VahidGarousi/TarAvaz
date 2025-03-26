@@ -19,8 +19,8 @@ enum class TopLevelDestination(
     HOME(
         selectedIcon = TarAvazIcon.Home,
         unselectedIcon = TarAvazIcon.Home,
-        iconTextId = homeR.string.feature_home_title,
-        titleTextId = homeR.string.feature_home_title,
+        iconTextId = homeR.string.feature_home_presentation_title,
+        titleTextId = homeR.string.feature_home_presentation_title,
         route = HomeRoute::class,
         baseRoute = HomeBaseRoute::class,
     ),
