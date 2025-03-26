@@ -1,4 +1,4 @@
-package ir.taravaz.home.presentation
+package ir.taravaz.playlist.presentation
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
@@ -8,9 +8,9 @@ import kotlinx.coroutines.flow.SharingStarted
 import kotlinx.coroutines.flow.onStart
 import kotlinx.coroutines.flow.stateIn
 
-class HomeViewModel : ViewModel() {
+class PlaylistViewModel : ViewModel() {
     private var hasLoadedInitialData = false
-    private val _state = MutableStateFlow(HomeState())
+    private val _state = MutableStateFlow(PlaylistState())
     val state = _state
         .onStart {
             if (!hasLoadedInitialData) {
@@ -20,6 +20,6 @@ class HomeViewModel : ViewModel() {
         }.stateIn(
             scope = viewModelScope,
             started = SharingStarted.WhileSubscribed(Constants.STOP_TIMEOUT),
-            initialValue = HomeState(),
+            initialValue = PlaylistState(),
         )
 }

@@ -83,6 +83,7 @@ dependencies {
     implementation(projects.core.ui)
     implementation(projects.feature.home.presentation)
     implementation(projects.feature.player.data)
+    implementation(projects.feature.playlist.presentation)
 
     testImplementation(libs.androidx.test.rules)
     testImplementation(libs.kotest.assertions.core)

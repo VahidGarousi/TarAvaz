@@ -15,6 +15,8 @@ import androidx.tracing.trace
 import ir.taravaz.home.presentation.navigation.navigateToHome
 import ir.taravaz.navigation.TopLevelDestination
 import ir.taravaz.navigation.TopLevelDestination.HOME
+import ir.taravaz.navigation.TopLevelDestination.PLAYLIST
+import ir.taravaz.playlist.presentation.navigation.navigateToPlaylist
 
 @Composable
 fun rememberTarAvazState(navController: NavHostController = rememberNavController()): TarAvazAppState =
@@ -82,6 +84,7 @@ class TarAvazAppState(
 
             when (topLevelDestination) {
                 HOME -> navController.navigateToHome(navOptions = topLevelNavOptions)
+                PLAYLIST -> navController.navigateToPlaylist(navOptions = topLevelNavOptions)
             }
         }
     }
