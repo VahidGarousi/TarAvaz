@@ -31,6 +31,7 @@ include(":feature:player:data", ":feature:player:presentation", ":feature:player
 include(":feature:home:presentation")
 include(":feature:playlist:presentation")
 include(":feature:explore:presentation")
+include(":feature:profile:presentation")
 
 check(JavaVersion.current().isCompatibleWith(JavaVersion.VERSION_17)) {
     """

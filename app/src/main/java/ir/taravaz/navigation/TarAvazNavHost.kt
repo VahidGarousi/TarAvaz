@@ -7,6 +7,7 @@ import ir.taravaz.explore.presentation.navigation.exploreNavigation
 import ir.taravaz.home.presentation.navigation.HomeBaseRoute
 import ir.taravaz.home.presentation.navigation.homeNavigation
 import ir.taravaz.playlist.presentation.navigation.playlistNavigation
+import ir.taravaz.profile.presentation.navigation.profileNavigation
 import ir.taravaz.ui.TarAvazAppState
 
 @Composable
@@ -23,5 +24,6 @@ fun TarAvazNavHost(
         homeNavigation()
         playlistNavigation()
         exploreNavigation()
+        profileNavigation()
     }
 }
