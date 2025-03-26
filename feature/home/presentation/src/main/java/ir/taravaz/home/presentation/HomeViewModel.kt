@@ -2,17 +2,24 @@ package ir.taravaz.home.presentation
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import ir.taravaz.core.ui.util.Constants
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.SharingStarted
-import kotlinx.coroutines.flow.StateFlow
+import kotlinx.coroutines.flow.onStart
 import kotlinx.coroutines.flow.stateIn
 
 class HomeViewModel : ViewModel() {
-    private val _uiState: MutableStateFlow<HomeState> = MutableStateFlow(HomeState())
-    val uiState: StateFlow<HomeState> = _uiState
-        .stateIn(
+    private var hasLoadedInitialData = false
+    private val _state = MutableStateFlow(HomeState())
+    val state = _state
+        .onStart {
+            if (!hasLoadedInitialData) {
+                /** Load initial data here **/
+                hasLoadedInitialData = true
+            }
+        }.stateIn(
             scope = viewModelScope,
-            started = SharingStarted.WhileSubscribed(stopTimeoutMillis = 5_000),
+            started = SharingStarted.WhileSubscribed(Constants.STOP_TIMEOUT),
             initialValue = HomeState(),
         )
 }
