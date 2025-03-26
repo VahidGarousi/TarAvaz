@@ -75,9 +75,13 @@ dependencies {
     implementation(libs.androidx.tracing.ktx)
     implementation(libs.androidx.window.core)
     implementation(libs.coil.kt)
+    implementation(libs.coil.kt.compose)
+    implementation(libs.coil.kt.network)
     implementation(libs.kotlinx.serialization.json)
     implementation(projects.core.designSystem)
     implementation(projects.core.domain)
+    implementation(projects.core.ui)
+    implementation(projects.feature.home.presentation)
     implementation(projects.feature.player.data)
 
     testImplementation(libs.androidx.test.rules)

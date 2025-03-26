@@ -1,7 +1,6 @@
 pluginManagement {
     includeBuild("build-logic")
     repositories {
-        maven("https://maven.myket.ir")
         google {
             content {
                 includeGroupByRegex("com\\.android.*")
@@ -11,14 +10,15 @@ pluginManagement {
         }
         mavenCentral()
         gradlePluginPortal()
+        maven("https://maven.myket.ir")
     }
 }
 dependencyResolutionManagement {
     repositoriesMode.set(RepositoriesMode.FAIL_ON_PROJECT_REPOS)
     repositories {
-        maven("https://maven.myket.ir")
         google()
         mavenCentral()
+        maven("https://maven.myket.ir")
     }
 }
 
@@ -26,9 +26,7 @@ rootProject.name = "TarAvaz"
 enableFeaturePreview("TYPESAFE_PROJECT_ACCESSORS")
 include(":konsist")
 include(":app")
-include(":core:domain")
-include(":core:screenshot-testing")
-include(":core:design-system")
+include(":core:domain", ":core:screenshot-testing", ":core:design-system", ":core:ui")
 include(":feature:player:data", ":feature:player:presentation", ":feature:player:domain")
 include(":feature:home:presentation")
 
