@@ -3,6 +3,7 @@ package ir.taravaz.navigation
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.navigation.compose.NavHost
+import ir.taravaz.explore.presentation.navigation.exploreNavigation
 import ir.taravaz.home.presentation.navigation.HomeBaseRoute
 import ir.taravaz.home.presentation.navigation.homeNavigation
 import ir.taravaz.playlist.presentation.navigation.playlistNavigation
@@ -21,5 +22,6 @@ fun TarAvazNavHost(
     ) {
         homeNavigation()
         playlistNavigation()
+        exploreNavigation()
     }
 }
