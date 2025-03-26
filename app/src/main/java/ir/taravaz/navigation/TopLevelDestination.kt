@@ -7,10 +7,12 @@ import ir.taravaz.explore.presentation.navigation.ExploreRoute
 import ir.taravaz.home.presentation.navigation.HomeBaseRoute
 import ir.taravaz.home.presentation.navigation.HomeRoute
 import ir.taravaz.playlist.presentation.navigation.PlaylistRoute
+import ir.taravaz.profile.presentation.navigation.ProfileRoute
 import kotlin.reflect.KClass
 import ir.taravaz.explore.presentation.R as exploreR
 import ir.taravaz.home.presentation.R as homeR
 import ir.taravaz.playlist.presentation.R as playlistR
+import ir.taravaz.profile.presentation.R as profileR
 
 enum class TopLevelDestination(
     val selectedIcon: ImageVector,
@@ -41,5 +43,12 @@ enum class TopLevelDestination(
         iconTextId = exploreR.string.feature_explore_presentation_title,
         titleTextId = exploreR.string.feature_explore_presentation_title,
         route = ExploreRoute::class,
+    ),
+    PROFILE(
+        selectedIcon = TarAvazIcon.Profile,
+        unselectedIcon = TarAvazIcon.Profile,
+        iconTextId = profileR.string.feature_profile_presentation_title,
+        titleTextId = profileR.string.feature_profile_presentation_title,
+        route = ProfileRoute::class,
     ),
 }

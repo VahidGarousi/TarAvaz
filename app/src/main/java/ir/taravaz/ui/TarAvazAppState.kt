@@ -18,7 +18,9 @@ import ir.taravaz.navigation.TopLevelDestination
 import ir.taravaz.navigation.TopLevelDestination.EXPLORE
 import ir.taravaz.navigation.TopLevelDestination.HOME
 import ir.taravaz.navigation.TopLevelDestination.PLAYLIST
+import ir.taravaz.navigation.TopLevelDestination.PROFILE
 import ir.taravaz.playlist.presentation.navigation.navigateToPlaylist
+import ir.taravaz.profile.presentation.navigation.navigateToProfile
 
 @Composable
 fun rememberTarAvazState(navController: NavHostController = rememberNavController()): TarAvazAppState =
@@ -88,6 +90,7 @@ class TarAvazAppState(
                 HOME -> navController.navigateToHome(navOptions = topLevelNavOptions)
                 PLAYLIST -> navController.navigateToPlaylist(navOptions = topLevelNavOptions)
                 EXPLORE -> navController.navigateToExplore(navOptions = topLevelNavOptions)
+                PROFILE -> navController.navigateToProfile(navOptions = topLevelNavOptions)
             }
         }
     }
