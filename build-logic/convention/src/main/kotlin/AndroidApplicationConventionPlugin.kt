@@ -20,6 +20,7 @@ class AndroidApplicationConventionPlugin : Plugin<Project> {
                 apply("taravaz.android.ktlint")
                 apply("com.dropbox.dependency-guard")
                 apply("taravaz.android.detekt")
+                apply("taravaz.koin.android.application")
                 apply("com.squareup.sort-dependencies")
             }
 
