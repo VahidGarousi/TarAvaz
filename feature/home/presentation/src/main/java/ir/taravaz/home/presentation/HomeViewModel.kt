@@ -2,19 +2,28 @@ package ir.taravaz.home.presentation
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import ir.taravaz.core.domain.model.PlayableBanner
+import ir.taravaz.core.ui.component.LoadableData
+import ir.taravaz.core.ui.component.model.mapToPlayableBannerUi
 import ir.taravaz.core.ui.util.Constants
+import ir.taravaz.home.domain.GetPlayableBannersUseCase
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.SharingStarted
+import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.onStart
 import kotlinx.coroutines.flow.stateIn
+import kotlinx.coroutines.flow.update
+import kotlinx.coroutines.launch
 
-class HomeViewModel : ViewModel() {
+class HomeViewModel internal constructor(
+    private val getPlayableBannersUseCase: GetPlayableBannersUseCase,
+) : ViewModel() {
     private var hasLoadedInitialData = false
     private val _state = MutableStateFlow(HomeState())
-    val state = _state
+    val state: StateFlow<HomeState> = _state
         .onStart {
             if (!hasLoadedInitialData) {
-                /** Load initial data here **/
+                loadInitialData()
                 hasLoadedInitialData = true
             }
         }.stateIn(
@@ -22,4 +31,23 @@ class HomeViewModel : ViewModel() {
             started = SharingStarted.WhileSubscribed(Constants.STOP_TIMEOUT),
             initialValue = HomeState(),
         )
+
+    private fun loadInitialData() {
+        viewModelScope.launch {
+            _state.value = _state.value.copy(playableBanners = LoadableData.Loading)
+            runCatching {
+                getPlayableBannersUseCase()
+            }.onSuccess { playableBanners: List<PlayableBanner> ->
+                _state.update {
+                    it.copy(
+                        playableBanners = LoadableData.Loaded(
+                            data = playableBanners.map(PlayableBanner::mapToPlayableBannerUi),
+                        ),
+                    )
+                }
+            }.onFailure { throwable ->
+                _state.update { it.copy(playableBanners = LoadableData.Error(throwable = throwable)) }
+            }
+        }
+    }
 }

@@ -6,8 +6,12 @@ import androidx.compose.ui.tooling.preview.PreviewParameterProvider
 import ir.taravaz.core.ui.component.LoadableData
 import ir.taravaz.core.ui.component.model.PlayableBannerUi
 
-internal class PlayableCarouselPreviewParameterProvider : PreviewParameterProvider<LoadableData<List<PlayableBannerUi>>> {
+class PlayableCarouselPreviewParameterProvider : PreviewParameterProvider<LoadableData<List<PlayableBannerUi>>> {
     override val values: Sequence<LoadableData<List<PlayableBannerUi>>> = sequenceOf(
+        LoadableData.Loading,
+        LoadableData.Error(
+            throwable = Throwable("Unhandled exception"),
+        ),
         LoadableData.Loaded(
             data = listOf(
                 PlayableBannerUi(

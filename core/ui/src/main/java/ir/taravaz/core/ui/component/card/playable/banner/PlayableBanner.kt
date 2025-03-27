@@ -12,12 +12,12 @@ import androidx.compose.ui.tooling.preview.PreviewParameter
 import androidx.compose.ui.unit.dp
 import coil3.annotation.ExperimentalCoilApi
 import coil3.compose.AsyncImage
+import ir.taravaz.core.designsystem.preview.MediumPhonePreviews
 import ir.taravaz.core.designsystem.theme.TarAvazPreview
 import ir.taravaz.core.ui.component.LoadableComponent
 import ir.taravaz.core.ui.component.LoadableData
 import ir.taravaz.core.ui.component.model.PlayableBannerUi
 import ir.taravaz.core.ui.component.shimmer.Shimmer
-import ir.taravaz.core.ui.preview.MediumPhonePreviews
 
 @Composable
 fun PlayableBanner(

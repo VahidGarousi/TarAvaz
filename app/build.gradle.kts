@@ -69,7 +69,6 @@ dependencies {
     implementation(libs.androidx.compose.runtime.tracing)
     implementation(libs.androidx.compose.ui.util)
     implementation(libs.androidx.core.ktx)
-    implementation(libs.androidx.hilt.navigation.compose)
     implementation(libs.androidx.lifecycle.runtimeCompose)
     implementation(libs.androidx.navigation.compose)
     implementation(libs.androidx.tracing.ktx)
@@ -96,7 +95,6 @@ dependencies {
     androidTestImplementation(libs.androidx.test.core)
     androidTestImplementation(libs.androidx.test.espresso.core)
     androidTestImplementation(libs.androidx.test.runner)
-    androidTestImplementation(libs.hilt.android.testing)
     androidTestImplementation(libs.kotlin.test)
     androidTestImplementation(libs.kotlinx.coroutines.test)
 }

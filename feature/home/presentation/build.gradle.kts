@@ -7,3 +7,7 @@ plugins {
 android {
     namespace = "ir.taravaz.home.presentation"
 }
+
+dependencies {
+    implementation(projects.feature.home.domain)
+}
