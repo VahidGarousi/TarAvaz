@@ -12,6 +12,7 @@ android {
 dependencies {
     api(libs.androidx.metrics)
     api(projects.core.designSystem)
+    api(projects.core.domain)
 
     implementation(libs.androidx.browser)
     implementation(libs.coil.kt)

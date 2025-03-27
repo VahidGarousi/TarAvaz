@@ -1,44 +1,92 @@
 package ir.taravaz.home.presentation
 
-import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.PaddingValues
+import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.material3.Text
+import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.lazy.LazyListScope
 import androidx.compose.runtime.Composable
-import androidx.compose.ui.Alignment
+import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.res.stringResource
-import androidx.lifecycle.viewmodel.compose.viewModel
+import androidx.compose.ui.tooling.preview.PreviewParameter
+import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import ir.taravaz.core.designsystem.preview.MediumPhonePreviews
 import ir.taravaz.core.designsystem.theme.TarAvazPreview
+import ir.taravaz.core.designsystem.theme.TarAvazTheme
+import ir.taravaz.core.ui.component.LoadableData
+import ir.taravaz.core.ui.component.carousel.PlayableCarousel
+import ir.taravaz.core.ui.component.model.PlayableBannerUi
+import ir.taravaz.home.presentation.preview.HomeStatePreviewParameterProvider
+import org.koin.androidx.compose.koinViewModel
 
 @Composable
 fun HomeRoot(
     modifier: Modifier = Modifier,
-    viewModel: HomeViewModel = viewModel(),
+    viewModel: HomeViewModel = koinViewModel(),
 ) {
-    HomeRoot(
+    val state by viewModel.state.collectAsStateWithLifecycle()
+    HomeScreen(
         modifier = modifier.fillMaxSize(),
+        state = state,
     )
 }
 
 @Composable
-private fun HomeRoot(modifier: Modifier = Modifier) {
-    Box(
+private fun HomeScreen(
+    modifier: Modifier = Modifier,
+    state: HomeState,
+) {
+    LazyColumn(
         modifier = modifier,
-        contentAlignment = Alignment.Center,
+        contentPadding = PaddingValues(
+            TarAvazTheme.spacing.space16,
+        ),
     ) {
-        Text(
-            text = stringResource(R.string.feature_home_presentation_title),
+        playableBanners(
+            playableBanners = state.playableBanners,
+        )
+        verticalSpacer()
+        quickActions()
+    }
+}
+
+private fun LazyListScope.verticalSpacer() {
+    item {
+        Spacer(
+            modifier = Modifier.height(TarAvazTheme.spacing.space12),
+        )
+    }
+}
+
+private fun LazyListScope.quickActions() {
+    item {
+        QuickActions()
+    }
+}
+
+private fun LazyListScope.playableBanners(playableBanners: LoadableData<List<PlayableBannerUi>>) {
+    item {
+        PlayableCarousel(
+            modifier = Modifier.fillMaxWidth(),
+            playableBanners = playableBanners,
+            onClick = {
+            },
         )
     }
 }
 
 @MediumPhonePreviews
 @Composable
-private fun HomePreview() {
+private fun HomePreview(
+    @PreviewParameter(HomeStatePreviewParameterProvider::class)
+    parameter: HomeState,
+) {
     TarAvazPreview {
-        HomeRoot(
+        HomeScreen(
             modifier = Modifier.fillMaxSize(),
+            state = parameter,
         )
     }
 }

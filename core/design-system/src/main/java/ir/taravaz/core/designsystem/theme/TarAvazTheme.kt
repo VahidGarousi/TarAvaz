@@ -3,6 +3,7 @@ package ir.taravaz.core.designsystem.theme
 import android.os.Build
 import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.Typography
 import androidx.compose.material3.darkColorScheme
 import androidx.compose.material3.dynamicDarkColorScheme
 import androidx.compose.material3.dynamicLightColorScheme
@@ -54,10 +55,11 @@ fun TarAvazTheme(
     CompositionLocalProvider(
         LocalTarAvazColors provides taravazColors,
         LocalBackgroundTheme provides backgroundTheme,
+        LocalTarAvazTypography provides TarAvazTypography(),
     ) {
         MaterialTheme(
             colorScheme = materialColorScheme,
-            typography = Typography,
+            typography = Typography(),
             content = content,
         )
     }
@@ -67,4 +69,12 @@ object TarAvazTheme {
     val colors: TaravazColors
         @Composable @ReadOnlyComposable
         get() = LocalTarAvazColors.current
+
+    val typography: TarAvazTypography
+        @Composable @ReadOnlyComposable
+        get() = LocalTarAvazTypography.current
+
+    val spacing: TarAvazSpacing
+        @Composable @ReadOnlyComposable
+        get() = LocalTarAvazSpacing.current
 }

@@ -27,6 +27,7 @@ dependencies {
     compileOnly(libs.kotlin.gradlePlugin)
     compileOnly(libs.detekt.gradlePlugin)
     implementation(libs.truth)
+    compileOnly(libs.ksp.gradlePlugin)
 }
 
 
@@ -106,6 +107,14 @@ gradlePlugin {
         register("androidDomainLayer") {
             id = libs.plugins.taravaz.android.feature.domain.get().pluginId
             implementationClass = "AndroidDomainLayerConventionPlugin"
+        }
+        register("koinAndroidApplication") {
+            id = libs.plugins.taravaz.koin.android.application.get().pluginId
+            implementationClass = "KoinAndroidApplicationConventionPlugin"
+        }
+        register("koinAndroidLibrary") {
+            id = libs.plugins.taravaz.koin.android.library.get().pluginId
+            implementationClass = "KoinAndroidLibraryConventionPlugin"
         }
     }
 }

@@ -17,6 +17,7 @@ class AndroidLibraryConventionPlugin : Plugin<Project> {
                 apply("org.jetbrains.kotlin.android")
                 apply("taravaz.android.ktlint")
                 apply("taravaz.android.detekt")
+                apply("taravaz.koin.android.library")
                 apply("com.squareup.sort-dependencies")
             }
 

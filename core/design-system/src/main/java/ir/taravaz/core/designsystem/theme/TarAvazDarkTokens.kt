@@ -21,4 +21,6 @@ internal object TarAvazDarkTokens {
     val NavigationContentColor: Color = Color(0xFF9E9FB4)
     val NavigationSelectedItemColor: Color = Color(0xFFFFFFFF)
     val NavigationIndicatorColor: Color = Color(0xFF9E9FB4)
+    val QuickActionBackgroundColor: Color = Color(0xFF2E354D)
+    val QuickActionTextColor: Color = Color(0xFFFAFBFD)
 }
