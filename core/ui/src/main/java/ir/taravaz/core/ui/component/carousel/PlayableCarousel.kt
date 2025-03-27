@@ -8,6 +8,7 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.pager.HorizontalPager
+import androidx.compose.foundation.pager.PagerState
 import androidx.compose.foundation.pager.rememberPagerState
 import androidx.compose.material3.ElevatedButton
 import androidx.compose.material3.ElevatedCard
@@ -47,82 +48,116 @@ fun PlayableCarousel(
         LoadableComponent(
             loadableData = playableBanners,
             loaded = { playableBannerUi: List<PlayableBannerUi> ->
-                val onBannerClicked = remember {
-                    {
-                        onClick(playableBannerUi[page])
-                    }
-                }
-                ElevatedCard(
-                    modifier = Modifier.graphicsLayer {
-                        val pageOffset =
-                            ((pagerState.currentPage - page) + pagerState.currentPageOffsetFraction).absoluteValue
-                        scaleX = 0.8f + 0.2f * (1 - pageOffset)
-                        scaleY = 0.8f + 0.2f * (1 - pageOffset)
-                        alpha = lerp(
-                            start = 0.50f,
-                            stop = 1f,
-                            fraction = 1f - pageOffset.coerceIn(0f, 1f),
-                        )
-                    },
-                    onClick = {
-                        onBannerClicked
-                    },
-                ) {
-                    PlayableBanner(
-                        playableBannerUi = playableBannerUi[page],
-                        modifier = Modifier
-                            .fillMaxWidth()
-                            .height(140.dp),
-                    )
-                }
+                LoadedPlayableItem(
+                    onClick = onClick,
+                    playableBannerUi = playableBannerUi,
+                    page = page,
+                    pagerState = pagerState,
+                )
             },
             loading = {
-                Box(
-                    modifier = Modifier.graphicsLayer {
-                        val pageOffset = ((pagerState.currentPage - page) + pagerState.currentPageOffsetFraction).absoluteValue
-                        scaleX = 0.8f + 0.2f * (1 - pageOffset)
-                        scaleY = 0.8f + 0.2f * (1 - pageOffset)
-                        alpha = lerp(
-                            start = 0.50f,
-                            stop = 1f,
-                            fraction = 1f - pageOffset.coerceIn(0f, 1f),
-                        )
-                    },
-                ) {
-                    Shimmer(
-                        modifier = Modifier
-                            .fillMaxWidth()
-                            .height(140.dp),
-                    )
-                }
+                LoadingPlayable(
+                    pagerState = pagerState,
+                    page = page,
+                )
             },
             error = {
-                Box(
-                    modifier = Modifier.graphicsLayer {
-                        val pageOffset = ((pagerState.currentPage - page) + pagerState.currentPageOffsetFraction).absoluteValue
-                        scaleX = 0.8f + 0.2f * (1 - pageOffset)
-                        scaleY = 0.8f + 0.2f * (1 - pageOffset)
-                        alpha = lerp(
-                            start = 0.50f,
-                            stop = 1f,
-                            fraction = 1f - pageOffset.coerceIn(0f, 1f),
-                        )
-                    },
-                    contentAlignment = Alignment.Center,
-                ) {
-                    Shimmer(
-                        modifier = Modifier
-                            .fillMaxWidth()
-                            .height(140.dp),
-                    )
-                    ElevatedButton(
-                        onClick = {
-                        },
-                    ) {
-                        Text("Retry")
-                    }
-                }
+                ErrorPlayable(pagerState = pagerState, page = page)
             },
+        )
+    }
+}
+
+@Composable
+private fun ErrorPlayable(
+    pagerState: PagerState,
+    page: Int,
+) {
+    Box(
+        modifier = Modifier.graphicsLayer {
+            val pageOffset = ((pagerState.currentPage - page) + pagerState.currentPageOffsetFraction).absoluteValue
+            scaleX = 0.8f + 0.2f * (1 - pageOffset)
+            scaleY = 0.8f + 0.2f * (1 - pageOffset)
+            alpha = lerp(
+                start = 0.50f,
+                stop = 1f,
+                fraction = 1f - pageOffset.coerceIn(0f, 1f),
+            )
+        },
+        contentAlignment = Alignment.Center,
+    ) {
+        Shimmer(
+            modifier = Modifier
+                .fillMaxWidth()
+                .height(140.dp),
+        )
+        ElevatedButton(
+            onClick = {
+            },
+        ) {
+            Text("Retry")
+        }
+    }
+}
+
+@Composable
+private fun LoadingPlayable(
+    pagerState: PagerState,
+    page: Int,
+) {
+    Box(
+        modifier = Modifier.graphicsLayer {
+            val pageOffset = ((pagerState.currentPage - page) + pagerState.currentPageOffsetFraction).absoluteValue
+            scaleX = 0.8f + 0.2f * (1 - pageOffset)
+            scaleY = 0.8f + 0.2f * (1 - pageOffset)
+            alpha = lerp(
+                start = 0.50f,
+                stop = 1f,
+                fraction = 1f - pageOffset.coerceIn(0f, 1f),
+            )
+        },
+    ) {
+        Shimmer(
+            modifier = Modifier
+                .fillMaxWidth()
+                .height(140.dp),
+        )
+    }
+}
+
+@Composable
+private fun LoadedPlayableItem(
+    onClick: (PlayableBannerUi) -> Unit,
+    playableBannerUi: List<PlayableBannerUi>,
+    page: Int,
+    pagerState: PagerState,
+) {
+    val onBannerClicked = remember {
+        {
+            onClick(playableBannerUi[page])
+        }
+    }
+    ElevatedCard(
+        modifier = Modifier.graphicsLayer {
+            val pageOffset =
+                ((pagerState.currentPage - page) + pagerState.currentPageOffsetFraction).absoluteValue
+            scaleX = 0.8f + 0.2f * (1 - pageOffset)
+            scaleY = 0.8f + 0.2f * (1 - pageOffset)
+            alpha = lerp(
+                start = 0.50f,
+                stop = 1f,
+                fraction = 1f - pageOffset.coerceIn(0f, 1f),
+            )
+        },
+        onClick = {
+            onBannerClicked
+        },
+    ) {
+        PlayableBanner(
+            playableBannerUi = playableBannerUi[page],
+            modifier = Modifier
+                .fillMaxWidth()
+                .height(140.dp),
         )
     }
 }

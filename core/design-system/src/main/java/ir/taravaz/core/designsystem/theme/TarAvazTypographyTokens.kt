@@ -66,6 +66,9 @@ internal val DefaultTextStyle = TextStyle.Default.copy(
 
 private const val DEFAULT_INCLUDE_FONT_PADDING = false
 
-private fun defaultPlatformTextStyle(): PlatformTextStyle? = PlatformTextStyle(includeFontPadding = DEFAULT_INCLUDE_FONT_PADDING)
+private fun defaultPlatformTextStyle(): PlatformTextStyle? =
+    PlatformTextStyle(
+        includeFontPadding = DEFAULT_INCLUDE_FONT_PADDING,
+    )
 
 internal val LocalTarAvazTypography = staticCompositionLocalOf { TarAvazTypography() }

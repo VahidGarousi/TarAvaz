@@ -17,6 +17,10 @@ import ir.taravaz.core.designsystem.preview.MediumPhonePreviews
 import ir.taravaz.core.designsystem.theme.TarAvazPreview
 import ir.taravaz.core.designsystem.theme.TarAvazTheme
 
+private object QuickActionsConfig {
+    const val WEIGHT = 1f / 3f
+}
+
 @Composable
 fun QuickActions(modifier: Modifier = Modifier) {
     Row(
@@ -28,17 +32,17 @@ fun QuickActions(modifier: Modifier = Modifier) {
         QuickAction(
             modifier = Modifier
                 .fillMaxHeight()
-                .weight(1f / 3f),
+                .weight(QuickActionsConfig.WEIGHT),
         )
         QuickAction(
             modifier = Modifier
                 .fillMaxHeight()
-                .weight(1f / 3f),
+                .weight(QuickActionsConfig.WEIGHT),
         )
         QuickAction(
             modifier = Modifier
                 .fillMaxHeight()
-                .weight(1f / 3f),
+                .weight(QuickActionsConfig.WEIGHT),
         )
     }
 }
