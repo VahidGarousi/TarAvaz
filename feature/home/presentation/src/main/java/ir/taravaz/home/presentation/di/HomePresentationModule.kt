@@ -1,5 +1,6 @@
 package ir.taravaz.home.presentation.di
 
+import ir.taravaz.home.domain.GetLatestPlayablesUseCase
 import ir.taravaz.home.domain.GetPlayableBannersUseCase
 import ir.taravaz.home.domain.GetPlaylistUseCase
 import ir.taravaz.home.presentation.HomeViewModel
@@ -11,4 +12,5 @@ val homePresentationModule = module {
     viewModelOf(::HomeViewModel)
     singleOf(::GetPlayableBannersUseCase)
     singleOf(::GetPlaylistUseCase)
+    singleOf(::GetLatestPlayablesUseCase)
 }

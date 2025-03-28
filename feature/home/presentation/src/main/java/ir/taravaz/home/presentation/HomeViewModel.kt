@@ -6,8 +6,10 @@ import ir.taravaz.core.domain.model.PlayableBanner
 import ir.taravaz.core.domain.model.Playlist
 import ir.taravaz.core.ui.component.LoadableData
 import ir.taravaz.core.ui.component.model.mapToPlayableBannerUi
+import ir.taravaz.core.ui.component.model.mapToPlayablesUi
 import ir.taravaz.core.ui.component.model.mapToPlaylistUi
 import ir.taravaz.core.ui.util.Constants
+import ir.taravaz.home.domain.GetLatestPlayablesUseCase
 import ir.taravaz.home.domain.GetPlayableBannersUseCase
 import ir.taravaz.home.domain.GetPlaylistUseCase
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -21,6 +23,7 @@ import kotlinx.coroutines.launch
 class HomeViewModel internal constructor(
     private val getPlayableBannersUseCase: GetPlayableBannersUseCase,
     private val getPlaylistUseCase: GetPlaylistUseCase,
+    private val getLatestPlayablesUseCase: GetLatestPlayablesUseCase,
 ) : ViewModel() {
     private var hasLoadedInitialData = false
     private val _state = MutableStateFlow(HomeState())
@@ -37,11 +40,31 @@ class HomeViewModel internal constructor(
         )
 
     private fun loadInitialData() {
-        loadPlayableBanners()
-        loadPlaylists()
+        getPlayableBanners()
+        getPlaylists()
+        getLatestPlayables()
     }
 
-    private fun loadPlaylists() {
+    private fun getLatestPlayables() {
+        viewModelScope.launch {
+            _state.value = _state.value.copy(latestPlayables = LoadableData.Loading)
+            runCatching {
+                getLatestPlayablesUseCase()
+            }.onSuccess { latestPlayables ->
+                _state.update {
+                    it.copy(
+                        latestPlayables = LoadableData.Loaded(
+                            data = latestPlayables.mapToPlayablesUi(),
+                        ),
+                    )
+                }
+            }.onFailure { throwable: Throwable ->
+                _state.update { it.copy(latestPlayables = LoadableData.Error(throwable = throwable)) }
+            }
+        }
+    }
+
+    private fun getPlaylists() {
         viewModelScope.launch {
             _state.value = _state.value.copy(playlist = LoadableData.Loading)
             runCatching {
@@ -60,7 +83,7 @@ class HomeViewModel internal constructor(
         }
     }
 
-    private fun loadPlayableBanners() {
+    private fun getPlayableBanners() {
         viewModelScope.launch {
             _state.value = _state.value.copy(playableBanners = LoadableData.Loading)
             runCatching {
