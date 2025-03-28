@@ -4,23 +4,31 @@ import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.lazy.LazyRow
+import androidx.compose.foundation.lazy.items
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.tooling.preview.PreviewParameter
 import ir.taravaz.core.designsystem.preview.MediumPhonePreviews
 import ir.taravaz.core.designsystem.theme.TarAvazPreview
 import ir.taravaz.core.designsystem.theme.TarAvazTheme
+import ir.taravaz.core.ui.component.lazy.playable.preview.LazyPlayableListPreviewParameterProvider
+import ir.taravaz.core.ui.component.model.PlayableUi
 
 @Composable
-fun LazyPlayableList(modifier: Modifier = Modifier) {
+fun LazyPlayableList(
+    modifier: Modifier = Modifier,
+    latestPlayables: List<PlayableUi>,
+) {
     LazyRow(
         modifier = modifier,
         horizontalArrangement = Arrangement.spacedBy(TarAvazTheme.spacing.space8),
     ) {
         items(
-            count = 3,
-        ) {
+            items = latestPlayables,
+        ) { playableItem: PlayableUi ->
             Playable(
                 modifier = Modifier.size(TarAvazTheme.spacing.space96),
+                playable = playableItem,
             )
         }
     }
@@ -28,10 +36,14 @@ fun LazyPlayableList(modifier: Modifier = Modifier) {
 
 @MediumPhonePreviews
 @Composable
-private fun LazyPlayableListPreview() {
+private fun LazyPlayableListPreview(
+    @PreviewParameter(LazyPlayableListPreviewParameterProvider::class)
+    parameter: List<PlayableUi>,
+) {
     TarAvazPreview {
         LazyPlayableList(
             modifier = Modifier.fillMaxWidth(),
+            latestPlayables = parameter,
         )
     }
 }

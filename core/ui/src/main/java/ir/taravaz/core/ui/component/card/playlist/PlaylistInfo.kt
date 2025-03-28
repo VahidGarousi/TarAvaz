@@ -12,15 +12,19 @@ import androidx.compose.ui.text.style.TextAlign
 import ir.taravaz.core.designsystem.preview.MediumPhonePreviews
 import ir.taravaz.core.designsystem.theme.TarAvazPreview
 import ir.taravaz.core.designsystem.theme.TarAvazTheme
+import ir.taravaz.core.ui.component.model.PlaylistInfoUi
 
 @Composable
-fun Playlist(modifier: Modifier = Modifier) {
+fun PlaylistInfo(
+    modifier: Modifier = Modifier,
+    information: PlaylistInfoUi,
+) {
     ElevatedCard(
         modifier = modifier.size(TarAvazTheme.spacing.space96),
     ) {
         Spacer(Modifier.weight(1f))
         Text(
-            text = "\uD83D\uDE80 برای روزای پرانرژی",
+            text = information.title,
             style = TarAvazTheme.typography.quickActionSubtitle,
             modifier = Modifier
                 .fillMaxWidth()
@@ -35,6 +39,11 @@ fun Playlist(modifier: Modifier = Modifier) {
 @Composable
 private fun PlaylistPreview() {
     TarAvazPreview {
-        Playlist()
+        PlaylistInfo(
+            information = PlaylistInfoUi(
+                id = "",
+                title = "\uD83D\uDE80 برای روزای پرانرژی",
+            ),
+        )
     }
 }

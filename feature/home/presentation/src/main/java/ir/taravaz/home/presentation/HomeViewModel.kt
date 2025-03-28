@@ -3,15 +3,15 @@ package ir.taravaz.home.presentation
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import ir.taravaz.core.domain.model.PlayableBanner
-import ir.taravaz.core.domain.model.Playlist
+import ir.taravaz.core.domain.model.PlaylistSection
 import ir.taravaz.core.ui.component.LoadableData
 import ir.taravaz.core.ui.component.model.mapToPlayableBannerUi
 import ir.taravaz.core.ui.component.model.mapToPlayablesUi
-import ir.taravaz.core.ui.component.model.mapToPlaylistUi
+import ir.taravaz.core.ui.component.model.mapToPlaylistInfoUi
 import ir.taravaz.core.ui.util.Constants
 import ir.taravaz.home.domain.GetLatestPlayablesUseCase
 import ir.taravaz.home.domain.GetPlayableBannersUseCase
-import ir.taravaz.home.domain.GetPlaylistUseCase
+import ir.taravaz.home.domain.GetPlaylistSectionUseCase
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.SharingStarted
 import kotlinx.coroutines.flow.StateFlow
@@ -22,7 +22,7 @@ import kotlinx.coroutines.launch
 
 class HomeViewModel internal constructor(
     private val getPlayableBannersUseCase: GetPlayableBannersUseCase,
-    private val getPlaylistUseCase: GetPlaylistUseCase,
+    private val getPlaylistSectionUseCase: GetPlaylistSectionUseCase,
     private val getLatestPlayablesUseCase: GetLatestPlayablesUseCase,
 ) : ViewModel() {
     private var hasLoadedInitialData = false
@@ -66,19 +66,19 @@ class HomeViewModel internal constructor(
 
     private fun getPlaylists() {
         viewModelScope.launch {
-            _state.value = _state.value.copy(playlist = LoadableData.Loading)
+            _state.value = _state.value.copy(playlistSection = LoadableData.Loading)
             runCatching {
-                getPlaylistUseCase()
-            }.onSuccess { playlists: Playlist ->
+                getPlaylistSectionUseCase()
+            }.onSuccess { playlistSection: PlaylistSection ->
                 _state.update {
                     it.copy(
-                        playlist = LoadableData.Loaded(
-                            data = playlists.mapToPlaylistUi(),
+                        playlistSection = LoadableData.Loaded(
+                            data = playlistSection.mapToPlaylistInfoUi(),
                         ),
                     )
                 }
             }.onFailure { throwable: Throwable ->
-                _state.update { it.copy(playlist = LoadableData.Error(throwable = throwable)) }
+                _state.update { it.copy(playlistSection = LoadableData.Error(throwable = throwable)) }
             }
         }
     }
