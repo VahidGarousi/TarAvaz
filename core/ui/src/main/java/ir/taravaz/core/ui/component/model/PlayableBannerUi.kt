@@ -8,5 +8,5 @@ data class PlayableBannerUi(
 
 fun PlayableBanner.mapToPlayableBannerUi(): PlayableBannerUi =
     PlayableBannerUi(
-        cover = cover,
+        cover = imageUrl,
     )
