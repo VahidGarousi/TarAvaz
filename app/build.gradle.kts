@@ -81,6 +81,7 @@ dependencies {
     implementation(projects.core.domain)
     implementation(projects.core.ui)
     implementation(projects.feature.explore.presentation)
+    implementation(projects.feature.home.data)
     implementation(projects.feature.home.presentation)
     implementation(projects.feature.player.data)
     implementation(projects.feature.playlist.presentation)
