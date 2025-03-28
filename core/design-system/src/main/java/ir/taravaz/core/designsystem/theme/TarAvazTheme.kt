@@ -12,6 +12,8 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.CompositionLocalProvider
 import androidx.compose.runtime.ReadOnlyComposable
 import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.platform.LocalLayoutDirection
+import androidx.compose.ui.unit.LayoutDirection
 
 private val DarkColorScheme = darkColorScheme(
     primary = Purple80,
@@ -56,6 +58,7 @@ fun TarAvazTheme(
         LocalTarAvazColors provides taravazColors,
         LocalBackgroundTheme provides backgroundTheme,
         LocalTarAvazTypography provides TarAvazTypography(),
+        LocalLayoutDirection provides LayoutDirection.Rtl,
     ) {
         MaterialTheme(
             colorScheme = materialColorScheme,
