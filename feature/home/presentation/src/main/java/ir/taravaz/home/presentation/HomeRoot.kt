@@ -17,6 +17,8 @@ import ir.taravaz.core.designsystem.theme.TarAvazPreview
 import ir.taravaz.core.designsystem.theme.TarAvazTheme
 import ir.taravaz.core.ui.component.LoadableData
 import ir.taravaz.core.ui.component.carousel.PlayableCarousel
+import ir.taravaz.core.ui.component.lazy.playable.HorizontalPlayableList
+import ir.taravaz.core.ui.component.lazy.playlist.HorizontalPlaylist
 import ir.taravaz.core.ui.component.model.PlayableBannerUi
 import ir.taravaz.home.presentation.preview.HomeStatePreviewParameterProvider
 import org.koin.androidx.compose.koinViewModel
@@ -49,6 +51,26 @@ private fun HomeScreen(
         )
         verticalSpacer()
         quickActions()
+        verticalSpacer()
+        horizontalPlayablePlaylists()
+        verticalSpacer()
+        horizontalPlayableList()
+    }
+}
+
+private fun LazyListScope.horizontalPlayableList() {
+    item {
+        HorizontalPlayableList(
+            modifier = Modifier.fillMaxWidth(),
+        )
+    }
+}
+
+private fun LazyListScope.horizontalPlayablePlaylists() {
+    item {
+        HorizontalPlaylist(
+            modifier = Modifier.fillMaxWidth(),
+        )
     }
 }
 
