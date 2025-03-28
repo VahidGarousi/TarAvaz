@@ -1,6 +1,7 @@
 package ir.taravaz.core.ui.component.lazy.playable
 
 import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.size
 import androidx.compose.material3.ElevatedCard
@@ -13,6 +14,10 @@ import ir.taravaz.core.designsystem.preview.MediumPhonePreviews
 import ir.taravaz.core.designsystem.theme.TarAvazPreview
 import ir.taravaz.core.designsystem.theme.TarAvazTheme
 
+private object PlayableConfig {
+    const val IMAGE_WEIGHT_RATIO = 3f / 4f
+}
+
 @Composable
 fun Playable(modifier: Modifier = Modifier) {
     ElevatedCard(
@@ -20,8 +25,9 @@ fun Playable(modifier: Modifier = Modifier) {
     ) {
         AsyncImage(
             modifier = Modifier
-                .weight(3f / 4f)
-                .align(Alignment.CenterHorizontally),
+                .weight(PlayableConfig.IMAGE_WEIGHT_RATIO)
+                .align(Alignment.CenterHorizontally)
+                .fillMaxWidth(),
             model = "https://google.com",
             contentDescription = null,
         )
