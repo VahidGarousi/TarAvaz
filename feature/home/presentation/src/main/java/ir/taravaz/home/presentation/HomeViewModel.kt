@@ -1,3 +1,5 @@
+@file:Suppress("TooGenericExceptionCaught")
+
 package ir.taravaz.home.presentation
 
 import androidx.lifecycle.ViewModel
@@ -43,8 +45,8 @@ class HomeViewModel internal constructor(
         )
 
     private fun loadInitialData() {
-//        getPlayableBanners()
-//        getPlaylists()
+        getPlayableBanners()
+        getPlaylists()
         getLatestTracks()
     }
 

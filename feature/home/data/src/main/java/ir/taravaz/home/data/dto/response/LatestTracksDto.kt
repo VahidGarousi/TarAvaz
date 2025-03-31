@@ -16,7 +16,3 @@ fun LatestTracksDto.mapToLatestTracks(): LatestTracks =
         title = title,
         items = items.map(TrackDto::mapToTrack),
     )
-
-/**
- * Illegal input: Fields [id, title, items] are required for type with serial name 'ir.taravaz.home.data.dto.response.LatestTracksDto', but they were missing at path: $
- */
