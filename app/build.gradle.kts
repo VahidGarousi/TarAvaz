@@ -73,6 +73,7 @@ dependencies {
     implementation(libs.androidx.navigation.compose)
     implementation(libs.androidx.tracing.ktx)
     implementation(libs.androidx.window.core)
+    implementation(libs.bundles.ktor)
     implementation(libs.coil.kt)
     implementation(libs.coil.kt.compose)
     implementation(libs.coil.kt.network)

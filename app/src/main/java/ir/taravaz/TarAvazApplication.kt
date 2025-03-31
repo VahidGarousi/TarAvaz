@@ -1,6 +1,7 @@
 package ir.taravaz
 
 import android.app.Application
+import ir.taravaz.core.data.di.coreDataModule
 import ir.taravaz.home.data.di.homeDataModule
 import ir.taravaz.home.presentation.di.homePresentationModule
 import org.koin.android.ext.koin.androidContext
@@ -13,7 +14,7 @@ class TarAvazApplication : Application() {
         startKoin {
             androidContext(this@TarAvazApplication)
             androidLogger()
-            modules(homePresentationModule, homeDataModule)
+            modules(homePresentationModule, homeDataModule, coreDataModule)
         }
     }
 }
