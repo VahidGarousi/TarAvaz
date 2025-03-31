@@ -7,6 +7,7 @@ class AndroidDomainLayerConventionPlugin : Plugin<Project> {
     override fun apply(project: Project) = project.run {
         dependencies {
             add("implementation", project(":core:domain"))
+            add("implementation", project(":core:common"))
         }
     }
 }

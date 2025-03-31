@@ -17,6 +17,7 @@ class AndroidPresentationLayerConventionPlugin : Plugin<Project> {
             "implementation"(project(":core:design-system"))
             "implementation"(project(":core:ui"))
             "implementation"(project(":core:domain"))
+            "implementation"(project(":core:common"))
 
             "implementation"(libs.findLibrary("androidx.lifecycle.runtimeCompose").get())
             "implementation"(libs.findLibrary("androidx.lifecycle.viewModelCompose").get())
