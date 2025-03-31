@@ -11,9 +11,13 @@ import androidx.compose.material3.lightColorScheme
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.CompositionLocalProvider
 import androidx.compose.runtime.ReadOnlyComposable
+import androidx.compose.runtime.staticCompositionLocalOf
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.platform.LocalLayoutDirection
 import androidx.compose.ui.unit.LayoutDirection
+import com.valentinilk.shimmer.Shimmer
+import com.valentinilk.shimmer.ShimmerBounds
+import com.valentinilk.shimmer.rememberShimmer
 
 private val DarkColorScheme = darkColorScheme(
     primary = Purple80,
@@ -54,11 +58,13 @@ fun TarAvazTheme(
     }
     val backgroundTheme = if (darkTheme) DarkBackgroundTheme else LightBackgroundTheme
     val taravazColors = if (darkTheme) tarAvazDarkColors() else tarAvazLightColors()
+    val shimmerInstance = rememberShimmer(ShimmerBounds.Window)
     CompositionLocalProvider(
         LocalTarAvazColors provides taravazColors,
         LocalBackgroundTheme provides backgroundTheme,
         LocalTarAvazTypography provides TarAvazTypography(),
         LocalLayoutDirection provides LayoutDirection.Rtl,
+        LocalShimmer provides shimmerInstance,
     ) {
         MaterialTheme(
             colorScheme = materialColorScheme,
@@ -81,3 +87,5 @@ object TarAvazTheme {
         @Composable @ReadOnlyComposable
         get() = LocalTarAvazSpacing.current
 }
+
+val LocalShimmer = staticCompositionLocalOf<Shimmer> { error("No Local provider provided") }

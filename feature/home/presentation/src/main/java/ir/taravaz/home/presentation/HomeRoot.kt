@@ -17,10 +17,10 @@ import ir.taravaz.core.designsystem.theme.TarAvazPreview
 import ir.taravaz.core.designsystem.theme.TarAvazTheme
 import ir.taravaz.core.ui.component.LoadableData
 import ir.taravaz.core.ui.component.carousel.BannerCarousel
-import ir.taravaz.core.ui.component.lazy.playable.HorizontalPlayableList
+import ir.taravaz.core.ui.component.lazy.playable.HorizontalLatestTracks
 import ir.taravaz.core.ui.component.lazy.playlist.HorizontalPlaylist
 import ir.taravaz.core.ui.component.model.BannerUi
-import ir.taravaz.core.ui.component.model.PlayablesUi
+import ir.taravaz.core.ui.component.model.LatestTracksUi
 import ir.taravaz.core.ui.component.model.PlaylistSectionUi
 import ir.taravaz.home.presentation.preview.HomeStatePreviewParameterProvider
 import org.koin.androidx.compose.koinViewModel
@@ -54,26 +54,26 @@ private fun HomeScreen(
         verticalSpacer()
         quickActions()
         verticalSpacer()
-        horizontalPlayablePlaylists(
+        popularPlaylists(
             playlist = state.playlistSection,
         )
         verticalSpacer()
-        horizontalPlayableList(
-            latestPlayables = state.latestPlayables,
+        latestTracks(
+            latestTracks = state.latestTracks,
         )
     }
 }
 
-private fun LazyListScope.horizontalPlayableList(latestPlayables: LoadableData<PlayablesUi>) {
+private fun LazyListScope.latestTracks(latestTracks: LoadableData<LatestTracksUi>) {
     item {
-        HorizontalPlayableList(
+        HorizontalLatestTracks(
             modifier = Modifier.fillMaxWidth(),
-            latestPlayables = latestPlayables,
+            latestPlayables = latestTracks,
         )
     }
 }
 
-private fun LazyListScope.horizontalPlayablePlaylists(playlist: LoadableData<PlaylistSectionUi>) {
+private fun LazyListScope.popularPlaylists(playlist: LoadableData<PlaylistSectionUi>) {
     item {
         HorizontalPlaylist(
             modifier = Modifier.fillMaxWidth(),

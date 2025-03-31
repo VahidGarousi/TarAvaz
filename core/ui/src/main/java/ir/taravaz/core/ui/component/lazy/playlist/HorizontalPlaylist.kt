@@ -1,12 +1,15 @@
 package ir.taravaz.core.ui.component.lazy.playlist
 
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.PreviewParameter
 import ir.taravaz.core.designsystem.preview.MediumPhonePreviews
 import ir.taravaz.core.designsystem.theme.TarAvazPreview
+import ir.taravaz.core.designsystem.theme.TarAvazTheme
 import ir.taravaz.core.ui.component.LoadableComponent
 import ir.taravaz.core.ui.component.LoadableData
 import ir.taravaz.core.ui.component.lazy.playlist.preview.LatestPlayablePreviewParameterProvider
@@ -22,6 +25,15 @@ fun HorizontalPlaylist(
     ) {
         LoadableComponent(
             loadableData = playlist,
+            loading = {
+                SectionHeaderLoading(
+                    modifier = Modifier.fillMaxWidth(),
+                )
+                Spacer(modifier = Modifier.height(TarAvazTheme.spacing.space4))
+                PlaylistInfoListLoading(
+                    modifier = modifier.fillMaxWidth(),
+                )
+            },
             loaded = { playlist ->
                 SectionHeader(
                     modifier = Modifier.fillMaxWidth(),

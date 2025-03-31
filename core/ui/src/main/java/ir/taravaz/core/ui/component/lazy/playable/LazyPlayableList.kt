@@ -13,6 +13,7 @@ import ir.taravaz.core.designsystem.theme.TarAvazPreview
 import ir.taravaz.core.designsystem.theme.TarAvazTheme
 import ir.taravaz.core.ui.component.lazy.playable.preview.LazyPlayableListPreviewParameterProvider
 import ir.taravaz.core.ui.component.model.TrackUi
+import ir.taravaz.core.ui.component.shimmer.Shimmer
 
 @Composable
 fun LazyPlayableList(
@@ -29,6 +30,22 @@ fun LazyPlayableList(
             Playable(
                 modifier = Modifier.size(TarAvazTheme.spacing.space96),
                 playable = playableItem,
+            )
+        }
+    }
+}
+
+@Composable
+fun LazyPlayableListLoading(modifier: Modifier = Modifier) {
+    LazyRow(
+        modifier = modifier,
+        horizontalArrangement = Arrangement.spacedBy(TarAvazTheme.spacing.space8),
+    ) {
+        items(
+            count = 5,
+        ) {
+            Shimmer(
+                modifier = Modifier.size(TarAvazTheme.spacing.space96),
             )
         }
     }

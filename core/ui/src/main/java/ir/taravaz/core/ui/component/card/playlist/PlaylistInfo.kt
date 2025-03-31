@@ -2,7 +2,6 @@ package ir.taravaz.core.ui.component.card.playlist
 
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.size
 import androidx.compose.material3.ElevatedCard
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -20,7 +19,7 @@ fun PlaylistInfo(
     information: PlaylistInfoUi,
 ) {
     ElevatedCard(
-        modifier = modifier.size(TarAvazTheme.spacing.space96),
+        modifier = modifier,
     ) {
         Spacer(Modifier.weight(1f))
         Text(

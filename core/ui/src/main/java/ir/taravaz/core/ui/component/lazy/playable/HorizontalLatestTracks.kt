@@ -1,28 +1,42 @@
 package ir.taravaz.core.ui.component.lazy.playable
 
+import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.PreviewParameter
 import ir.taravaz.core.designsystem.preview.MediumPhonePreviews
 import ir.taravaz.core.designsystem.theme.TarAvazPreview
+import ir.taravaz.core.designsystem.theme.TarAvazTheme
 import ir.taravaz.core.ui.component.LoadableComponent
 import ir.taravaz.core.ui.component.LoadableData
 import ir.taravaz.core.ui.component.lazy.playable.preview.TopPlayListPreviewParameterProvider
 import ir.taravaz.core.ui.component.lazy.playlist.SectionHeader
-import ir.taravaz.core.ui.component.model.PlayablesUi
+import ir.taravaz.core.ui.component.lazy.playlist.SectionHeaderLoading
+import ir.taravaz.core.ui.component.model.LatestTracksUi
 
 @Composable
-fun HorizontalPlayableList(
+fun HorizontalLatestTracks(
     modifier: Modifier = Modifier,
-    latestPlayables: LoadableData<PlayablesUi>,
+    latestPlayables: LoadableData<LatestTracksUi>,
 ) {
     Column(
         modifier = modifier,
     ) {
         LoadableComponent(
             loadableData = latestPlayables,
+            loading = {
+                SectionHeaderLoading(
+                    modifier = Modifier.fillMaxWidth(),
+                )
+                Spacer(modifier = Modifier.height(TarAvazTheme.spacing.space4))
+                LazyPlayableListLoading(
+                    modifier = modifier.fillMaxWidth(),
+                )
+            },
             loaded = { latestPlayables ->
                 SectionHeader(
                     modifier = Modifier.fillMaxWidth(),
@@ -41,10 +55,10 @@ fun HorizontalPlayableList(
 @Composable
 private fun HorizontalPlayableListPreview(
     @PreviewParameter(TopPlayListPreviewParameterProvider::class)
-    parameter: LoadableData<PlayablesUi>,
+    parameter: LoadableData<LatestTracksUi>,
 ) {
     TarAvazPreview {
-        HorizontalPlayableList(
+        HorizontalLatestTracks(
             modifier = Modifier.fillMaxWidth(),
             latestPlayables = parameter,
         )

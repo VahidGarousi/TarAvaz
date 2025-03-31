@@ -1,6 +1,7 @@
 package ir.taravaz.core.ui.component.lazy.playlist
 
 import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.lazy.LazyRow
 import androidx.compose.foundation.lazy.items
 import androidx.compose.runtime.Composable
@@ -12,6 +13,7 @@ import ir.taravaz.core.designsystem.theme.TarAvazTheme
 import ir.taravaz.core.ui.component.card.playlist.PlaylistInfo
 import ir.taravaz.core.ui.component.lazy.playlist.preview.PlaylistInfoPreviewParameterProvider
 import ir.taravaz.core.ui.component.model.PlaylistInfoUi
+import ir.taravaz.core.ui.component.shimmer.Shimmer
 
 @Composable
 fun PlaylistInfoList(
@@ -26,7 +28,24 @@ fun PlaylistInfoList(
             items = playlistInfos,
         ) { information ->
             PlaylistInfo(
+                modifier = Modifier.size(TarAvazTheme.spacing.space96),
                 information = information,
+            )
+        }
+    }
+}
+
+@Composable
+fun PlaylistInfoListLoading(modifier: Modifier = Modifier) {
+    LazyRow(
+        modifier = modifier,
+        horizontalArrangement = Arrangement.spacedBy(TarAvazTheme.spacing.space8),
+    ) {
+        items(
+            count = 5,
+        ) {
+            Shimmer(
+                modifier = Modifier.size(TarAvazTheme.spacing.space96),
             )
         }
     }

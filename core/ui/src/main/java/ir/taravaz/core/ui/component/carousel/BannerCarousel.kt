@@ -61,7 +61,10 @@ fun BannerCarousel(
                 )
             },
             failureContent = {
-                ErrorPlayable(pagerState = pagerState, page = page)
+                ErrorPlayable(
+                    pagerState = pagerState,
+                    page = page,
+                )
             },
         )
     }
@@ -85,7 +88,7 @@ private fun ErrorPlayable(
         },
         contentAlignment = Alignment.Center,
     ) {
-        Shimmer(
+        Box(
             modifier = Modifier
                 .fillMaxWidth()
                 .height(140.dp),

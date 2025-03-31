@@ -52,11 +52,11 @@ class HomeViewModel internal constructor(
 
     private fun getLatestTracks() {
         viewModelScope.launch {
-            _state.value = _state.value.copy(latestPlayables = LoadableData.Loading)
+            _state.value = _state.value.copy(latestTracks = LoadableData.Loading)
             val result = getLatestTracksUseCase().map(LatestTracks::mapToPlayablesUi)
             _state.update {
                 it.copy(
-                    latestPlayables = result,
+                    latestTracks = result,
                 )
             }
         }
