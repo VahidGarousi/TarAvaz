@@ -17,13 +17,13 @@ import org.junit.jupiter.api.Test
 import java.net.UnknownHostException
 
 internal class GetPlayableBannersUseCaseTest {
-    private lateinit var subject: GetPlayableBannersUseCase
+    private lateinit var subject: GetBannersUseCase
     private lateinit var trackRepository: TrackRepository
 
     @BeforeEach
     fun setUp() {
         trackRepository = mockk(relaxed = true)
-        subject = GetPlayableBannersUseCase(repository = trackRepository)
+        subject = GetBannersUseCase(repository = trackRepository)
     }
 
     @AfterEach
