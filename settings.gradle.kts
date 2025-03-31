@@ -26,7 +26,14 @@ rootProject.name = "TarAvaz"
 enableFeaturePreview("TYPESAFE_PROJECT_ACCESSORS")
 include(":konsist")
 include(":app")
-include(":core:domain", ":core:screenshot-testing", ":core:design-system", ":core:ui")
+include(
+    ":core:domain",
+    ":core:screenshot-testing",
+    ":core:design-system",
+    ":core:ui",
+    ":core:data",
+    ":core:common"
+)
 include(":feature:player:data", ":feature:player:presentation", ":feature:player:domain")
 include(":feature:home:presentation", ":feature:home:domain", ":feature:home:data")
 include(":feature:playlist:presentation")
