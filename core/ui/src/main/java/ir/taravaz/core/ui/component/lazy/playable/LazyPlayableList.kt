@@ -12,12 +12,12 @@ import ir.taravaz.core.designsystem.preview.MediumPhonePreviews
 import ir.taravaz.core.designsystem.theme.TarAvazPreview
 import ir.taravaz.core.designsystem.theme.TarAvazTheme
 import ir.taravaz.core.ui.component.lazy.playable.preview.LazyPlayableListPreviewParameterProvider
-import ir.taravaz.core.ui.component.model.PlayableUi
+import ir.taravaz.core.ui.component.model.TrackUi
 
 @Composable
 fun LazyPlayableList(
     modifier: Modifier = Modifier,
-    latestPlayables: List<PlayableUi>,
+    latestPlayables: List<TrackUi>,
 ) {
     LazyRow(
         modifier = modifier,
@@ -25,7 +25,7 @@ fun LazyPlayableList(
     ) {
         items(
             items = latestPlayables,
-        ) { playableItem: PlayableUi ->
+        ) { playableItem: TrackUi ->
             Playable(
                 modifier = Modifier.size(TarAvazTheme.spacing.space96),
                 playable = playableItem,
@@ -38,7 +38,7 @@ fun LazyPlayableList(
 @Composable
 private fun LazyPlayableListPreview(
     @PreviewParameter(LazyPlayableListPreviewParameterProvider::class)
-    parameter: List<PlayableUi>,
+    parameter: List<TrackUi>,
 ) {
     TarAvazPreview {
         LazyPlayableList(

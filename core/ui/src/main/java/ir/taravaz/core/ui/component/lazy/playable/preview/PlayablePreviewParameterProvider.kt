@@ -1,26 +1,26 @@
 package ir.taravaz.core.ui.component.lazy.playable.preview
 
 import androidx.compose.ui.tooling.preview.PreviewParameterProvider
-import ir.taravaz.core.ui.component.model.PlayableUi
+import ir.taravaz.core.ui.component.model.TrackUi
 
-internal class PlayablePreviewParameterProvider : PreviewParameterProvider<PlayableUi> {
-    override val values: Sequence<PlayableUi> = sequenceOf(
-        PlayableUi(
+internal class PlayablePreviewParameterProvider : PreviewParameterProvider<TrackUi> {
+    override val values: Sequence<TrackUi> = sequenceOf(
+        TrackUi(
             id = "",
             artistName = "حجت اشرف زاده",
-            cover = "",
+            imageUrl = "",
             name = "شهرزاد",
         ),
-        PlayableUi(
+        TrackUi(
             id = "",
             artistName = "رضا بهرام",
-            cover = "",
+            imageUrl = "",
             name = "گل مریم",
         ),
-        PlayableUi(
+        TrackUi(
             id = "",
             artistName = "محسن ابراهیم زاده",
-            cover = "",
+            imageUrl = "",
             name = "منو تو",
         ),
     )

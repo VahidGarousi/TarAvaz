@@ -15,7 +15,7 @@ import ir.taravaz.core.designsystem.preview.MediumPhonePreviews
 import ir.taravaz.core.designsystem.theme.TarAvazPreview
 import ir.taravaz.core.designsystem.theme.TarAvazTheme
 import ir.taravaz.core.ui.component.lazy.playable.preview.PlayablePreviewParameterProvider
-import ir.taravaz.core.ui.component.model.PlayableUi
+import ir.taravaz.core.ui.component.model.TrackUi
 
 private object PlayableConfig {
     const val IMAGE_WEIGHT_RATIO = 3f / 4f
@@ -24,7 +24,7 @@ private object PlayableConfig {
 @Composable
 fun Playable(
     modifier: Modifier = Modifier,
-    playable: PlayableUi,
+    playable: TrackUi,
 ) {
     ElevatedCard(
         modifier = modifier,
@@ -34,7 +34,7 @@ fun Playable(
                 .weight(PlayableConfig.IMAGE_WEIGHT_RATIO)
                 .align(Alignment.CenterHorizontally)
                 .fillMaxWidth(),
-            model = playable.cover,
+            model = playable.imageUrl,
             contentDescription = null,
         )
         Spacer(Modifier.height(TarAvazTheme.spacing.space2))
@@ -55,7 +55,7 @@ fun Playable(
 @Composable
 private fun PlayablePreview(
     @PreviewParameter(PlayablePreviewParameterProvider::class)
-    playable: PlayableUi,
+    playable: TrackUi,
 ) {
     TarAvazPreview {
         Playable(

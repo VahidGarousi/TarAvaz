@@ -1,4 +1,6 @@
 package ir.taravaz.core.ui.component
+import ir.taravaz.core.common.util.Result
+import ir.taravaz.core.common.util.Error as ErrorResult
 
 sealed class LoadableData<out T> {
     abstract val data: T?
@@ -16,7 +18,7 @@ sealed class LoadableData<out T> {
     ) : LoadableData<T>()
 
     data class Error(
-        val throwable: Throwable,
+        val error: ErrorResult,
     ) : LoadableData<Nothing>() {
         override val data = null
     }
@@ -27,7 +29,7 @@ val LoadableData<*>.isLoading: Boolean
 
 fun <T> LoadableData<T>.copy(data: T? = this.data): LoadableData<T> =
     when (this) {
-        is LoadableData.Error -> LoadableData.Error(throwable = throwable)
+        is LoadableData.Error -> LoadableData.Error(error = error)
         is LoadableData.Initial -> LoadableData.Initial
         is LoadableData.Loaded<T> -> {
             if (data != null) {
@@ -37,4 +39,10 @@ fun <T> LoadableData<T>.copy(data: T? = this.data): LoadableData<T> =
             }
         }
         is LoadableData.Loading -> LoadableData.Loading
+    }
+
+inline fun <T, E : ErrorResult, R> Result<T, E>.map(map: (T) -> R): LoadableData<R> =
+    when (this) {
+        is Result.Failure<E> -> LoadableData.Error(error = error)
+        is Result.Success<T> -> LoadableData.Loaded(data = map(this.data))
     }

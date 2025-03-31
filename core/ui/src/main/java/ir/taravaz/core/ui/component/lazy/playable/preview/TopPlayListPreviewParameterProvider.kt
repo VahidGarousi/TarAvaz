@@ -1,31 +1,32 @@
 package ir.taravaz.core.ui.component.lazy.playable.preview
 
 import androidx.compose.ui.tooling.preview.PreviewParameterProvider
+import ir.taravaz.core.common.util.NetworkError
 import ir.taravaz.core.ui.component.LoadableData
-import ir.taravaz.core.ui.component.model.PlayableUi
 import ir.taravaz.core.ui.component.model.PlayablesUi
+import ir.taravaz.core.ui.component.model.TrackUi
 
 class TopPlayListPreviewParameterProvider : PreviewParameterProvider<LoadableData<PlayablesUi>> {
     val playables = PlayablesUi(
         id = "",
         title = "",
         items = listOf(
-            PlayableUi(
+            TrackUi(
                 id = "",
                 artistName = "حجت اشرف زاده",
-                cover = "",
+                imageUrl = "",
                 name = "شهرزاد",
             ),
-            PlayableUi(
+            TrackUi(
                 id = "",
                 artistName = "رضا بهرام",
-                cover = "",
+                imageUrl = "",
                 name = "گل مریم",
             ),
-            PlayableUi(
+            TrackUi(
                 id = "",
                 artistName = "محسن ابراهیم زاده",
-                cover = "",
+                imageUrl = "",
                 name = "منو تو",
             ),
         ),
@@ -37,7 +38,7 @@ class TopPlayListPreviewParameterProvider : PreviewParameterProvider<LoadableDat
             data = playables,
         ),
         LoadableData.Error(
-            throwable = Throwable("Unknown error"),
+            error = NetworkError.SERVER_ERROR,
         ),
     )
 }

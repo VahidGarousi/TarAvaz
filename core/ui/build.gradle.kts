@@ -11,6 +11,7 @@ android {
 
 dependencies {
     api(libs.androidx.metrics)
+    api(projects.core.common)
     api(projects.core.designSystem)
     api(projects.core.domain)
 

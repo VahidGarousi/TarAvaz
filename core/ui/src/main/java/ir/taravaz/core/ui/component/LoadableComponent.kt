@@ -12,7 +12,7 @@ fun <T> LoadableComponent(
 ) {
     when (loadableData) {
         is LoadableData.Loading -> loading()
-        is LoadableData.Error -> error(loadableData.throwable)
+        is LoadableData.Error -> error(loadableData.error)
         is LoadableData.Loaded -> loaded(loadableData.data)
         is LoadableData.Initial -> initial()
     }

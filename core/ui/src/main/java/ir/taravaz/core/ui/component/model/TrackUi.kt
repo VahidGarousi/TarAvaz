@@ -1,18 +1,18 @@
 package ir.taravaz.core.ui.component.model
 
-import ir.taravaz.core.domain.model.Playable
+import ir.taravaz.core.domain.model.Track
 
-data class PlayableUi(
+data class TrackUi(
     val id: String,
     val artistName: String,
     val name: String,
-    val cover: String,
+    val imageUrl: String,
 )
 
-fun Playable.mapToPlayableUi(): PlayableUi =
-    PlayableUi(
+fun Track.mapToPlayableUi(): TrackUi =
+    TrackUi(
         id = id,
-        cover = cover,
+        imageUrl = imageUrl,
         artistName = "",
         name = "",
     )
