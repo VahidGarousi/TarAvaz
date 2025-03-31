@@ -35,6 +35,8 @@ class AndroidApplicationConventionPlugin : Plugin<Project> {
                 configureBadgingTasks(extensions.getByType<BaseExtension>(), this)
             }
             dependencies {
+                "implementation"(project(":core:common"))
+                "implementation"(project(":core:data"))
                 "implementation"(libs.findLibrary("kotlinx-coroutines-guava").get())
                 "implementation"(libs.findLibrary("kotlinx-coroutines-test").get())
             }
