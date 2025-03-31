@@ -45,7 +45,7 @@ class HomeViewModel internal constructor(
         )
 
     private fun loadInitialData() {
-        getPlayableBanners()
+        getBanners()
         getPlaylists()
         getLatestTracks()
     }
@@ -53,15 +53,11 @@ class HomeViewModel internal constructor(
     private fun getLatestTracks() {
         viewModelScope.launch {
             _state.value = _state.value.copy(latestPlayables = LoadableData.Loading)
-            try {
-                val result = getLatestTracksUseCase().map(LatestTracks::mapToPlayablesUi)
-                _state.update {
-                    it.copy(
-                        latestPlayables = result,
-                    )
-                }
-            } catch (exception: Exception) {
-                exception.printStackTrace()
+            val result = getLatestTracksUseCase().map(LatestTracks::mapToPlayablesUi)
+            _state.update {
+                it.copy(
+                    latestPlayables = result,
+                )
             }
         }
     }
@@ -85,21 +81,21 @@ class HomeViewModel internal constructor(
         }
     }
 
-    private fun getPlayableBanners() {
+    private fun getBanners() {
         viewModelScope.launch {
-            _state.value = _state.value.copy(playableBanners = LoadableData.Loading)
+            _state.value = _state.value.copy(banners = LoadableData.Loading)
             runCatching {
                 getBannersUseCase()
             }.onSuccess { playableBanners: List<PlayableBanner> ->
                 _state.update {
                     it.copy(
-                        playableBanners = LoadableData.Loaded(
+                        banners = LoadableData.Loaded(
                             data = playableBanners.map(PlayableBanner::mapToPlayableBannerUi),
                         ),
                     )
                 }
             }.onFailure { throwable ->
-                _state.update { it.copy(playableBanners = LoadableData.Error(error = NetworkError.SERVER_ERROR)) }
+                _state.update { it.copy(banners = LoadableData.Error(error = NetworkError.SERVER_ERROR)) }
             }
         }
     }

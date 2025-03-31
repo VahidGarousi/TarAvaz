@@ -2,11 +2,11 @@ package ir.taravaz.core.ui.component.model
 
 import ir.taravaz.core.domain.model.PlayableBanner
 
-data class PlayableBannerUi(
+data class BannerUi(
     val cover: String = "",
 )
 
-fun PlayableBanner.mapToPlayableBannerUi(): PlayableBannerUi =
-    PlayableBannerUi(
+fun PlayableBanner.mapToPlayableBannerUi(): BannerUi =
+    BannerUi(
         cover = imageUrl,
     )

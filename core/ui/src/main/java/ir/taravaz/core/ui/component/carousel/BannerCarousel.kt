@@ -25,20 +25,19 @@ import ir.taravaz.core.designsystem.preview.MediumPhonePreviews
 import ir.taravaz.core.designsystem.theme.TarAvazPreview
 import ir.taravaz.core.ui.component.LoadableComponent
 import ir.taravaz.core.ui.component.LoadableData
-import ir.taravaz.core.ui.component.card.playable.banner.PlayableBanner
-import ir.taravaz.core.ui.component.carousel.PlayableCarouselPreviewParameterProvider
-import ir.taravaz.core.ui.component.model.PlayableBannerUi
+import ir.taravaz.core.ui.component.card.playable.banner.Banner
+import ir.taravaz.core.ui.component.model.BannerUi
 import ir.taravaz.core.ui.component.shimmer.Shimmer
 import kotlin.math.absoluteValue
 
 @Composable
-fun PlayableCarousel(
+fun BannerCarousel(
     modifier: Modifier = Modifier,
-    playableBanners: LoadableData<List<PlayableBannerUi>>,
-    onClick: (PlayableBannerUi) -> Unit,
+    banners: LoadableData<List<BannerUi>>,
+    onClick: (BannerUi) -> Unit,
 ) {
     val pagerState = rememberPagerState(
-        pageCount = { playableBanners.data?.size ?: 3 },
+        pageCount = { banners.data?.size ?: 3 },
     )
     HorizontalPager(
         state = pagerState,
@@ -46,11 +45,11 @@ fun PlayableCarousel(
         modifier = modifier.fillMaxSize(),
     ) { page ->
         LoadableComponent(
-            loadableData = playableBanners,
-            loaded = { playableBannerUi: List<PlayableBannerUi> ->
+            loadableData = banners,
+            loaded = { bannerUi: List<BannerUi> ->
                 LoadedPlayableItem(
                     onClick = onClick,
-                    playableBannerUi = playableBannerUi,
+                    bannerUi = bannerUi,
                     page = page,
                     pagerState = pagerState,
                 )
@@ -61,7 +60,7 @@ fun PlayableCarousel(
                     page = page,
                 )
             },
-            error = {
+            failureContent = {
                 ErrorPlayable(pagerState = pagerState, page = page)
             },
         )
@@ -127,14 +126,14 @@ private fun LoadingPlayable(
 
 @Composable
 private fun LoadedPlayableItem(
-    onClick: (PlayableBannerUi) -> Unit,
-    playableBannerUi: List<PlayableBannerUi>,
+    onClick: (BannerUi) -> Unit,
+    bannerUi: List<BannerUi>,
     page: Int,
     pagerState: PagerState,
 ) {
     val onBannerClicked = remember {
         {
-            onClick(playableBannerUi[page])
+            onClick(bannerUi[page])
         }
     }
     ElevatedCard(
@@ -153,8 +152,8 @@ private fun LoadedPlayableItem(
             onBannerClicked
         },
     ) {
-        PlayableBanner(
-            playableBannerUi = playableBannerUi[page],
+        Banner(
+            bannerUi = bannerUi[page],
             modifier = Modifier
                 .fillMaxWidth()
                 .height(140.dp),
@@ -166,11 +165,11 @@ private fun LoadedPlayableItem(
 @Composable
 private fun PlayableCarouselPreview(
     @PreviewParameter(PlayableCarouselPreviewParameterProvider::class)
-    parameter: LoadableData<List<PlayableBannerUi>>,
+    parameter: LoadableData<List<BannerUi>>,
 ) {
     TarAvazPreview {
-        PlayableCarousel(
-            playableBanners = parameter,
+        BannerCarousel(
+            banners = parameter,
             onClick = {},
         )
     }

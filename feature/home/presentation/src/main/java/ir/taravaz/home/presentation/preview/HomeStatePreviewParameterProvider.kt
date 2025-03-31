@@ -16,7 +16,7 @@ internal class HomeStatePreviewParameterProvider : PreviewParameterProvider<Home
         topPlaylistsProvider.values.flatMap { playlist: LoadableData<PlayablesUi> ->
             latestPlayablesProvider.values.map {
                 HomeState(
-                    playableBanners = loadableData,
+                    banners = loadableData,
                     latestPlayables = playlist,
                     playlistSection = it,
                 )

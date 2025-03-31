@@ -5,29 +5,29 @@ package ir.taravaz.core.ui.component.carousel
 import androidx.compose.ui.tooling.preview.PreviewParameterProvider
 import ir.taravaz.core.common.util.NetworkError
 import ir.taravaz.core.ui.component.LoadableData
-import ir.taravaz.core.ui.component.model.PlayableBannerUi
+import ir.taravaz.core.ui.component.model.BannerUi
 
-class PlayableCarouselPreviewParameterProvider : PreviewParameterProvider<LoadableData<List<PlayableBannerUi>>> {
-    override val values: Sequence<LoadableData<List<PlayableBannerUi>>> = sequenceOf(
+class PlayableCarouselPreviewParameterProvider : PreviewParameterProvider<LoadableData<List<BannerUi>>> {
+    override val values: Sequence<LoadableData<List<BannerUi>>> = sequenceOf(
         LoadableData.Loading,
         LoadableData.Error(
             error = NetworkError.SERVER_ERROR,
         ),
         LoadableData.Loaded(
             data = listOf(
-                PlayableBannerUi(
+                BannerUi(
                     cover = "https://google.com/vahid.jpg",
                 ),
-                PlayableBannerUi(
+                BannerUi(
                     cover = "https://google.com/vahid.jpg",
                 ),
-                PlayableBannerUi(
+                BannerUi(
                     cover = "https://google.com/vahid.jpg",
                 ),
-                PlayableBannerUi(
+                BannerUi(
                     cover = "https://google.com/vahid.jpg",
                 ),
-                PlayableBannerUi(
+                BannerUi(
                     cover = "https://google.com/vahid.jpg",
                 ),
             ),

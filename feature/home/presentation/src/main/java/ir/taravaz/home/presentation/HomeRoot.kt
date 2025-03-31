@@ -16,10 +16,10 @@ import ir.taravaz.core.designsystem.preview.MediumPhonePreviews
 import ir.taravaz.core.designsystem.theme.TarAvazPreview
 import ir.taravaz.core.designsystem.theme.TarAvazTheme
 import ir.taravaz.core.ui.component.LoadableData
-import ir.taravaz.core.ui.component.carousel.PlayableCarousel
+import ir.taravaz.core.ui.component.carousel.BannerCarousel
 import ir.taravaz.core.ui.component.lazy.playable.HorizontalPlayableList
 import ir.taravaz.core.ui.component.lazy.playlist.HorizontalPlaylist
-import ir.taravaz.core.ui.component.model.PlayableBannerUi
+import ir.taravaz.core.ui.component.model.BannerUi
 import ir.taravaz.core.ui.component.model.PlayablesUi
 import ir.taravaz.core.ui.component.model.PlaylistSectionUi
 import ir.taravaz.home.presentation.preview.HomeStatePreviewParameterProvider
@@ -48,8 +48,8 @@ private fun HomeScreen(
             TarAvazTheme.spacing.space16,
         ),
     ) {
-        playableBanners(
-            playableBanners = state.playableBanners,
+        banners(
+            banners = state.banners,
         )
         verticalSpacer()
         quickActions()
@@ -96,11 +96,11 @@ private fun LazyListScope.quickActions() {
     }
 }
 
-private fun LazyListScope.playableBanners(playableBanners: LoadableData<List<PlayableBannerUi>>) {
+private fun LazyListScope.banners(banners: LoadableData<List<BannerUi>>) {
     item {
-        PlayableCarousel(
+        BannerCarousel(
             modifier = Modifier.fillMaxWidth(),
-            playableBanners = playableBanners,
+            banners = banners,
             onClick = {
             },
         )

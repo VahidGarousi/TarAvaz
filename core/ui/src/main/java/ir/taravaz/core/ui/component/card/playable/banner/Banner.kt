@@ -16,16 +16,16 @@ import ir.taravaz.core.designsystem.preview.MediumPhonePreviews
 import ir.taravaz.core.designsystem.theme.TarAvazPreview
 import ir.taravaz.core.ui.component.LoadableComponent
 import ir.taravaz.core.ui.component.LoadableData
-import ir.taravaz.core.ui.component.model.PlayableBannerUi
+import ir.taravaz.core.ui.component.model.BannerUi
 import ir.taravaz.core.ui.component.shimmer.Shimmer
 
 @Composable
-fun PlayableBanner(
+fun Banner(
     modifier: Modifier = Modifier,
-    playableBannerUi: LoadableData<PlayableBannerUi>,
+    bannerUi: LoadableData<BannerUi>,
 ) {
     LoadableComponent(
-        loadableData = playableBannerUi,
+        loadableData = bannerUi,
         loading = {
             Shimmer(
                 modifier = modifier
@@ -33,7 +33,7 @@ fun PlayableBanner(
                     .height(140.dp),
             )
         },
-        error = {
+        failureContent = {
             Shimmer(
                 modifier = modifier
                     .fillMaxWidth()
@@ -67,13 +67,13 @@ fun PlayableBanner(
 }
 
 @Composable
-fun PlayableBanner(
+fun Banner(
     modifier: Modifier = Modifier,
-    playableBannerUi: PlayableBannerUi,
+    bannerUi: BannerUi,
 ) {
     AsyncImage(
         modifier = modifier.height(140.dp),
-        model = playableBannerUi.cover,
+        model = bannerUi.cover,
         contentScale = ContentScale.FillBounds,
         contentDescription = null,
         placeholder = BrushPainter(
@@ -90,14 +90,14 @@ fun PlayableBanner(
 @OptIn(ExperimentalCoilApi::class)
 @Composable
 @MediumPhonePreviews
-private fun PlayableBannerPreview(
-    @PreviewParameter(PlayableBannerPreviewParameter::class)
-    parameter: LoadableData<PlayableBannerUi>,
+private fun BannerPreview(
+    @PreviewParameter(BannerPreviewParameter::class)
+    parameter: LoadableData<BannerUi>,
 ) {
     TarAvazPreview {
-        PlayableBanner(
+        Banner(
             modifier = Modifier.fillMaxWidth(),
-            playableBannerUi = parameter,
+            bannerUi = parameter,
         )
     }
 }
