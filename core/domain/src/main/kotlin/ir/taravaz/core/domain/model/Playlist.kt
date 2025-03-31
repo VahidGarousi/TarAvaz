@@ -12,5 +12,5 @@ data class PlaylistInfo(
 
 data class Playlist(
     val info: PlaylistInfo,
-    val items : List<Playable>
+    val items : List<Track>
 )

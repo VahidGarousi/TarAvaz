@@ -1,7 +1,7 @@
 package ir.taravaz.core.domain.model
 
-data class Playables(
+data class LatestTracks(
     val id: String,
     val title: String,
-    val items : List<Playable>
+    val items : List<Track>
 )
