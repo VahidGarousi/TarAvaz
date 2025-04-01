@@ -9,7 +9,7 @@ import io.mockk.coEvery
 import io.mockk.coVerify
 import io.mockk.mockk
 import io.mockk.unmockkAll
-import ir.taravaz.core.common.util.NetworkError
+import ir.taravaz.core.common.util.DataError
 import ir.taravaz.core.common.util.Result
 import ir.taravaz.core.domain.model.LatestTracks
 import ir.taravaz.core.domain.model.Track
@@ -40,7 +40,7 @@ internal class GetLatestTracksUseCaseTest {
     fun `invoke should return Result of LatestTracks`() =
         runTest {
             val result = subject.invoke()
-            result.shouldBeInstanceOf<Result<LatestTracks, NetworkError>>()
+            result.shouldBeInstanceOf<Result<LatestTracks, DataError.Network>>()
         }
 
     @Test
@@ -119,14 +119,14 @@ internal class GetLatestTracksUseCaseTest {
         }
 
     @Test
-    fun `given network error, invoke should return NetworkError`() =
+    fun `given network error, invoke should return DataError Network`() =
         runTest {
-            coEvery { trackRepository.getLatestTracks() } returns Result.Failure(NetworkError.NO_INTERNET)
+            coEvery { trackRepository.getLatestTracks() } returns Result.Failure(DataError.Network.NO_INTERNET)
 
             val result = subject.invoke()
 
-            result.shouldBeInstanceOf<Result.Failure<NetworkError>>()
-            result.error shouldBe NetworkError.NO_INTERNET
+            result.shouldBeInstanceOf<Result.Failure<DataError.Network>>()
+            result.error shouldBe DataError.Network.NO_INTERNET
             coVerify(exactly = 1) { trackRepository.getLatestTracks() }
         }
 

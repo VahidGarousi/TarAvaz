@@ -9,7 +9,7 @@ data class LatestTracksUi(
     val items: List<TrackUi>,
 )
 
-fun LatestTracks.mapToPlayablesUi(): LatestTracksUi =
+fun LatestTracks.asLatestTracksUi(): LatestTracksUi =
     LatestTracksUi(
         id = id,
         title = title,

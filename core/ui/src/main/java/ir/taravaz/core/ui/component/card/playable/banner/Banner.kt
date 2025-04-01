@@ -43,7 +43,7 @@ fun Banner(
         loaded = {
             AsyncImage(
                 modifier = modifier.height(140.dp),
-                model = it.cover,
+                model = it.image,
                 contentScale = ContentScale.FillBounds,
                 contentDescription = null,
                 placeholder = BrushPainter(
@@ -73,7 +73,7 @@ fun Banner(
 ) {
     AsyncImage(
         modifier = modifier.height(140.dp),
-        model = bannerUi.cover,
+        model = bannerUi.image,
         contentScale = ContentScale.FillBounds,
         contentDescription = null,
         placeholder = BrushPainter(

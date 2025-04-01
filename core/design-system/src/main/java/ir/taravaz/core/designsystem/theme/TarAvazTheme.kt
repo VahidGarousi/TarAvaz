@@ -18,6 +18,7 @@ import androidx.compose.ui.unit.LayoutDirection
 import com.valentinilk.shimmer.Shimmer
 import com.valentinilk.shimmer.ShimmerBounds
 import com.valentinilk.shimmer.rememberShimmer
+import org.koin.compose.KoinContext
 
 private val DarkColorScheme = darkColorScheme(
     primary = Purple80,
@@ -47,30 +48,32 @@ fun TarAvazTheme(
     dynamicColor: Boolean = false,
     content: @Composable () -> Unit,
 ) {
-    val materialColorScheme = when {
-        dynamicColor && Build.VERSION.SDK_INT >= Build.VERSION_CODES.S -> {
-            val context = LocalContext.current
-            if (darkTheme) dynamicDarkColorScheme(context) else dynamicLightColorScheme(context)
-        }
+    KoinContext {
+        val materialColorScheme = when {
+            dynamicColor && Build.VERSION.SDK_INT >= Build.VERSION_CODES.S -> {
+                val context = LocalContext.current
+                if (darkTheme) dynamicDarkColorScheme(context) else dynamicLightColorScheme(context)
+            }
 
-        darkTheme -> DarkColorScheme
-        else -> LightColorScheme
-    }
-    val backgroundTheme = if (darkTheme) DarkBackgroundTheme else LightBackgroundTheme
-    val taravazColors = if (darkTheme) tarAvazDarkColors() else tarAvazLightColors()
-    val shimmerInstance = rememberShimmer(ShimmerBounds.Window)
-    CompositionLocalProvider(
-        LocalTarAvazColors provides taravazColors,
-        LocalBackgroundTheme provides backgroundTheme,
-        LocalTarAvazTypography provides TarAvazTypography(),
-        LocalLayoutDirection provides LayoutDirection.Rtl,
-        LocalShimmer provides shimmerInstance,
-    ) {
-        MaterialTheme(
-            colorScheme = materialColorScheme,
-            typography = Typography(),
-            content = content,
-        )
+            darkTheme -> DarkColorScheme
+            else -> LightColorScheme
+        }
+        val backgroundTheme = if (darkTheme) DarkBackgroundTheme else LightBackgroundTheme
+        val taravazColors = if (darkTheme) tarAvazDarkColors() else tarAvazLightColors()
+        val shimmerInstance = rememberShimmer(ShimmerBounds.Window)
+        CompositionLocalProvider(
+            LocalTarAvazColors provides taravazColors,
+            LocalBackgroundTheme provides backgroundTheme,
+            LocalTarAvazTypography provides TarAvazTypography(),
+            LocalLayoutDirection provides LayoutDirection.Rtl,
+            LocalShimmer provides shimmerInstance,
+        ) {
+            MaterialTheme(
+                colorScheme = materialColorScheme,
+                typography = Typography(),
+                content = content,
+            )
+        }
     }
 }
 

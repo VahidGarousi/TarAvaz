@@ -1,4 +1,4 @@
-package ir.taravaz.core.data
+package ir.taravaz.core.network
 
 import kotlinx.serialization.Serializable
 

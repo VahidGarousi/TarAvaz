@@ -15,8 +15,9 @@ dependencies {
     api(projects.core.designSystem)
     api(projects.core.domain)
 
+    implementation(platform(libs.coil.bom))
     implementation(libs.androidx.browser)
-    implementation(libs.coil.kt)
+    implementation(libs.coil)
     implementation(libs.coil.kt.compose)
     implementation(libs.coil.kt.network)
 

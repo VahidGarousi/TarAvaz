@@ -25,15 +25,9 @@ enum class TarAvazFlavor(
         versionCode = 1,
         versionName = "1.0.0"
     ),
-    STAGING(
+    DEMO(
         dimension = FlavorDimension.MODE,
-        applicationIdSuffix = ".staging",
-        versionCode = 1,
-        versionName = "1.0.0"
-    ),
-    PRODUCTION(
-        dimension = FlavorDimension.MODE,
-        applicationIdSuffix = "",
+        applicationIdSuffix = ".demo",
         versionCode = 1,
         versionName = "1.0.0"
     )

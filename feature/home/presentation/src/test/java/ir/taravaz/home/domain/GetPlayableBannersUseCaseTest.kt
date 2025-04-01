@@ -8,7 +8,7 @@ import io.mockk.coEvery
 import io.mockk.coVerify
 import io.mockk.mockk
 import io.mockk.unmockkAll
-import ir.taravaz.core.domain.model.PlayableBanner
+import ir.taravaz.core.domain.model.Banner
 import ir.taravaz.home.domain.repository.TrackRepository
 import kotlinx.coroutines.test.runTest
 import org.junit.jupiter.api.AfterEach
@@ -34,17 +34,17 @@ internal class GetPlayableBannersUseCaseTest {
     @Test
     fun `Given use case is initialized, When invoked, Then calls repository exactly once`() =
         runTest {
-            coEvery { trackRepository.getPlayableBanners() } returns emptyList()
+            coEvery { trackRepository.getBanners() } returns emptyList()
 
             subject.invoke()
 
-            coVerify(exactly = 1) { trackRepository.getPlayableBanners() }
+            coVerify(exactly = 1) { trackRepository.getBanners() }
         }
 
     @Test
     fun `Given repository returns empty list, When invoked, Then returns empty list`() =
         runTest {
-            coEvery { trackRepository.getPlayableBanners() } returns emptyList()
+            coEvery { trackRepository.getBanners() } returns emptyList()
 
             val result = subject.invoke()
 
@@ -54,10 +54,10 @@ internal class GetPlayableBannersUseCaseTest {
     @Test
     fun `Given repository returns single banner, When invoked, Then returns single banner`() =
         runTest {
-            val expectedBanner = PlayableBanner(
+            val expectedBanner = Banner(
                 imageUrl = "url1",
             )
-            coEvery { trackRepository.getPlayableBanners() } returns listOf(expectedBanner)
+            coEvery { trackRepository.getBanners() } returns listOf(expectedBanner)
 
             val result = subject.invoke()
 
@@ -69,11 +69,11 @@ internal class GetPlayableBannersUseCaseTest {
     fun `Given repository returns multiple banners, When invoked, Then returns all banners in order`() =
         runTest {
             val expectedBanners = listOf(
-                PlayableBanner(imageUrl = "url1"),
-                PlayableBanner(imageUrl = "url2"),
-                PlayableBanner(imageUrl = "url3"),
+                Banner(imageUrl = "url1"),
+                Banner(imageUrl = "url2"),
+                Banner(imageUrl = "url3"),
             )
-            coEvery { trackRepository.getPlayableBanners() } returns expectedBanners
+            coEvery { trackRepository.getBanners() } returns expectedBanners
 
             val result = subject.invoke()
 
@@ -85,7 +85,7 @@ internal class GetPlayableBannersUseCaseTest {
     fun `Given repository throws runtime exception, When invoked, Then propagates exception`() =
         runTest {
             val errorMessage = "Database error"
-            coEvery { trackRepository.getPlayableBanners() } throws RuntimeException(errorMessage)
+            coEvery { trackRepository.getBanners() } throws RuntimeException(errorMessage)
 
             val exception = shouldThrowExactly<RuntimeException> { subject.invoke() }
 
@@ -95,7 +95,7 @@ internal class GetPlayableBannersUseCaseTest {
     @Test
     fun `Given network connectivity issues, When invoked, Then throws network exception`() =
         runTest {
-            coEvery { trackRepository.getPlayableBanners() } throws UnknownHostException("No internet")
+            coEvery { trackRepository.getBanners() } throws UnknownHostException("No internet")
 
             val exception = shouldThrowExactly<UnknownHostException> { subject.invoke() }
 
@@ -106,9 +106,9 @@ internal class GetPlayableBannersUseCaseTest {
     fun `Given repository returns large number of banners, When invoked, Then handles efficiently`() =
         runTest {
             val largeBannerList = List(1000) { index ->
-                PlayableBanner(imageUrl = "url$index")
+                Banner(imageUrl = "url$index")
             }
-            coEvery { trackRepository.getPlayableBanners() } returns largeBannerList
+            coEvery { trackRepository.getBanners() } returns largeBannerList
 
             val result = subject.invoke()
 
@@ -119,9 +119,9 @@ internal class GetPlayableBannersUseCaseTest {
     @Test
     fun `Given repository returns duplicate banners, When invoked, Then returns all duplicates`() =
         runTest {
-            val duplicateBanner = PlayableBanner(imageUrl = "url1")
+            val duplicateBanner = Banner(imageUrl = "url1")
             val bannersWithDuplicates = listOf(duplicateBanner, duplicateBanner)
-            coEvery { trackRepository.getPlayableBanners() } returns bannersWithDuplicates
+            coEvery { trackRepository.getBanners() } returns bannersWithDuplicates
 
             val result = subject.invoke()
 

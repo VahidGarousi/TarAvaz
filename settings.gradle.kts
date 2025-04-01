@@ -32,10 +32,11 @@ include(
     ":core:design-system",
     ":core:ui",
     ":core:data",
-    ":core:common"
+    ":core:common",
+    ":core:network",
 )
 include(":feature:player:data", ":feature:player:presentation", ":feature:player:domain")
-include(":feature:home:presentation", ":feature:home:domain", ":feature:home:data")
+include(":feature:home:presentation", ":feature:home:domain", ":feature:home:data", ":feature:home:di")
 include(":feature:playlist:presentation")
 include(":feature:explore:presentation")
 include(":feature:profile:presentation")

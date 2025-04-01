@@ -1,12 +1,20 @@
 package ir.taravaz.core.ui.component.model
 
-import ir.taravaz.core.domain.model.PlayableBanner
+import ir.taravaz.core.domain.model.Banner
 
 data class BannerUi(
-    val cover: String = "",
+    val id: Long,
+    val image: String,
+    val linkType: Long,
+    val linkValue: String,
 )
 
-fun PlayableBanner.mapToPlayableBannerUi(): BannerUi =
+fun Banner.mapToBanner(): BannerUi =
     BannerUi(
-        cover = imageUrl,
+        id = id,
+        image = image,
+        linkType = linkType,
+        linkValue = linkValue,
     )
+
+fun List<Banner>.mapToBannerUis(): List<BannerUi> = this.map(Banner::mapToBanner)

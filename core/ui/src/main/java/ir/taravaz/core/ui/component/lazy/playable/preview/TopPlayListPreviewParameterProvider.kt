@@ -1,7 +1,7 @@
 package ir.taravaz.core.ui.component.lazy.playable.preview
 
 import androidx.compose.ui.tooling.preview.PreviewParameterProvider
-import ir.taravaz.core.common.util.NetworkError
+import ir.taravaz.core.common.util.DataError
 import ir.taravaz.core.ui.component.LoadableData
 import ir.taravaz.core.ui.component.model.LatestTracksUi
 import ir.taravaz.core.ui.component.model.TrackUi
@@ -38,7 +38,7 @@ class TopPlayListPreviewParameterProvider : PreviewParameterProvider<LoadableDat
             data = playables,
         ),
         LoadableData.Error(
-            error = NetworkError.SERVER_ERROR,
+            error = DataError.Network.SERVER_ERROR,
         ),
     )
 }

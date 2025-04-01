@@ -2,18 +2,18 @@
 
 package ir.taravaz.home.presentation
 
-import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import ir.taravaz.core.common.constants.TarAvazAppConstants
-import ir.taravaz.core.common.util.NetworkError
+import ir.taravaz.core.common.util.DataError
+import ir.taravaz.core.domain.model.Banner
 import ir.taravaz.core.domain.model.LatestTracks
-import ir.taravaz.core.domain.model.PlayableBanner
 import ir.taravaz.core.domain.model.PlaylistSection
 import ir.taravaz.core.ui.component.LoadableData
-import ir.taravaz.core.ui.component.map
-import ir.taravaz.core.ui.component.model.mapToPlayableBannerUi
-import ir.taravaz.core.ui.component.model.mapToPlayablesUi
+import ir.taravaz.core.ui.component.handler.ApiCallHandler
+import ir.taravaz.core.ui.component.model.asLatestTracksUi
+import ir.taravaz.core.ui.component.model.mapToBannerUis
 import ir.taravaz.core.ui.component.model.mapToPlaylistInfoUi
+import ir.taravaz.core.ui.viewmodel.BaseViewModel
 import ir.taravaz.home.domain.GetBannersUseCase
 import ir.taravaz.home.domain.GetLatestTracksUseCase
 import ir.taravaz.home.domain.GetPlaylistSectionUseCase
@@ -26,6 +26,7 @@ import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
 
 class HomeViewModel internal constructor(
+    private val apiCallHandler: ApiCallHandler,
     private val getBannersUseCase: GetBannersUseCase,
     private val getPlaylistSectionUseCase: GetPlaylistSectionUseCase,
     private val getLatestTracksUseCase: GetLatestTracksUseCase,
@@ -52,53 +53,82 @@ class HomeViewModel internal constructor(
 
     private fun getLatestTracks() {
         viewModelScope.launch {
-            _state.value = _state.value.copy(latestTracks = LoadableData.Loading)
-            val result = getLatestTracksUseCase().map(LatestTracks::mapToPlayablesUi)
-            _state.update {
-                it.copy(
-                    latestTracks = result,
-                )
-            }
+            apiCallHandler.invoke(
+                block = {
+                    getLatestTracksUseCase()
+                },
+                onLoading = {
+                    _state.update {
+                        it.copy(latestTracks = LoadableData.Loading)
+                    }
+                },
+                onSuccess = { latestTracks: LatestTracks ->
+                    _state.update {
+                        it.copy(latestTracks = LoadableData.Loaded(latestTracks.asLatestTracksUi()))
+                    }
+                },
+                onError = { error: DataError.Network ->
+                    _state.update {
+                        it.copy(latestTracks = LoadableData.Error(error = error))
+                    }
+                },
+            )
         }
     }
 
     private fun getPlaylists() {
         viewModelScope.launch {
-            _state.value = _state.value.copy(playlistSection = LoadableData.Loading)
-            runCatching {
-                getPlaylistSectionUseCase()
-            }.onSuccess { playlistSection: PlaylistSection ->
-                _state.update {
-                    it.copy(
-                        playlistSection = LoadableData.Loaded(
-                            data = playlistSection.mapToPlaylistInfoUi(),
-                        ),
-                    )
-                }
-            }.onFailure { throwable: Throwable ->
-                _state.update { it.copy(playlistSection = LoadableData.Error(error = NetworkError.SERVER_ERROR)) }
-            }
+            apiCallHandler.invoke(
+                block = {
+                    getPlaylistSectionUseCase()
+                },
+                onLoading = {
+                    _state.update {
+                        it.copy(playlistSection = LoadableData.Loading)
+                    }
+                },
+                onSuccess = { playlistSection: PlaylistSection ->
+                    _state.update {
+                        it.copy(playlistSection = LoadableData.Loaded(playlistSection.mapToPlaylistInfoUi()))
+                    }
+                },
+                onError = { error: DataError.Network ->
+                    _state.update {
+                        it.copy(playlistSection = LoadableData.Error(error = error))
+                    }
+                },
+            )
         }
     }
 
     private fun getBanners() {
         viewModelScope.launch {
-            _state.value = _state.value.copy(banners = LoadableData.Loading)
-            runCatching {
-                getBannersUseCase()
-            }.onSuccess { playableBanners: List<PlayableBanner> ->
-                _state.update {
-                    it.copy(
-                        banners = LoadableData.Loaded(
-                            data = playableBanners.map(PlayableBanner::mapToPlayableBannerUi),
-                        ),
-                    )
-                }
-            }.onFailure { throwable ->
-                _state.update { it.copy(banners = LoadableData.Error(error = NetworkError.SERVER_ERROR)) }
-            }
+            apiCallHandler.invoke(
+                block = {
+                    getBannersUseCase()
+                },
+                onLoading = {
+                    _state.update { it.copy(banners = LoadableData.Loading) }
+                },
+                onSuccess = { data: List<Banner> ->
+                    _state.update {
+                        it.copy(
+                            banners = LoadableData.Loaded(
+                                data = data.mapToBannerUis(),
+                            ),
+                        )
+                    }
+                },
+                onError = { error ->
+                    _state.update {
+                        it.copy(
+                            banners = LoadableData.Error(
+                                error = error,
+                            ),
+                        )
+                    }
+                },
+            )
         }
     }
 }
-
-abstract class BaseViewModel : ViewModel()

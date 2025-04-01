@@ -20,7 +20,8 @@ dependencies {
     api(libs.androidx.compose.ui.util)
     api(libs.compose.shimmer)
 
-    implementation(libs.coil.kt)
+    implementation(platform(libs.coil.bom))
+    implementation(libs.coil)
     implementation(libs.coil.kt.compose)
     implementation(libs.coil.kt.network)
 

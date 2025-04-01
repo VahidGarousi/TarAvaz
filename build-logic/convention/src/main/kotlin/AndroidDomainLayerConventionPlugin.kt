@@ -8,6 +8,8 @@ class AndroidDomainLayerConventionPlugin : Plugin<Project> {
         dependencies {
             add("implementation", project(":core:domain"))
             add("implementation", project(":core:common"))
+            add("implementation", platform(libs.findLibrary("koin-bom").get()))
+            add("implementation", libs.findLibrary("koin-core").get())
         }
     }
 }
