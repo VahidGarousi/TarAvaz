@@ -15,12 +15,16 @@ import androidx.compose.ui.tooling.preview.Preview
     device = "spec:width=411dp,height=891dp",
     name = "Light Mode",
     uiMode = Configuration.UI_MODE_NIGHT_NO,
+    showBackground = true,
+    backgroundColor = 0xFFEAECF2,
 )
 @Preview(
     group = "Medium Phone",
     device = "spec:width=411dp,height=891dp",
     name = "Dark Mode",
     uiMode = Configuration.UI_MODE_NIGHT_YES,
+    showBackground = true,
+    backgroundColor = 0xFF1C202F,
 )
 annotation class MediumPhonePreviews
 

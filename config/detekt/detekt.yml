@@ -14,3 +14,5 @@ naming:
 style:
   UnusedPrivateMember:
     ignoreAnnotated: [ 'Preview','MediumPhonePreviews' ]
+  ReturnCount:
+    excludedFunctions: [ 'safeCall','equals' ]

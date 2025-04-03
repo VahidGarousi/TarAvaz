@@ -10,7 +10,6 @@ android {
 dependencies {
     api(projects.core.common)
     api(projects.core.domain)
-    api(projects.core.network)
 
     implementation(libs.bundles.ktor)
     implementation(libs.kotlinx.serialization.json)

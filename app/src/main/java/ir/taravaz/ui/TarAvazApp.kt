@@ -35,6 +35,7 @@ import androidx.navigation.NavDestination.Companion.hierarchy
 import ir.taravaz.core.designsystem.component.TarAvazBackground
 import ir.taravaz.core.designsystem.component.TarAvazNavigationSuiteScaffold
 import ir.taravaz.core.designsystem.theme.TarAvazTheme
+import ir.taravaz.core.designsystem.theme.typography.medium
 import ir.taravaz.navigation.TarAvazNavHost
 import kotlin.reflect.KClass
 
@@ -86,8 +87,8 @@ fun TarAvazApp(
                     },
                     label = {
                         Text(
-                            text = stringResource(destination.iconTextId),
-                            style = MaterialTheme.typography.labelLarge,
+                            text = stringResource(destination.titleTextId),
+                            style = TarAvazTheme.typography.persian.body1.medium,
                             color = TarAvazTheme.colors.navigationContentColor,
                         )
                     },

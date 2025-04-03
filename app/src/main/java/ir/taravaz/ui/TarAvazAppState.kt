@@ -12,15 +12,15 @@ import androidx.navigation.NavHostController
 import androidx.navigation.compose.rememberNavController
 import androidx.navigation.navOptions
 import androidx.tracing.trace
-import ir.taravaz.explore.presentation.navigation.navigateToExplore
-import ir.taravaz.home.presentation.navigation.navigateToHome
+import ir.taravaz.explore.navigation.navigateToExplore
+import ir.taravaz.home.navigation.navigateToHome
 import ir.taravaz.navigation.TopLevelDestination
 import ir.taravaz.navigation.TopLevelDestination.EXPLORE
 import ir.taravaz.navigation.TopLevelDestination.HOME
 import ir.taravaz.navigation.TopLevelDestination.PLAYLIST
 import ir.taravaz.navigation.TopLevelDestination.PROFILE
-import ir.taravaz.playlist.presentation.navigation.navigateToPlaylist
-import ir.taravaz.profile.presentation.navigation.navigateToProfile
+import ir.taravaz.playlist.navigation.navigateToPlaylist
+import ir.taravaz.profile.navigation.navigateToProfile
 
 @Composable
 fun rememberTarAvazState(navController: NavHostController = rememberNavController()): TarAvazAppState =

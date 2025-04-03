@@ -9,9 +9,12 @@ import androidx.compose.material3.TextButton
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
 import ir.taravaz.core.designsystem.preview.MediumPhonePreviews
 import ir.taravaz.core.designsystem.theme.TarAvazPreview
 import ir.taravaz.core.designsystem.theme.TarAvazTheme
+import ir.taravaz.core.designsystem.theme.typography.bold
+import ir.taravaz.core.designsystem.theme.typography.medium
 import ir.taravaz.core.ui.component.shimmer.Shimmer
 
 @Composable
@@ -24,8 +27,9 @@ fun SectionHeader(
     ) {
         Text(
             text = title,
-            style = TarAvazTheme.typography.quickActionTitle,
+            style = TarAvazTheme.typography.persian.body1.bold,
             modifier = Modifier.align(Alignment.CenterStart),
+            color = Color(0xFFFFFFFF),
         )
         TextButton(
             onClick = {},
@@ -33,7 +37,8 @@ fun SectionHeader(
         ) {
             Text(
                 text = "همه",
-                style = TarAvazTheme.typography.quickActionTitle,
+                style = TarAvazTheme.typography.persian.body2.medium,
+                color = Color(0XFF00F0FF),
             )
         }
     }

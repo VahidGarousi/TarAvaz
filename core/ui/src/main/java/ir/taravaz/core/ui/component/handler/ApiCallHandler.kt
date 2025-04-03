@@ -1,3 +1,5 @@
+@file:Suppress("TooGenericExceptionCaught")
+
 package ir.taravaz.core.ui.component.handler
 
 import ir.taravaz.core.common.util.DataError

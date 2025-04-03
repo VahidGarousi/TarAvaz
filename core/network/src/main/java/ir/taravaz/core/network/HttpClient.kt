@@ -1,3 +1,5 @@
+@file:Suppress("TooGenericExceptionCaught", "InstanceOfCheckForException")
+
 package ir.taravaz.core.network
 
 import io.ktor.client.HttpClient
@@ -29,30 +31,29 @@ suspend inline fun <reified Response : Any> HttpClient.get(
 suspend inline fun <reified T> safeCall(execute: () -> HttpResponse): Result<T, DataError.Network> {
     val response = try {
         execute()
-    } catch (e: UnresolvedAddressException) {
-        e.printStackTrace()
+    } catch (_: UnresolvedAddressException) {
         return Result.Failure(DataError.Network.NO_INTERNET)
-    } catch (e: SerializationException) {
-        e.printStackTrace()
+    } catch (_: SerializationException) {
         return Result.Failure(DataError.Network.SERIALIZATION)
-    } catch (e: Exception) {
-        if (e is CancellationException) throw e
-        e.printStackTrace()
+    } catch (exception: Exception) {
+        if (exception is CancellationException) {
+            throw exception
+        }
         return Result.Failure(DataError.Network.UNKNOWN)
     }
-
     return responseToResult(response)
 }
 
 suspend inline fun <reified T> responseToResult(response: HttpResponse): Result<T, DataError.Network> =
     when (response.status.value) {
-        in 200..299 -> Result.Success(response.body<T>())
-        401 -> Result.Failure(DataError.Network.UNAUTHORIZED)
-        408 -> Result.Failure(DataError.Network.REQUEST_TIMEOUT)
-        409 -> Result.Failure(DataError.Network.CONFLICT)
-        413 -> Result.Failure(DataError.Network.PAYLOAD_TOO_LARGE)
-        429 -> Result.Failure(DataError.Network.TOO_MANY_REQUESTS)
-        in 500..599 -> Result.Failure(DataError.Network.SERVER_ERROR)
+        in HttpStatusCodes.SUCCESS_RANGE -> Result.Success(response.body<T>())
+        HttpStatusCodes.UNAUTHORIZED -> Result.Failure(DataError.Network.UNAUTHORIZED)
+        HttpStatusCodes.NOT_FOUND -> Result.Failure(DataError.Network.NOT_FOUND)
+        HttpStatusCodes.REQUEST_TIMEOUT -> Result.Failure(DataError.Network.REQUEST_TIMEOUT)
+        HttpStatusCodes.CONFLICT -> Result.Failure(DataError.Network.CONFLICT)
+        HttpStatusCodes.PAYLOAD_TOO_LARGE -> Result.Failure(DataError.Network.PAYLOAD_TOO_LARGE)
+        HttpStatusCodes.TOO_MANY_REQUESTS -> Result.Failure(DataError.Network.TOO_MANY_REQUESTS)
+        in HttpStatusCodes.SERVER_ERROR_RANGE -> Result.Failure(DataError.Network.SERVER_ERROR)
         else -> Result.Failure(DataError.Network.UNKNOWN)
     }
 

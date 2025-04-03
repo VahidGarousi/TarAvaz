@@ -3,16 +3,16 @@ package ir.taravaz.navigation
 import androidx.annotation.StringRes
 import androidx.compose.ui.graphics.vector.ImageVector
 import ir.taravaz.core.designsystem.icon.TarAvazIcon
-import ir.taravaz.explore.presentation.navigation.ExploreRoute
-import ir.taravaz.home.presentation.navigation.HomeBaseRoute
-import ir.taravaz.home.presentation.navigation.HomeRoute
-import ir.taravaz.playlist.presentation.navigation.PlaylistRoute
-import ir.taravaz.profile.presentation.navigation.ProfileRoute
+import ir.taravaz.explore.navigation.ExploreRoute
+import ir.taravaz.home.navigation.HomeBaseRoute
+import ir.taravaz.home.navigation.HomeRoute
+import ir.taravaz.playlist.navigation.PlaylistRoute
+import ir.taravaz.profile.navigation.ProfileRoute
 import kotlin.reflect.KClass
-import ir.taravaz.explore.presentation.R as exploreR
-import ir.taravaz.home.presentation.R as homeR
-import ir.taravaz.playlist.presentation.R as playlistR
-import ir.taravaz.profile.presentation.R as profileR
+import ir.taravaz.explore.R as exploreR
+import ir.taravaz.home.R as homeR
+import ir.taravaz.playlist.R as playlistR
+import ir.taravaz.profile.R as profileR
 
 enum class TopLevelDestination(
     val selectedIcon: ImageVector,
