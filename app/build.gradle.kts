@@ -110,5 +110,5 @@ dependencies {
     androidTestImplementation(libs.kotlinx.coroutines.test)
 }
 dependencyGuard {
-    configuration("productionReleaseRuntimeClasspath")
+    configuration("developReleaseRuntimeClasspath")
 }

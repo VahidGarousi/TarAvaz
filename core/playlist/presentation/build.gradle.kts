@@ -5,7 +5,7 @@ plugins {
 }
 
 android {
-    namespace = "ir.taravaz.core.track.presentation"
+    namespace = "ir.taravaz.core.playlist.presentation"
 }
 
 dependencies {

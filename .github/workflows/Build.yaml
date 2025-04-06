@@ -140,7 +140,7 @@ jobs:
           sarif_file: './'
 
       - name: Check badging
-        run: ./gradlew :app:checkProductionReleaseBadging
+        run: ./gradlew :app:checkDevelopReleaseBadging
 
       - name: Dependency Sort Checks
         run: ./gradlew checkSortDependencies
