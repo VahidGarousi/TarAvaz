@@ -6,9 +6,11 @@ import ir.taravaz.core.track.data.dto.LatestTracksDto
 import ir.taravaz.core.track.data.dto.TrackDto
 import ir.taravaz.core.track.data.source.RemoteTrackDataSource
 
-private const val IMAGE_URL = "file:///android_asset/artist"
-
 class DemoRemoteTrackDataSource : RemoteTrackDataSource {
+    companion object {
+        private const val IMAGE_URL = "file:///android_asset/artist"
+    }
+
     override suspend fun getLatestTracks(): Result<LatestTracksDto, DataError.Network> {
         val demoTracks = listOf(
             TrackDto(

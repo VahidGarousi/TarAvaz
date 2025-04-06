@@ -1,3 +1,5 @@
+@file:Suppress("CyclomaticComplexMethod")
+
 package ir.taravaz.core.designsystem.theme.shapes
 
 import androidx.compose.foundation.shape.RoundedCornerShape
@@ -105,8 +107,7 @@ class TarAvazShapes(
 ) {
     override fun equals(other: Any?): Boolean {
         if (this === other) return true
-        if (other == null || this::class != other::class) return false
-        other as TarAvazShapes
+        if (other !is TarAvazShapes) return false
         if (rectangle != other.rectangle) return false
         if (rectangle2Radius != other.rectangle2Radius) return false
         if (rectangle4Radius != other.rectangle4Radius) return false

@@ -1,3 +1,5 @@
+@file:Suppress("LongMethod")
+
 package ir.taravaz.core.designsystem.theme.typography
 
 import androidx.compose.runtime.staticCompositionLocalOf

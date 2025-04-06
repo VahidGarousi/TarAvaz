@@ -5,9 +5,11 @@ import ir.taravaz.core.common.util.Result
 import ir.taravaz.core.data.model.BannerDto
 import ir.taravaz.core.data.source.BannerRemoteDataSource
 
-private const val IMAGE_URL = "file:///android_asset/banner"
-
 class DemoRemoteBannerDataSource : BannerRemoteDataSource {
+    companion object {
+        private const val IMAGE_URL = "file:///android_asset/banner"
+    }
+
     override suspend fun getBanners(): Result<List<BannerDto>, DataError.Network> {
         val banners = listOf(
             // Type 0 banner (product page) - product ID 123

@@ -11,8 +11,19 @@ naming:
     excludeClassPattern: '$^'
     ignoreAnnotated: [ 'Composable' ]
     # Additional rules to align with Uncle Bob's advice
+  TopLevelPropertyNaming:
+    constantPattern: '[A-Z][A-Za-z0-9]*'
 style:
   UnusedPrivateMember:
     ignoreAnnotated: [ 'Preview','MediumPhonePreviews' ]
   ReturnCount:
     excludedFunctions: [ 'safeCall','equals' ]
+  MagicNumber:
+    ignorePropertyDeclaration: true
+    ignoreCompanionObjectPropertyDeclaration: true
+complexity:
+  TooManyFunctions:
+    ignoreAnnotated: [ 'Preview','MediumPhonePreviews' ]
+  LongParameterList:
+    ignoreDefaultParameters: true
+    functionThreshold: 8

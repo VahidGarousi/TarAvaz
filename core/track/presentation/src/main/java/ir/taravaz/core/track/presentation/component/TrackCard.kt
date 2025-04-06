@@ -64,17 +64,22 @@ fun TrackCard(
                 style = TarAvazTheme.typography.persian.label1.bold,
                 maxLines = 1,
                 overflow = TextOverflow.Ellipsis,
-                color = Color(0xFFFFFFFF),
+                color = TrackCardDefault.TrackColor,
             )
             Text(
                 text = track.artistName,
                 style = TarAvazTheme.typography.persian.label1.normal,
                 maxLines = 1,
                 overflow = TextOverflow.Ellipsis,
-                color = Color(0xFF999AAB),
+                color = TrackCardDefault.ArtistColor,
             )
         }
     }
+}
+
+object TrackCardDefault {
+    val ArtistColor = Color(0xFF999AAB)
+    val TrackColor = Color(0xFFFFFFFF)
 }
 
 @MediumPhonePreviews

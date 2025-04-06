@@ -1,3 +1,5 @@
+@file:Suppress("CyclomaticComplexMethod", "LongParameterList")
+
 package ir.taravaz.core.designsystem.theme.typography
 
 import androidx.compose.runtime.Immutable

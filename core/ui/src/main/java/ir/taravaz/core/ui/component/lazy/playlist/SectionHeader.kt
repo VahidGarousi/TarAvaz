@@ -29,7 +29,7 @@ fun SectionHeader(
             text = title,
             style = TarAvazTheme.typography.persian.body1.bold,
             modifier = Modifier.align(Alignment.CenterStart),
-            color = Color(0xFFFFFFFF),
+            color = SectionHeaderDefaults.TitleColor,
         )
         TextButton(
             onClick = {},
@@ -38,7 +38,7 @@ fun SectionHeader(
             Text(
                 text = "همه",
                 style = TarAvazTheme.typography.persian.body2.medium,
-                color = Color(0XFF00F0FF),
+                color = SectionHeaderDefaults.SubTitleColor,
             )
         }
     }
@@ -62,6 +62,15 @@ fun SectionHeaderLoading(modifier: Modifier = Modifier) {
                 .align(Alignment.CenterEnd),
         )
     }
+}
+
+object SectionHeaderDefaults {
+    val GradientColors = listOf(
+        Color(0xFF00F0FF),
+        Color(0x3300F0FF),
+    )
+    val TitleColor = Color(0xFFFFFFFF)
+    val SubTitleColor = Color(0xFF00F0FF)
 }
 
 @MediumPhonePreviews
