@@ -55,6 +55,7 @@ configurations.all {
     }
 }
 dependencies {
+    implementation(platform(libs.coil.bom))
     implementation(libs.androidx.activity.compose)
     implementation(libs.androidx.compose.foundation)
     implementation(libs.androidx.compose.foundation.layout)
@@ -73,19 +74,24 @@ dependencies {
     implementation(libs.androidx.navigation.compose)
     implementation(libs.androidx.tracing.ktx)
     implementation(libs.androidx.window.core)
-    implementation(libs.coil.kt)
-    implementation(libs.coil.kt.compose)
-    implementation(libs.coil.kt.network)
+    implementation(libs.bundles.ktor)
+    implementation(libs.coil)
+    implementation(libs.koin.android)
+    implementation(libs.koin.androidx.compose)
+    implementation(libs.koin.androidx.startup)
     implementation(libs.kotlinx.serialization.json)
+    implementation(projects.core.data)
     implementation(projects.core.designSystem)
     implementation(projects.core.domain)
+    implementation(projects.core.network)
+    implementation(projects.core.playlist.di)
+    implementation(projects.core.track.di)
     implementation(projects.core.ui)
-    implementation(projects.feature.explore.presentation)
-    implementation(projects.feature.home.data)
-    implementation(projects.feature.home.presentation)
+    implementation(projects.feature.explore)
+    implementation(projects.feature.home)
     implementation(projects.feature.player.data)
-    implementation(projects.feature.playlist.presentation)
-    implementation(projects.feature.profile.presentation)
+    implementation(projects.feature.playlist)
+    implementation(projects.feature.profile)
 
     testImplementation(libs.androidx.test.rules)
     testImplementation(libs.kotest.assertions.core)
@@ -100,5 +106,5 @@ dependencies {
     androidTestImplementation(libs.kotlinx.coroutines.test)
 }
 dependencyGuard {
-    configuration("productionReleaseRuntimeClasspath")
+    configuration("developReleaseRuntimeClasspath")
 }

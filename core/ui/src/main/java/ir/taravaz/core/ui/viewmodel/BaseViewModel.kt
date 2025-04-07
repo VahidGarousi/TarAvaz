@@ -1,0 +1,5 @@
+package ir.taravaz.core.ui.viewmodel
+
+import androidx.lifecycle.ViewModel
+
+abstract class BaseViewModel : ViewModel()

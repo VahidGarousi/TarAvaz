@@ -26,12 +26,20 @@ rootProject.name = "TarAvaz"
 enableFeaturePreview("TYPESAFE_PROJECT_ACCESSORS")
 include(":konsist")
 include(":app")
-include(":core:domain", ":core:screenshot-testing", ":core:design-system", ":core:ui")
+include(
+    ":core:domain",
+    ":core:screenshot-testing",
+    ":core:design-system",
+    ":core:ui",
+    ":core:data",
+    ":core:common",
+    ":core:network",
+)
 include(":feature:player:data", ":feature:player:presentation", ":feature:player:domain")
-include(":feature:home:presentation", ":feature:home:domain", ":feature:home:data")
-include(":feature:playlist:presentation")
-include(":feature:explore:presentation")
-include(":feature:profile:presentation")
+include(":feature:home")
+include(":feature:playlist")
+include(":feature:explore")
+include(":feature:profile")
 
 check(JavaVersion.current().isCompatibleWith(JavaVersion.VERSION_17)) {
     """
@@ -40,3 +48,14 @@ check(JavaVersion.current().isCompatibleWith(JavaVersion.VERSION_17)) {
     https://developer.android.com/build/jdks#jdk-config-in-studio
     """.trimIndent()
 }
+include(":core:track:domain")
+include(":core:track:data")
+include(":core:track:di")
+include(":core:track:presentation")
+include(":core:track:network")
+
+include(":core:playlist:domain")
+include(":core:playlist:data")
+include(":core:playlist:di")
+include(":core:playlist:presentation")
+include(":core:playlist:network")

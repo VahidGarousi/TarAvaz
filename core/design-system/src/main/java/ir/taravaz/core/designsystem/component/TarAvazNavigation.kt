@@ -14,7 +14,6 @@ import androidx.compose.material3.adaptive.navigationsuite.NavigationSuiteScaffo
 import androidx.compose.material3.adaptive.navigationsuite.NavigationSuiteScope
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.Color
 import ir.taravaz.core.designsystem.theme.TarAvazTheme
 
 @Composable
@@ -57,10 +56,10 @@ fun TarAvazNavigationSuiteScaffold(
             ).run(navigationSuiteItems)
         },
         layoutType = layoutType,
-        containerColor = Color.Transparent,
+        containerColor = TarAvazTheme.colors.backgroundColor,
         navigationSuiteColors = NavigationSuiteDefaults.colors(
             navigationBarContentColor = TarAvazTheme.colors.navigationContentColor,
-            navigationRailContainerColor = Color.Transparent,
+            navigationBarContainerColor = TarAvazTheme.colors.navigationContainerColor,
         ),
         modifier = modifier,
     ) {

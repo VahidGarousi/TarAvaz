@@ -7,8 +7,8 @@ import ir.taravaz.libs
 import org.gradle.api.Plugin
 import org.gradle.api.Project
 import org.gradle.kotlin.dsl.configure
-import org.gradle.kotlin.dsl.getByType
 import org.gradle.kotlin.dsl.dependencies
+import org.gradle.kotlin.dsl.getByType
 
 
 class AndroidApplicationConventionPlugin : Plugin<Project> {
@@ -26,7 +26,7 @@ class AndroidApplicationConventionPlugin : Plugin<Project> {
 
             extensions.configure<ApplicationExtension> {
                 configureKotlinAndroid(this)
-                defaultConfig.targetSdk = TARGET_SDK_VERSION
+                defaultConfig.targetSdk = TargetSdkVersion
                 testOptions.animationsDisabled = true
 //                configureGradleManagedDevices(this)
             }
@@ -35,6 +35,8 @@ class AndroidApplicationConventionPlugin : Plugin<Project> {
                 configureBadgingTasks(extensions.getByType<BaseExtension>(), this)
             }
             dependencies {
+                "implementation"(project(":core:common"))
+                "implementation"(project(":core:data"))
                 "implementation"(libs.findLibrary("kotlinx-coroutines-guava").get())
                 "implementation"(libs.findLibrary("kotlinx-coroutines-test").get())
             }

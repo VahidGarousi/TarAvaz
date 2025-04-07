@@ -10,6 +10,7 @@ import androidx.activity.enableEdgeToEdge
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.Scaffold
+import androidx.compose.material3.adaptive.currentWindowAdaptiveInfo
 import androidx.compose.ui.Modifier
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
@@ -21,6 +22,7 @@ import ir.taravaz.ui.rememberTarAvazState
 import ir.taravaz.util.isSystemInDarkTheme
 import kotlinx.coroutines.flow.distinctUntilChanged
 import kotlinx.coroutines.launch
+import org.koin.compose.KoinContext
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -49,16 +51,23 @@ class MainActivity : ComponentActivity() {
             }
         }
         setContent {
-            TarAvazTheme {
-                Scaffold(
-                    modifier = Modifier.fillMaxSize(),
-                ) { innerPadding ->
-                    TarAvazApp(
-                        appState = rememberTarAvazState(),
-                        modifier = Modifier
-                            .fillMaxSize()
-                            .padding(innerPadding),
-                    )
+            val windowAdaptiveInfo = currentWindowAdaptiveInfo()
+            KoinContext {
+                TarAvazTheme(
+                    windowAdaptiveInfo = windowAdaptiveInfo,
+                    darkTheme = true,
+                ) {
+                    Scaffold(
+                        modifier = Modifier.fillMaxSize(),
+                    ) { innerPadding ->
+                        TarAvazApp(
+                            appState = rememberTarAvazState(),
+                            modifier = Modifier
+                                .fillMaxSize()
+                                .padding(innerPadding),
+                            windowAdaptiveInfo = windowAdaptiveInfo,
+                        )
+                    }
                 }
             }
         }
