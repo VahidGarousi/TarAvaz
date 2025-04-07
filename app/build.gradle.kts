@@ -80,17 +80,13 @@ dependencies {
     implementation(libs.koin.androidx.compose)
     implementation(libs.koin.androidx.startup)
     implementation(libs.kotlinx.serialization.json)
-
+    implementation(projects.core.data)
     implementation(projects.core.designSystem)
     implementation(projects.core.domain)
-    implementation(projects.core.data)
     implementation(projects.core.network)
-    implementation(projects.core.ui)
-
-    implementation(projects.core.track.di)
     implementation(projects.core.playlist.di)
-
-
+    implementation(projects.core.track.di)
+    implementation(projects.core.ui)
     implementation(projects.feature.explore)
     implementation(projects.feature.home)
     implementation(projects.feature.player.data)

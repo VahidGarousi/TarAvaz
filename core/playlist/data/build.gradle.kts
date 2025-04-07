@@ -10,6 +10,6 @@ android {
 
 dependencies {
     implementation(projects.core.playlist.domain)
-    implementation(projects.core.track.domain)
     implementation(projects.core.track.data)
+    implementation(projects.core.track.domain)
 }

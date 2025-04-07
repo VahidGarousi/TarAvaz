@@ -9,6 +9,6 @@ android {
 }
 
 dependencies {
-    implementation(projects.core.track.presentation)
     implementation(projects.core.playlist.presentation)
+    implementation(projects.core.track.presentation)
 }

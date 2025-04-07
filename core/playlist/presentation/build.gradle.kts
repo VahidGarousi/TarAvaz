@@ -9,7 +9,8 @@ android {
 }
 
 dependencies {
-    api(projects.core.track.domain)
     api(projects.core.playlist.domain)
+    api(projects.core.track.domain)
+
     implementation(projects.core.track.presentation)
 }
