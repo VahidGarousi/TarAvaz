@@ -84,17 +84,17 @@ class HomeViewModel internal constructor(
                 },
                 onLoading = {
                     _state.update {
-                        it.copy(playlistSection = LoadableData.Loading)
+                        it.copy(popularPlaylistSection = LoadableData.Loading)
                     }
                 },
                 onSuccess = { playlistSection: PlaylistSection ->
                     _state.update {
-                        it.copy(playlistSection = LoadableData.Loaded(playlistSection.mapToPlaylistInfoUi()))
+                        it.copy(popularPlaylistSection = LoadableData.Loaded(playlistSection.mapToPlaylistInfoUi()))
                     }
                 },
                 onError = { error: DataError.Network ->
                     _state.update {
-                        it.copy(playlistSection = LoadableData.Error(error = error))
+                        it.copy(popularPlaylistSection = LoadableData.Error(error = error))
                     }
                 },
             )

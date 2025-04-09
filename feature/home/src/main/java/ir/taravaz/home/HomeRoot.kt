@@ -57,7 +57,7 @@ private fun HomeScreen(
         )
         verticalSpacer()
         popularPlaylists(
-            playlistSection = state.playlistSection,
+            playlistSection = state.popularPlaylistSection,
         )
         verticalSpacer()
     }

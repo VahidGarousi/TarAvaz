@@ -44,6 +44,11 @@ fun QuickActions(modifier: Modifier = Modifier) {
                 .fillMaxHeight()
                 .weight(QuickActionsConfig.WEIGHT),
         )
+        QuickAction(
+            modifier = Modifier
+                .fillMaxHeight()
+                .weight(QuickActionsConfig.WEIGHT),
+        )
     }
 }
 
