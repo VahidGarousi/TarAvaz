@@ -19,6 +19,7 @@ import ir.taravaz.core.playlist.presentation.component.HorizontalPlaylist
 import ir.taravaz.core.playlist.presentation.model.PlaylistSectionUi
 import ir.taravaz.core.track.presentation.component.HorizontalLatestTracks
 import ir.taravaz.core.track.presentation.model.LatestTracksUi
+import ir.taravaz.core.track.presentation.model.TrackUi
 import ir.taravaz.core.ui.component.LoadableData
 import ir.taravaz.core.ui.model.BannerUi
 import ir.taravaz.home.component.BannerCarousel
@@ -28,18 +29,21 @@ import org.koin.androidx.compose.koinViewModel
 @Composable
 fun HomeRoot(
     modifier: Modifier = Modifier,
+    onTrackClick: (TrackUi) -> Unit,
     viewModel: HomeViewModel = koinViewModel(),
 ) {
     val state by viewModel.state.collectAsStateWithLifecycle()
     HomeScreen(
         modifier = modifier.fillMaxSize(),
         state = state,
+        onTrackClick = onTrackClick,
     )
 }
 
 @Composable
 private fun HomeScreen(
     modifier: Modifier = Modifier,
+    onTrackClick: (TrackUi) -> Unit,
     state: HomeState,
 ) {
     LazyColumn(
@@ -54,6 +58,7 @@ private fun HomeScreen(
         verticalSpacer()
         latestTracks(
             latestTracks = state.latestTracks,
+            onTrackClick = onTrackClick,
         )
         verticalSpacer()
         popularPlaylists(
@@ -63,7 +68,10 @@ private fun HomeScreen(
     }
 }
 
-private fun LazyListScope.latestTracks(latestTracks: LoadableData<LatestTracksUi>) {
+private fun LazyListScope.latestTracks(
+    latestTracks: LoadableData<LatestTracksUi>,
+    onTrackClick: (TrackUi) -> Unit,
+) {
     item {
         HorizontalLatestTracks(
             modifier = Modifier
@@ -72,6 +80,7 @@ private fun LazyListScope.latestTracks(latestTracks: LoadableData<LatestTracksUi
                     start = TarAvazTheme.spacing.space8,
                 ),
             latestPlayables = latestTracks,
+            onTrackClick = onTrackClick,
         )
     }
 }
@@ -130,6 +139,7 @@ private fun HomePreview(
         HomeScreen(
             modifier = Modifier.fillMaxSize(),
             state = parameter,
+            onTrackClick = {},
         )
     }
 }

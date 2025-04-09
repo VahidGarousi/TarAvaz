@@ -13,16 +13,14 @@ import io.ktor.serialization.kotlinx.json.json
 import kotlinx.serialization.json.Json
 
 class HttpClientFactory {
-    fun build(): HttpClient =
+    fun build(json: Json): HttpClient =
         HttpClient(CIO) {
             install(Logging) {
                 level = if (BuildConfig.DEBUG) LogLevel.ALL else LogLevel.NONE
             }
             install(ContentNegotiation) {
                 json(
-                    json = Json {
-                        ignoreUnknownKeys = true
-                    },
+                    json = json,
                 )
             }
             defaultRequest {

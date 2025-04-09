@@ -50,6 +50,12 @@ class TarAvazAppState(
             } ?: previousDestination.value
         }
 
+    val isBottomBarVisible: Boolean
+        @Composable get() {
+            val destination = currentDestination ?: return false
+            return TopLevelDestination.entries.any { destination.hasRoute(it.route) }
+        }
+
     val currentTopLevelDestination: TopLevelDestination?
         @Composable get() {
             return TopLevelDestination.entries.firstOrNull { topLevelDestination ->
