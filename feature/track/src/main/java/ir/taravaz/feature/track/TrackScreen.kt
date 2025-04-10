@@ -47,7 +47,6 @@ fun TrackScreen(viewModel: TrackViewModel = koinViewModel()) {
     val state by viewModel.state.collectAsStateWithLifecycle()
     TrackScreen(
         state = state,
-        onAction = viewModel::onAction,
     )
 }
 
@@ -56,7 +55,6 @@ fun TrackScreen(viewModel: TrackViewModel = koinViewModel()) {
 internal fun TrackScreen(
     modifier: Modifier = Modifier,
     state: TrackState,
-    onAction: (TrackAction) -> Unit,
 ) {
     Scaffold(
         modifier = modifier,
@@ -287,17 +285,22 @@ private fun TrackCover(
         modifier = modifier
             .padding(TarAvazTheme.spacing.space56)
             .fillMaxWidth()
-            .aspectRatio(9f / 16f),
+            .aspectRatio(TrackScreenConfig.COVER_BOX_RATIO),
     ) {
         AsyncImage(
             modifier = Modifier
-                .aspectRatio(1f)
+                .aspectRatio(TrackScreenConfig.COVER_RATIO)
                 .clip(TarAvazTheme.shapes.rectangle16Radius),
             model = imageUrl,
             contentDescription = null,
             contentScale = ContentScale.FillBounds,
         )
     }
+}
+
+private object TrackScreenConfig {
+    const val COVER_BOX_RATIO = 9f / 16f
+    const val COVER_RATIO = 1f
 }
 
 @MediumPhonePreviews
@@ -310,7 +313,6 @@ private fun TrackScreenPreview(
         TrackScreen(
             modifier = Modifier.fillMaxSize(),
             state = trackState,
-            onAction = {},
         )
     }
 }

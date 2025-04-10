@@ -5,11 +5,12 @@ package ir.taravaz.core.designsystem.component
 import androidx.compose.material3.NavigationBarItemDefaults
 import androidx.compose.material3.NavigationDrawerItemDefaults
 import androidx.compose.material3.NavigationRailItemDefaults
+import androidx.compose.material3.adaptive.WindowAdaptiveInfo
 import androidx.compose.material3.adaptive.navigationsuite.NavigationSuiteDefaults
 import androidx.compose.material3.adaptive.navigationsuite.NavigationSuiteItemColors
 import androidx.compose.material3.adaptive.navigationsuite.NavigationSuiteScaffold
+import androidx.compose.material3.adaptive.navigationsuite.NavigationSuiteScaffoldDefaults
 import androidx.compose.material3.adaptive.navigationsuite.NavigationSuiteScope
-import androidx.compose.material3.adaptive.navigationsuite.NavigationSuiteType
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
@@ -18,10 +19,11 @@ import ir.taravaz.core.designsystem.theme.TarAvazTheme
 @Composable
 fun TarAvazNavigationSuiteScaffold(
     modifier: Modifier = Modifier,
-    layoutType: NavigationSuiteType,
+    windowAdaptiveInfo: WindowAdaptiveInfo,
     navigationSuiteItems: TarAvazNavigationSuiteScope.() -> Unit,
     content: @Composable () -> Unit,
 ) {
+    val layoutType = NavigationSuiteScaffoldDefaults.calculateFromAdaptiveInfo(windowAdaptiveInfo)
     val navigationSuiteItemColors = NavigationSuiteItemColors(
         navigationBarItemColors = NavigationBarItemDefaults.colors(
             selectedIconColor = TarAvazTheme.colors.navigationSelectedItemColor,
@@ -44,7 +46,6 @@ fun TarAvazNavigationSuiteScaffold(
             unselectedTextColor = TarAvazTheme.colors.navigationContentColor,
         ),
     )
-
     NavigationSuiteScaffold(
         navigationSuiteItems = {
             TarAvazNavigationSuiteScope(
@@ -59,9 +60,8 @@ fun TarAvazNavigationSuiteScaffold(
             navigationBarContainerColor = TarAvazTheme.colors.navigationContainerColor,
         ),
         modifier = modifier,
-    ) {
-        content()
-    }
+        content = content,
+    )
 }
 
 /**

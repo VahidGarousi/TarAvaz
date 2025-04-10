@@ -20,8 +20,6 @@ import androidx.compose.material3.SnackbarHostState
 import androidx.compose.material3.Text
 import androidx.compose.material3.adaptive.WindowAdaptiveInfo
 import androidx.compose.material3.adaptive.currentWindowAdaptiveInfo
-import androidx.compose.material3.adaptive.navigationsuite.NavigationSuiteScaffoldDefaults
-import androidx.compose.material3.adaptive.navigationsuite.NavigationSuiteType
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.remember
 import androidx.compose.ui.ExperimentalComposeUiApi
@@ -68,11 +66,6 @@ fun TarAvazApp(
     windowAdaptiveInfo: WindowAdaptiveInfo,
 ) {
     val currentDestination = appState.currentDestination
-    val layoutType = if (appState.isBottomBarVisible) {
-        NavigationSuiteScaffoldDefaults.calculateFromAdaptiveInfo(windowAdaptiveInfo)
-    } else {
-        NavigationSuiteType.None
-    }
     TarAvazNavigationSuiteScaffold(
         navigationSuiteItems = {
             appState.topLevelDestinations.forEach { destination ->
@@ -103,7 +96,7 @@ fun TarAvazApp(
                 )
             }
         },
-        layoutType = layoutType,
+        windowAdaptiveInfo = windowAdaptiveInfo,
     ) {
         Scaffold(
             modifier = modifier.semantics {

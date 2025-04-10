@@ -1,3 +1,5 @@
+@file:Suppress("MaxLineLength")
+
 package ir.taravaz.core.playlist.presentation.component.preview
 
 import androidx.compose.ui.tooling.preview.PreviewParameterProvider

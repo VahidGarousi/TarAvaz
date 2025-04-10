@@ -1,3 +1,5 @@
+@file:Suppress("MatchingDeclarationName")
+
 package ir.taravaz.feature.track.navigation
 
 import androidx.navigation.NavController
