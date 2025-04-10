@@ -7,6 +7,6 @@ import ir.taravaz.core.ui.model.BannerUi
 
 data class HomeState(
     val banners: LoadableData<List<BannerUi>> = LoadableData.Initial,
-    val playlistSection: LoadableData<PlaylistSectionUi> = LoadableData.Initial,
+    val popularPlaylistSection: LoadableData<PlaylistSectionUi> = LoadableData.Initial,
     val latestTracks: LoadableData<LatestTracksUi> = LoadableData.Initial,
 )

@@ -24,6 +24,13 @@ dependencyResolutionManagement {
 
 rootProject.name = "TarAvaz"
 enableFeaturePreview("TYPESAFE_PROJECT_ACCESSORS")
+check(JavaVersion.current().isCompatibleWith(JavaVersion.VERSION_17)) {
+    """
+    TarAvaz requires JDK 17+ but it is currently using JDK ${JavaVersion.current()}.
+    Java Home: [${System.getProperty("java.home")}]
+    https://developer.android.com/build/jdks#jdk-config-in-studio
+    """.trimIndent()
+}
 include(":konsist")
 include(":app")
 include(
@@ -40,22 +47,14 @@ include(":feature:home")
 include(":feature:playlist")
 include(":feature:explore")
 include(":feature:profile")
-
-check(JavaVersion.current().isCompatibleWith(JavaVersion.VERSION_17)) {
-    """
-    TarAvaz requires JDK 17+ but it is currently using JDK ${JavaVersion.current()}.
-    Java Home: [${System.getProperty("java.home")}]
-    https://developer.android.com/build/jdks#jdk-config-in-studio
-    """.trimIndent()
-}
 include(":core:track:domain")
 include(":core:track:data")
 include(":core:track:di")
 include(":core:track:presentation")
 include(":core:track:network")
-
 include(":core:playlist:domain")
 include(":core:playlist:data")
 include(":core:playlist:di")
 include(":core:playlist:presentation")
 include(":core:playlist:network")
+include(":feature:track")

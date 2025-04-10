@@ -92,6 +92,7 @@ dependencies {
     implementation(projects.feature.player.data)
     implementation(projects.feature.playlist)
     implementation(projects.feature.profile)
+    implementation(projects.feature.track)
 
     testImplementation(libs.androidx.test.rules)
     testImplementation(libs.kotest.assertions.core)

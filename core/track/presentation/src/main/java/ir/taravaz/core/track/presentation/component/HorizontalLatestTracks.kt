@@ -12,6 +12,7 @@ import ir.taravaz.core.designsystem.theme.TarAvazPreview
 import ir.taravaz.core.designsystem.theme.TarAvazTheme
 import ir.taravaz.core.track.presentation.component.preview.TracksPreviewParameterProvider
 import ir.taravaz.core.track.presentation.model.LatestTracksUi
+import ir.taravaz.core.track.presentation.model.TrackUi
 import ir.taravaz.core.ui.component.LoadableComponent
 import ir.taravaz.core.ui.component.LoadableData
 import ir.taravaz.core.ui.component.lazy.playlist.SectionHeader
@@ -21,6 +22,7 @@ import ir.taravaz.core.ui.component.lazy.playlist.SectionHeaderLoading
 fun HorizontalLatestTracks(
     modifier: Modifier = Modifier,
     latestPlayables: LoadableData<LatestTracksUi>,
+    onTrackClick: (TrackUi) -> Unit,
 ) {
     Column(
         modifier = modifier,
@@ -44,6 +46,7 @@ fun HorizontalLatestTracks(
                 HorizontalTracks(
                     modifier = modifier,
                     tracks = latestPlayables.items,
+                    onTrackClick = onTrackClick,
                 )
             },
             failureContent = {
@@ -67,6 +70,7 @@ private fun HorizontalPlayableListPreview(
         HorizontalLatestTracks(
             modifier = Modifier.fillMaxWidth(),
             latestPlayables = parameter,
+            onTrackClick = {},
         )
     }
 }

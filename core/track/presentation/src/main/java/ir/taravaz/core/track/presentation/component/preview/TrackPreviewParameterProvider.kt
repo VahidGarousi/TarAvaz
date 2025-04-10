@@ -3,7 +3,7 @@ package ir.taravaz.core.track.presentation.component.preview
 import androidx.compose.ui.tooling.preview.PreviewParameterProvider
 import ir.taravaz.core.track.presentation.model.TrackUi
 
-internal class TrackPreviewParameterProvider : PreviewParameterProvider<TrackUi> {
+class TrackPreviewParameterProvider : PreviewParameterProvider<TrackUi> {
     override val values: Sequence<TrackUi> = sequenceOf(
         TrackUi(
             id = "",

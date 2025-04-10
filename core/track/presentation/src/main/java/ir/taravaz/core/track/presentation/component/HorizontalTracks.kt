@@ -12,7 +12,7 @@ import androidx.compose.ui.tooling.preview.PreviewParameter
 import ir.taravaz.core.designsystem.preview.MediumPhonePreviews
 import ir.taravaz.core.designsystem.theme.TarAvazPreview
 import ir.taravaz.core.designsystem.theme.TarAvazTheme
-import ir.taravaz.core.track.presentation.component.preview.LazyPlayableListPreviewParameterProvider
+import ir.taravaz.core.track.presentation.component.preview.TrackListPreviewParameterProvider
 import ir.taravaz.core.track.presentation.model.TrackUi
 import ir.taravaz.core.ui.component.shimmer.Shimmer
 
@@ -20,6 +20,7 @@ import ir.taravaz.core.ui.component.shimmer.Shimmer
 fun HorizontalTracks(
     modifier: Modifier = Modifier,
     tracks: List<TrackUi>,
+    onTrackClick: (TrackUi) -> Unit,
 ) {
     LazyRow(
         modifier = modifier,
@@ -31,7 +32,9 @@ fun HorizontalTracks(
             TrackCard(
                 modifier = Modifier.width(TarAvazTheme.spacing.space116),
                 track = track,
-                onClick = {},
+                onClick = {
+                    onTrackClick(track)
+                },
             )
         }
     }
@@ -56,13 +59,14 @@ fun LazyPlayableListLoading(modifier: Modifier = Modifier) {
 @MediumPhonePreviews
 @Composable
 private fun HorizontalTracksPreview(
-    @PreviewParameter(LazyPlayableListPreviewParameterProvider::class)
+    @PreviewParameter(TrackListPreviewParameterProvider::class)
     parameter: List<TrackUi>,
 ) {
     TarAvazPreview {
         HorizontalTracks(
             modifier = Modifier.fillMaxWidth(),
             tracks = parameter,
+            onTrackClick = {},
         )
     }
 }

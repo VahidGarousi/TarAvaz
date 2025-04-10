@@ -4,6 +4,7 @@ import ir.taravaz.core.network.di.coreNetworkModule
 import ir.taravaz.core.playlist.di.playlistCoreModules
 import ir.taravaz.core.track.di.trackCoreModules
 import ir.taravaz.core.ui.di.coreUIModule
+import ir.taravaz.feature.track.di.trackModule
 import ir.taravaz.home.di.homeModule
 import ir.taravaz.playlist.di.playlistModule
 import org.koin.dsl.module
@@ -12,7 +13,7 @@ val coreModules = module {
     includes(coreNetworkModule, coreUIModule, trackCoreModules, playlistCoreModules)
 }
 val featureModules = module {
-    includes(homeModule, playlistModule)
+    includes(homeModule, playlistModule, trackModule)
 }
 
 val appModule = module {

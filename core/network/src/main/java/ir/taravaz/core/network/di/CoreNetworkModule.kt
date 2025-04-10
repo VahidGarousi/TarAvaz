@@ -16,10 +16,15 @@ import org.koin.dsl.module
 val coreNetworkModule = module {
     includes(coreDataModule)
     includes(flavoredNetworkModule)
-    single { Json { ignoreUnknownKeys = true } }
+    single {
+        Json {
+            this.isLenient = true
+            this.ignoreUnknownKeys = true
+        }
+    }
     single<HttpClient> {
         trace("TarAvazKtorHttpClient") {
-            HttpClientFactory().build()
+            HttpClientFactory().build(get())
         }
     }
     single<ImageLoader> {
